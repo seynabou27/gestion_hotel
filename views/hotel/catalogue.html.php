@@ -27,8 +27,8 @@
               <a class="nav-item nav-link" href="#">Contact</a>
             </div>
             <div class="collapse navbar-collapse lg-0" id="navbarNavAltMarkup">
-              <a class="btn btn droite" href="#">Je me connecter</a>
-              <a class="btn btn gauche" href="#" style="color: #005CA5">je crée une compte</a>
+              <a class="btn btn droite" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?>">Je me connecter</a>
+              <a class="btn btn gauche" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=inscription'?>" style="color: #005CA5">je crée une compte</a>
             </div>
           </div>
           
@@ -63,7 +63,7 @@
               </div>
             </div>
             <div class="carousel-item slide1">
-              <img src="img/pexel2.jpg" alt="Carrousel slide 3" class="d-block w-100">
+              <img src="img/pexel2.png" alt="Carrousel slide 3" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
               <h4>Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
                 <p>Légende de la slide n°3.</p>
@@ -85,8 +85,8 @@
       <div class="container partie2">
         <div class="row">
           <div class="col-6">
-            <h4>Et si le paradis était sur <br> terre...pret de Dakar</h4>
-            <p>Le lorem ipsum est, en imprimerie,<br> une suite de mots sans signification utilisée à titre provisoire <br>pour calibrer une mise en page.</p>
+            <h4 style="color: black;"><b>Et si le paradis était sur <br> terre...pret de Dakar</b></h4>
+            <p>TOOKI est situé à Dakar sénégal, sur la petite cote,au bord d'une longue<br>et grande plage de sable blond présente de nombreux atouts.Notre hotel<br>comprend 80 chambres spacieuses,confortables et bien équipées,<br>relookées par un designer qui sait allier confort et décoration</p>
             <button type="button" class="btn droite boutton">En savoir plus</button>
             
           </div>
@@ -99,7 +99,8 @@
         
       </div>
       <div class="titre">
-        <h3>Nos chambres</h3>
+        <h3><b>Nos chambres</b></h3>
+        <p>Voici un apercu des chambres que nous possédons avec un<br> design raffiné et moderne</p>
         
         </div>
       <div class="container-fluid bg-light partie3">
@@ -109,30 +110,30 @@
         <div class="card card1" style="width: 20rem;">
           <img src="img/pexel3.jpg" class="card-img-top" alt="Accroche HTML">
           <div class="card-body">
-            <h2 class="card-title">Titre</h2>
-            <h3 class="card-subtitle">Sous titre</h3>
+            <h2 class="card-title"></h2>
+            <h4 class="card-subtitle">Suite</h4>
             <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-            <a href="#" class="btn btn-primary">Un lien</a>
+            <a href="#" class="btn btn-primary">Je réserve</a>
           </div>
         </div>
 
         <div class="card card1" style="width: 20rem;">
           <img src="img/pexel6.jpg" class="card-img-top" alt="Accroche HTML">
           <div class="card-body">
-            <h2 class="card-title">Titre</h2>
-            <h3 class="card-subtitle">Sous titre</h3>
+            <h2 class="card-title"></h2>
+            <h4 class="card-subtitle">Chambre de luxe</h4>
             <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-            <a href="#" class="btn btn-primary">Un lien</a>
+            <a href="#" class="btn btn-primary">Je reserve</a>
           </div>
         </div>
 
         <div class="card card1" style="width: 20rem;">
           <img src="img/pexel4.jpg" class="card-img-top" alt="Accroche HTML">
           <div class="card-body">
-            <h2 class="card-title">Titre</h2>
-            <h3 class="card-subtitle">Sous titre</h3>
+            <h2 class="card-title"></h2>
+            <h4 class="card-subtitle">Chambre standard</h4>
             <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-            <a href="#" class="btn btn-primary">Un lien</a>
+            <a href="#" class="btn btn-primary">Je réserve</a>
           </div>
         </div>
         
@@ -141,8 +142,8 @@
       </div>
       <div class="container-fluid partie4" style="background-color: #005CA5;">
       <div class="titre1">
-      <h3 class=>Obtenez des avantages</h3>
-      <p>hroooooooooooooooooooooooooooooooooooooo <br> jfffffffffffffffffffff</p>
+      <h4 class="obt"><b>Obtenez des avantages instantanés</b></h4>
+      <p class="obt1">Profitez d'avantages dès votre adhésion et commencez à gagnez votre<br>chemin vers le statut Elite dès votre premier séjour.</p>
       </div>
 
       <div class="row">
@@ -152,7 +153,7 @@
             <div class="col-md-4">
               <div class="lit">
                 <img class="etoile" src="img/lit.png" alt=""> 
-                <p class="p1">ncdhudddddddddddddddqqduuuu</p> 
+                <p class="p1 obt1">Gagnez des nuits gratuites</p> 
               </div>
               
             </div>
@@ -160,7 +161,7 @@
           <div class="col-md-4">
             <div class="lit1">
               <img class="wifi" src="img/wifi.png" alt="">
-              <p class="p2">dcccccccccccccccdy</p>
+              <p class="p2 obt1">Wifi gratuit</p>
               
             </div>
           </div>
@@ -168,7 +169,7 @@
           <div class="col-md-4">
             <div class="lit2">
               <img class="mobile" src="img/mobile.png" alt="">
-              <p class="p3">dcuhayykuskky</p>
+              <p class="p3 obt1">Wifi gratuit</p>
               
             </div>
             
@@ -180,14 +181,135 @@
         
       </div>
       <footer class="footer">
+       <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    
+    <!-- Left -->
 
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          
+          <img src="img/image.png" alt="">
+          <p>Une hospitalité pour vos souvenirs!</p>
+          <div>
+            <img class="reseau" src="img/fb.png" alt="">
+            <img class="reseau" src="img/din.png" alt="">
+            <img class="reseau" src="img/ins.png" alt="">
+            <img class="reseau" src="img/you.png" alt="">
+            
+          </div>
+
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-phone me-3"></i> +221 33 869 90 90</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            contact@grouptooki.com
+          </p>
+          
+          
+        </div>
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            A propos
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Notre mission</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Tooki en chiffres</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Actualités presse</a>
+          </p>
+          
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Liens pratiques
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Conseils au voyageurs</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">FAQ</a>
+          </p>
+          
+        </div>
+        
+       
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+  
+    <div class="me-5 d-none d-lg-block p-4 bas" style="border-bottom-color: red;">
+        <span> © 2021 Copyright:</span>
+      </div>
+
+  
+  
+</footer>
+<!-- Footer -->
 
       </footer>
 
       <style>
-        .footer{
-          background-color: red;
+        .reseau {
+        vertical-align: middle;
+        border-style: none;
+        margin: 2%;
         }
+        
           body {
           font-family:Circular_std_bold;
           }
@@ -237,13 +359,14 @@
         height: 400px;
       }
       .partie2{
-        padding: 5%;
+        padding: 3%;
       }
       .boutton{
         margin-top: 5%;
       }
       .partie3{
         display: flex;
+        margin-top: -10%;
       }
       .card-deck{
         margin-top: 9%;
@@ -273,7 +396,21 @@
       .mobile{
         margin-top: 2%;
       }
-      
+      .lit1{
+        
+        padding-top: 8%;
+      }
+      .lit2{
+        padding-top: 8%;
+      }
+     
+      .obt{
+        margin-top: -5%;
+        color: white;
+      }
+      .obt1{
+        color: white;
+      }
       /*
       
       
@@ -285,18 +422,9 @@
        
         margin-left: 23%;
       }
-      .lit1{
-        
-        padding-left: 1%;
-      }
-      .lit2{
-        padding-left: 5%;
-      }
-      p {
-        margin-top: 4px;
-        margin-bottom: 1rem;
-        color: white;
-      }
+      
+      
+     
       
 
       
