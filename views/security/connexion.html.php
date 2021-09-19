@@ -1,7 +1,13 @@
+<?php 
+if (isset($_SESSION['arrayErreur'])){
+    $arrayErreur =$_SESSION['arrayErreur'];
+    unset ($_SESSION['arrayErreur']);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hotel Tooki</title>
+    <title>HOTEL TOOKI</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -73,7 +79,7 @@
               </div>
               <div class="form-group">
 
-                <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn_submit" style="background-color: #005CA5;">Je me connecte</button>
+                <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn" style="background-color: #005CA5; color:#fff;"><b>Je me connecte</b></button>
               </div>
               <a  class="identi" href="#">J'ai oublié mes identifiants</a>
               <div class="compte">
@@ -127,7 +133,7 @@
   }
   .blanc{
     margin-top: -27%;
-    margin-left: 25%;
+    margin-left: 5%;
   }
   
   .border-bottom {
@@ -177,7 +183,7 @@ a {
 .compte{
   margin-top: 8%;
   display: flex;
-  margin-left: 25%;
+  margin-left: 30%;
  
 }
 .inscris{

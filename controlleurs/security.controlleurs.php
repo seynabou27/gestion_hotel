@@ -77,6 +77,8 @@ function connexion(string $login, string $password): void{
 }
 
 function inscription(array $data):void{
+    var_dump($_POST);
+    die('ok');
     extract($data);
     $arrayErreur=array();
     validation_login ($login,'login', $arrayErreur);
@@ -86,7 +88,7 @@ function inscription(array $data):void{
         if(form_valid($arrayErreur)){
             $data ['id_role'] = 1;
             find_add_user($data);
-            header("location:" .WEB_ROUTE.'?controlleurs=bien&views=catalogue');
+            header("location:" .WEB_ROUTE.'?controlleurs=hotel&views=catalogue');
        
     
         }else{
@@ -100,7 +102,7 @@ function inscription(array $data):void{
 function deconnexion():void{
 
     unset ($_SESSION['userConnect']);
-    header('location:'.WEB_ROUTE.'?controlleurs=bien&views=catalogue');
+    header('location:'.WEB_ROUTE.'?controlleurs=hotel&views=catalogue');
     
 }
 

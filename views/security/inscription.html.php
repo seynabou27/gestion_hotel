@@ -1,7 +1,13 @@
+<?php 
+if (isset($_SESSION['arrayErreur'])){
+    $arrayErreur =$_SESSION['arrayErreur'];
+    unset ($_SESSION['arrayErreur']);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hotel Tooki</title>
+    <title>HOTEL TOOKI</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -51,9 +57,10 @@
         </div>
         <div class="form-container forme sign-in-container texte-center">
 
-            <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
-                <input type="hidden" name="controlleurs" value="security"/>
-                <input type="hidden" name="action" value="connexion"/>
+        <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
+                    <input type="hidden" name="controlleurs" value="security"/>
+                    <input type="hidden" name="action" value="inscription"/>
+                    <input type="hidden" name="id" value="<?=isset($user['id']) ? $user['id']:'';?>">
                 <div>
                     <p class="aventure"><b>C'est parti pour l'aventure!</b></p>
                     <p class="aventure1">Veuillez remplir les champs ci-dessous.</p>
@@ -61,19 +68,19 @@
                 </div>  
                 <div class="row  mb-2 row1">
                     <div class="col">
-                        <input type="text" class="form-control" style="background-color: #eee;" placeholder="Nom">
+                        <input type="text" class="form-control" name="nom"style="background-color: #eee;" placeholder="Nom">
                         <small class="form-text text-danger"><?php echo isset($arrayErreur['nom'])? $arrayErreur['nom']:'';?></small>
 
                     </div>
                     <div class="col mb-2">
-                        <input type="text" class="form-control" style="background-color: #eee;" placeholder="Prénom">
-                        <small class="form-text text-danger"><?php echo isset($arrayErreur['Prenom'])? $arrayErreur['Prenom']:'';?></small>
+                        <input type="text" class="form-control"  name="prenom" style="background-color: #eee;" placeholder="Prénom">
+                        <small class="form-text text-danger"><?php echo isset($arrayErreur['prenom'])? $arrayErreur['prenom']:'';?></small>
 
                     </div>
                 </div>
                 <div class="row row1 mb-2">
                     <div class="col">
-                        <input type="text" class="form-control" style="background-color: #eee;" placeholder="téléphone">
+                        <input type="text" class="form-control" name="telephone" style="background-color: #eee;" placeholder="téléphone">
                         <small id="emailHelp" class="form-text text-danger"><?php echo isset($arrayErreur['telephone'])? $arrayErreur['telephone']:'';?></small>
 
 
@@ -87,7 +94,7 @@
                 <div class="row row1  mb-2">
                     <div class="col">
                         <input type="pays" style="background-color: #eee;"  name="pays" class="form-control" placeholder="Pays/Région">
-                        <small class="form-text text-danger"><?php echo isset($arrayErreur['nom'])? $arrayErreur['nom']:'';?></small>
+                        <small class="form-text text-danger"><?php echo isset($arrayErreur['pays'])? $arrayErreur['pays']:'';?></small>
 
                     </div>
                     <div class="col  mb-2">
@@ -103,17 +110,31 @@
 
                     </div>
                     <div class="col  mb-2">
-                        <input type="password" name="password1" class="form-control"  style="background-color: #eee;" placeholder="Confirmer mot de passe">
+                        <input type="password" name="password1" class="form-control"  style="background-color: #eee;" placeholder="Confirmation mot de passe">
                         <small id="passwordlHelp" class="form-text text-danger">
                         <?php echo isset($arrayErreur['password'])? $arrayErreur['password']:'';?>
                         <?php echo isset($arrayErreur['password1'])? $arrayErreur['password1']:'';?></small> 
 
+
                     </div>
+                   
                 </div>
+              <!--   <div class="row row2">
+                        <div class="col">
+                            <ol>
+                            J'accepte les conditions d'utilisation et <br> les termes de confidentialité.
+
+                            </ol>
+
+                        </div>
+
+                        
+                    </div> -->
             </form>
 
                  
         </div>
+        
                     
         <div class="mb-3 ">
                          
@@ -126,7 +147,7 @@
 
             <div class="form-group">
 
-                <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn_submit" style="background-color: #005CA5;">Je me connecte</button>
+                <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn" style="background-color: #005CA5; color:#fff;">Je m'inscris</button>
             </div>
                           
         </div>
@@ -257,6 +278,10 @@ a {
 
 .file{
     margin-left: 14%;
+}
+.row2{
+    margin-top: 1%;
+    margin-left: 57%;
 }
  
 

@@ -10,8 +10,8 @@
         //$user = $sth->fetchAll();
         $user = $sth->fetch(PDO::FETCH_ASSOC);
         fermer_connexion_bd($pdo);
-
-        return $user==false ?: $user;
+/*         return $user==false ?: $user; 
+ */         return $user; 
 
         
         

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hotel Tooki</title>
+    <title>HOTEL TOOKI</title>
     
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,28 +12,8 @@
   </head>
   <body>
       <header>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <a class="navbar-brand" href="#"></a>
-          <img src="img/logo.png" width="67" height="67" class="d-inline-block align-top" alt="">
-          <button class="navbar-toggler"style="color:#005CA5;" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="#">Accueil <span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link propos" href="#">A propos</a>
-              <a class="nav-item nav-link" href="#">Communauté</a>
-              <a class="nav-item nav-link" href="#">Nos offres</a>
-              <a class="nav-item nav-link" href="#">Contact</a>
-            </div>
-            <div class="collapse navbar-collapse lg-0" id="navbarNavAltMarkup">
-              <a class="btn btn droite" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?>">Je me connecter</a>
-              <a class="btn btn gauche" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=inscription'?>" style="color: #005CA5">je crée une compte</a>
-            </div>
-          </div>
-          
+        <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
 
-        </nav>
       </header>
       <div class="container-fluid">
         
@@ -57,7 +37,7 @@
             </div>
             <div class="carousel-item slide1">
               <img src="img/groupe1.png" alt="Carrousel slide 2" class="d-block w-100">
-              <div class="carousel-caption d-none d-md-block text-dark">
+              <div class="carousel-caption d-none d-md-block ">
               <h4>Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
                 <p>Légende de la slide n°2.</p>
               </div>
@@ -342,8 +322,13 @@
       .droite{
         color:white;
         background-color:#005CA5;
-        margin-right: 3%;
+         margin-right: 3%; 
       }
+      /* .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        margin-left: 7%;
+      } */
       .gauche{
         color:#005CA5;
         background-color:white;
@@ -410,6 +395,9 @@
       }
       .obt1{
         color: white;
+      }
+      .ml-4, .mx-4 {
+        margin-left: 3.5rem !important;
       }
       /*
       
