@@ -6,8 +6,8 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }elseif($_GET['views']=='detail'){
             detaille_bien();            
             
-        }elseif($_GET['views']=='lite.bien'){
-            require_once(ROUTE_DIR.'views/gestionnaire/liste.bien.html.php');
+        }elseif($_GET['views']=='lite.chambre'){
+            require_once(ROUTE_DIR.'views/gestionnaire/liste.chambre.html.php');
 
         }elseif($_GET['views']=='inscription'){
             require_once(ROUTE_DIR.'views/security/inscription.html.php');
@@ -32,10 +32,10 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 }
 function liste_reservation(){
         $reservation=find_all_reservation();
-     
-     if (!est_gestionnaire()) {
+    /*  
+     if (est_gestionnaire()) {
         require_once(ROUTE_DIR.'views/hotel/catalogue.html.php');
-     }
+     } */
      require_once(ROUTE_DIR.'views/reservation/mesreservation.html.php');
 
 }

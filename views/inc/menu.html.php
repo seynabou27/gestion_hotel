@@ -6,18 +6,45 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="#">Accueil <span class="sr-only">(current)</span></a>
+              <?php if (est_client()) : ?>
+              <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>">Accueil <span class="sr-only">(current)</span></a>
+                <?php endif ?>
+                <?php if (!est_client()) : ?>
               <a class="nav-item nav-link propos" href="#">A propos</a>
               <a class="nav-item nav-link" href="#">Communauté</a>
               <a class="nav-item nav-link" href="#">Nos offres</a>
               <a class="nav-item nav-link" href="#">Contact</a>
+              <?php endif ?> 
             </div>
-            <div class="collapse navbar-collapse mr-o ml-4" id="navbarNavAltMarkup">
+            <?php if (est_client()): ?>
+
+              <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>">Catalogue des chambres</a><span class="sr-only">(current)</span></a>
+
+                <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>">Mes réservations</a><span class="sr-only">(current)</span></a>
+              
+              <a class="nav-item nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.prestation'?>">Liste_prestations</a>
+              
+             
+              <?php endif ?>
+            <?php if(!est_client()): ?>
+              <div class="collapse navbar-collapse mr-o ml-4" id="navbarNavAltMarkup">
               <a class="btn btn droite" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?>">Je me connecter</a>
               <a class="btn btn gauche" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=inscription'?>" style="color: #005CA5">je crée une compte</a>
             </div>
+              <?php endif ?>
           </div>
-          
-          
+          <?php if(est_client()): ?>
+
+            <div class="dropdown">
+              <button class="btn boutton btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                client
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=deconnexion'?>">Se déconnecter</a>
+                <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=inscription'?>">Je m'inscris</a>
+                <a class="dropdown-item" href="#">Paramettrer</a>
+              </div>
+            <?php endif ?>
+
 
         </nav>

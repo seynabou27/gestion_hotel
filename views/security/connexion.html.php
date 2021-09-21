@@ -64,9 +64,12 @@ if (isset($_SESSION['arrayErreur'])){
                   <p class="aventure"><b>C'est parti pour l'aventure!</b></p>
                   <p class="aventure1">Veuillez remplir les champs ci-dessous.</p>
                    
-                 </div>          
+                 </div> 
+                  <div class="alert alert-danger" role="alert">
+                    <?= isset( $arrayErreur['erreurConnexion'])? $arrayErreur['erreurConnexion']:''?>
+                    </div>         
                 
-
+                 
               <div class="form-group">
                 <label for="exampleInputEmail1"></label>
                 <input type="texte" name="login" class="form-control  w-75 p-2" style="background-color: #eee;" id="exampleInputEmail1"  placeholder="Nom d'utilisateur / Email">
@@ -103,6 +106,13 @@ if (isset($_SESSION['arrayErreur'])){
 
 
 <style>
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    width: 60%;
+    margin-left: 22%;
+}
   .partie1{
     position: relative;
   }
@@ -166,7 +176,7 @@ a {
     padding: -2.5rem !important;
 }
 .aventure{
-  margin-top: 13%;
+  margin-top: 6%;
  text-align: center;
   color:#FBBC21 ;
 
@@ -181,7 +191,7 @@ a {
 
 }
 .compte{
-  margin-top: 8%;
+  margin-top: 3%;
   display: flex;
   margin-left: 30%;
  

@@ -2,75 +2,77 @@
     
 //fonction select
 
-    function find_all_bien():array{
+    function find_all_chambre():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from bien b ,user u 
-        where b.id_user=u.id_user ";
+        $sql = "select * from chambre ch ,categorie c 
+        where ch.id_categorie=c.id_categorie ;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
-        $bien = $sth->fetchAll();
+        $chambre = $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $bien;
+        return $chambre;
 
     }
-    function find_bien_disponible():array{
+    function find_all_image():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from bien b where b.etat_bien=?";
+        $sql = "select * from image i ,categorie c 
+        where i.id_categorie=c.id_categorie ;";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $chambre = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $chambre;
+
+    }
+    function find_chambre_disponible():array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from chambre ch where ch.etat_chambre=?";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array('disponible'));
-        $biendispo = $sth->fetchAll();
+        $chambredispo = $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $biendispo;
+        return $chambredispo;
 
     }
 
 
-    function find_bien_reservation_by_client(int $id_bien):array{
+    function find_chambre_reservation_by_client(int $id_bien):array{
         $pdo = ouvrir_connexion_bd(); 
-        $sql = "select * from bien b, reservation r,users u where 
-            b.id_bien=r.id_bien and r.id_users=?";
+        $sql = "select * from chambre ch, reservation r,user u where 
+            ch.id_chambre=r.id_chambre and r.id_user=?";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array($id_bien));
-        $bien = $sth->fetchall();
+        $chambre = $sth->fetchall();
         fermer_connexion_bd($pdo);
-        return $bien;
+        return $chambre;
     }
-    function find_bien_by_id(int $id_bien):array{
+
+    function find_chambre_by_id(int $id_chambre):array{
         $pdo = ouvrir_connexion_bd();
         //Execution d'une requete non prepare avec un jocker qui est nommé
-        //$sql = "select * from bien b where b.id_bien=$id_bien";
-
+        
         //Execution d'une requete prepare avec un jocker qui est nommé
-        $sql = "select * from bien b where b.id_bien= ? ";
+        $sql = "select * from chambre ch where ch.id_chambre= ? ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_bien));
-        $bien = $sth->fetch();
-
-
-        //Execution d'une requete prepare avec un jocker qui est nommé
-        /* $sql = "select * from bien b where b.id_bien= :x";
-        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array(':x' => $id_bien));
-        //fetchAll()permet de recuperer tout les résultats ou toutes les tables
-        $bien = $sth->fetch(); */
-
+        $sth->execute(array($id_chambre));
+        $chambre = $sth->fetch();
         fermer_connexion_bd($pdo);
 
-        return $bien;
+        return $chambre;
 
     }
 
-    function insert_bien(int $id_bien):int{
+    function insert_chambre(int $id_chambre):int{
         //a voir
         extract($bien);
         $pdo = ouvrir_connexion_bd();
-        $sql = "INSERT INTO `bien` (`id_bien`, `reference_bien`, `description_bien`, 
-        `type_bien`, `date_creation`, `prix`, `etat_bien`, `id_user`, `id_zone`) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `chambre` (`id_chambre`, `reference_chambre`, `description_chambre`, 
+        `type_chambre`, `date_creation`, `prix`, `etat_chambre`, `id_user`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $now=date_create();
         $now = date_format($now, 'Y-m-d H:i:s');
-        $sth->execute([$id_bien,$etat_bien ,$type_bien,$reference_bien,$description_bien,$id_zone,$id_user,$now]);
+        $sth->execute([$id_chambre,$etat_chambre ,$type_chambre,$reference_chambre,$description_chambre,$id_user,$now]);
         
         fermer_connexion_bd($pdo);
        
@@ -79,64 +81,18 @@
 
     }
 
-    function update_bien(int $id_bien):int{
-        $pdo = ouvrir_connexion_bd();
-        extract($bien);
-        $sql = "UPDATE `bien` SET `reference_bien` = ?, `type_bien` = ?, `date_creation` = ?, `prix` = ?,
-         `etat_bien` = ?, `id_user` = ?, `id_zone` = ? 
-         WHERE `bien`.`id_bien` = ?; ";
-        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute([$etat_bien ,$type_bien,$date_creation,$description_bien,$id_zone,$adress,$id_bien]);
-        
-        fermer_connexion_bd($pdo);
-       
-        return $sth->rowCount();
     
-
-    }
-
-    function delete_bien(int $id_bien):int{
-        $pdo = ouvrir_connexion_bd();
-        $sql = "delete from bien b where b.id_bien=?";
-        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $now=date_create();
-        $now = date_format($now, 'Y-m-d ');
-        //$sth->execute([$etat_bien ,$type_bien,$reference_bien,$description_bien,$now]);
-        
-        fermer_connexion_bd($pdo);
-       
-        return $sth->rowCount();
-        
-    
-
-    }
-
-    //filtrer les réservations par bien, par date, par état et par client
+    //filtrer les réservations
     function find_filtrer_reservation(){
         $pdo = ouvrir_connexion_bd();
         //a voir
-        $sql = "SELECT * FROM reservation r, users u, bien b
+        $sql = "SELECT * FROM reservation r, user u, chambre ch
         where 
-        u.id_users=r.id_users
+        u.id_user=r.id_user
         and 
-        b.id_bien=r.id_bien
+        ch.id_chambre=r.id_chambre
         GROUP by
-        b.id_bien, r.date_reservation, r.etat_reservation, u.id_users ";
-        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array([]));
-        $reservation = $sth->fetchall();
-        fermer_connexion_bd($pdo);
-
-        return $reservation;
-
-    }
-
-    //filtrer les biens par zone et par état
-    function find_filtrer_bien_by_zone_etat(){
-        $pdo = ouvrir_connexion_bd();
-        //a voir
-        $sql = "SELECT * FROM  bien b
-       where  b.etat_bien=? and b.etat_bien=?  ";
+        ch.id_chambre, r.date_reservation, r.etat_reservation, u.id_user ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array([]));
         $reservation = $sth->fetchall();
@@ -146,6 +102,44 @@
 
     }
     
+  
+
+    /* function pagination($currentPage){
+        $pdo = ouvrir_connexion_bd();
+        $sql ='SELECT COUNT(*) AS nb_articles FROM `articles`;';
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $result = $sth->fetch();
+        $nbArticles = (int) $result['nb_articles'];
+        $parPage = 3;
+        $pages = ceil($nbArticles / $parPage);
+        $premier = ($currentPage * $parPage) - $parPage;
+        fermer_connexion_bd($pdo);
+
+        return $result;
+
+
+
+
+
+    }
+    function nombre_page($premier, $parPage){
+        $pdo = ouvrir_connexion_bd();
+        $sql = 'SELECT * FROM `articles` ORDER BY `created_at` DESC LIMIT 5;
+        ';
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->bindValue(':premier', $premier, PDO::PARAM_INT);
+        $sth->bindValue(':parpage', $parPage, PDO::PARAM_INT);
+        $sth->execute();
+        $articles = $sth->fetchAll(PDO::FETCH_ASSOC);
+        fermer_connexion_bd($pdo);
+
+        return $articles;  
+
+    }
+ */
+
+   
 
 
 ?>

@@ -1,4 +1,36 @@
 <?php
+//fonction de validation prenom
+
+/*function validation_password($password){
+    if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+        echo 'the password does not meet the requirements!';
+    }
+    
+
+}
+//fonction validation de l'email
+function validation_login(){
+    $pattern="#^[a-zA-Z]{1}\w{4,10}@(yahoo|hotmail|gmail)\.[a-zA-Z]{2,3}$#";
+    $chaine="A1233@gmail.fr";
+if(preg_match($pattern,$chaine)){
+    echo "VRAI";
+}else {
+    echo "FAUX";
+}
+
+}*/
+
+
+
+
+
+
+
+/* if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%])[0-9A-Za-z!@#$%]
+{6,15}$/',($_POST['password']))) {
+    $message='Password must contain 6 characters of letters, numbers and 
+    at least one special character.';
+} */
 
 
 function validation_login(string $valeur , string $key, array &$arrayErreur):void{
@@ -32,6 +64,28 @@ function validation_nom(string $valeur , string $key,array &$arrayErreur){
         $arrayErreur[$key]= 'le champs est obligatoire'; 
     }
 }
+function valid_code(string $valeur , string $key,array &$arrayErreur){
+    if(est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire'; 
+    }
+
+}
+/* 
+function valid_pays(string $valeur , string $key,array &$arrayErreur){
+    if(est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire'; 
+    }
+
+} */
+ /* function validation_phone($valeur , string $key,array &$arrayErreur){
+    if(est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire'; 
+    }elseif ($valeur<=0){
+        $arrayErreur[$key]= 'Saisir un nombre positif';
+
+    }
+
+} */
 
 
 

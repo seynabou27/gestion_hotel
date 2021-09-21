@@ -6,7 +6,8 @@ require_once(ROUTE_DIR. 'lib/autorisation.php');
 
 require_once(ROUTE_DIR. 'lib/validators.php');
 
-//require_once(ROUTE_DIR. 'lib/upload.php');
+require_once(ROUTE_DIR. 'lib/upload.php');
+
 require_once(ROUTE_DIR. 'lib/data_base.php');
 
 require_once(ROUTE_DIR. 'models/users.models.php');
@@ -24,11 +25,6 @@ require_once(ROUTE_DIR. 'models/reservation.models.php');
 //require_once('inc/autoloadeur.php');
 
 //require_once('class/App.php');
-
-
-    
-
-
 
 
 ?>

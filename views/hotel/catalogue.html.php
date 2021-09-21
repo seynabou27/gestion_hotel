@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,23 +31,23 @@
             <div class="carousel-item active slide1">
               <img src="img/groupe.png" alt="Carrousel slide 1" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
-                <h4>Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
-                <p>Légende de la slide n°1.</p>
-                <button type="button" class="btn droite">Je réserve maintenant</button>
+                <h4 class="slider">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
+                <p>Un hotel 5 étoiles situé sur la petite cote sénégalaise<br>avec des services hauts de gamme.</p>
+                <button type="button" class="btn droite slider1">Je réserve maintenant</button>
               </div>
             </div>
             <div class="carousel-item slide1">
               <img src="img/groupe1.png" alt="Carrousel slide 2" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block ">
-              <h4>Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
-                <p>Légende de la slide n°2.</p>
+              <h4 class="slider">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
+                <p>Un hotel 5 étoiles situé sur la petite cote sénégalaise<br>avec des services hauts de gamme.</p>
               </div>
             </div>
             <div class="carousel-item slide1">
               <img src="img/pexel2.png" alt="Carrousel slide 3" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
-              <h4>Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
-                <p>Légende de la slide n°3.</p>
+              <h4 class="slider">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
+                <p>Un hotel 5 étoiles situé sur la petite cote sénégalaise<br>avec des services hauts de gamme.</p>
               </div>
             </div>
           </div>
@@ -63,7 +64,20 @@
         </div>
       </div>
       <div class="container partie2">
-        <div class="row">
+
+      <div class="row">
+        <div class="col-md-6 ecriture">
+          <h4 style="color: black;"><b>Et si le paradis était sur <br> terre...pret de Dakar</b></h4>
+          <p>TOOKI est situé à Dakar sénégal, sur la petite cote,au bord d'une longue<br>et grande plage de sable blond présente de nombreux atouts.Notre hotel<br>comprend 80 chambres spacieuses,confortables et bien équipées,<br>relookées par un designer qui sait allier confort et décoration</p>
+          <button type="button" class="btn droite boutton">En savoir plus</button>
+          
+        </div>
+        <div class="col-md-6">
+          <img class="plage" src="img/plage.png" style="width: 78%; height:86%" alt="">
+        </div>
+        
+      </div>
+       <!--  <div class="row">
           <div class="col-6">
             <h4 style="color: black;"><b>Et si le paradis était sur <br> terre...pret de Dakar</b></h4>
             <p>TOOKI est situé à Dakar sénégal, sur la petite cote,au bord d'une longue<br>et grande plage de sable blond présente de nombreux atouts.Notre hotel<br>comprend 80 chambres spacieuses,confortables et bien équipées,<br>relookées par un designer qui sait allier confort et décoration</p>
@@ -75,51 +89,73 @@
             
             </div>
           
-        </div>
+        </div> -->
         
       </div>
       <div class="titre">
         <h3><b>Nos chambres</b></h3>
-        <p>Voici un apercu des chambres que nous possédons avec un<br> design raffiné et moderne</p>
+        <p>Voici un apercu des chambres que nous possédons <br>avec un design raffiné et moderne</p>
         
         </div>
       <div class="container-fluid bg-light partie3">
         
-      
-        <div class="card-deck">
-        <div class="card card1" style="width: 20rem;">
-          <img src="img/pexel3.jpg" class="card-img-top" alt="Accroche HTML">
-          <div class="card-body">
-            <h2 class="card-title"></h2>
-            <h4 class="card-subtitle">Suite</h4>
-            <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-            <a href="#" class="btn btn-primary">Je réserve</a>
-          </div>
-        </div>
+        <div class="row">
+            
+            <?php //foreach($articles as $article) :?>
+          
+          
+            <?php foreach ($imagee as $image): ?>
 
-        <div class="card card1" style="width: 20rem;">
-          <img src="img/pexel6.jpg" class="card-img-top" alt="Accroche HTML">
-          <div class="card-body">
-            <h2 class="card-title"></h2>
-            <h4 class="card-subtitle">Chambre de luxe</h4>
-            <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-            <a href="#" class="btn btn-primary">Je reserve</a>
-          </div>
-        </div>
-
-        <div class="card card1" style="width: 20rem;">
-          <img src="img/pexel4.jpg" class="card-img-top" alt="Accroche HTML">
-          <div class="card-body">
-            <h2 class="card-title"></h2>
-            <h4 class="card-subtitle">Chambre standard</h4>
-            <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-            <a href="#" class="btn btn-primary">Je réserve</a>
-          </div>
+            <div class="col-md-4">
+            <div class="card-deck">
+            <div class="card card1" style="width: 100%;">
+              <img src="img/pexel3.jpg" class="card-img-top" alt="Accroche HTML">
+              <div class="card-body">
+                <h2 class="card-title"></h2>
+                <h4 class="card-subtitle"><?= $image['nom_categorie']?></h4>
+                <p class="card-text">
+                  <span class="badge badge-info">Prix:<?= $image['tarif_unit']?></span>
+                </p>
+                  <a href="#" class="btn btn-primary detail">Détail</a>
+                <?php if (est_client()): ?>
+<!--                   <a href="#" class="btn btn-primary detail">Detail</a>
+ -->                  <a href="#" class="btn btn-primary reserver">Je réserve</a>
+                <?php endif ?>
+              </div>
+            </div>            
+            </div>
+              
+            </div>
+            <?php endforeach ?>
+            <?php //endforeach ?>
+            
         </div>
         
-          
-        </div>
       </div>
+      <nav>
+    <ul class="pagination">
+        <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+        <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
+            <a href="<?='./?controlleurs=chambre&views=catalogue&precedent='.$page?>" class="page-link">Précédente</a>
+        </li>
+        <?php for($page = 1; $page <= $pages; $page++): ?>
+            <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+            <li class="page-item <?= ($page == $page) ? "active" : "" ?>">
+                <a href="<?='./?controlleurs=chambre&views=catalogue&suivante='.$page?>" class="page-link"><?= $page ?></a>
+            </li>
+        <?php endfor ?>
+            <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+            <li class="page-item <?= ($page > $pagetotal) ? "disabled" : "" ?>">
+            <a href="<?='./?controlleurs=chambre&views=catalogue&suivante='.$page?>" class="page-link">Suivante</a>
+        </li>
+    </ul>
+    </nav>
+
+      
+      
+      <?php if (est_client()): ?>
+              <a href="#" class="btn btn-primary justify-content-center chambre">Voir toutes les chambres disponibles</a>
+            <?php endif ?>
       <div class="container-fluid partie4" style="background-color: #005CA5;">
       <div class="titre1">
       <h4 class="obt"><b>Obtenez des avantages instantanés</b></h4>
@@ -284,6 +320,12 @@
       </footer>
 
       <style>
+        .slider{
+          margin-top: -26%;
+        }
+        .slider1{
+          margin-top: 2%;
+        }
         .reseau {
         vertical-align: middle;
         border-style: none;
@@ -322,7 +364,11 @@
       .droite{
         color:white;
         background-color:#005CA5;
-         margin-right: 3%; 
+         margin-right: 2%; 
+      }
+      button, input, optgroup, select, textarea {
+        margin: 6px;
+        margin-top: -4%;
       }
       /* .navbar-expand-lg .navbar-collapse {
         display: flex !important;
@@ -344,14 +390,16 @@
         height: 400px;
       }
       .partie2{
-        padding: 3%;
+       
+        margin-top: 2%;
+
       }
       .boutton{
         margin-top: 5%;
       }
       .partie3{
         display: flex;
-        margin-top: -10%;
+        margin-top: -4%;
       }
       .card-deck{
         margin-top: 9%;
@@ -390,7 +438,7 @@
       }
      
       .obt{
-        margin-top: -5%;
+        margin-top: 2%;
         color: white;
       }
       .obt1{
@@ -399,6 +447,35 @@
       .ml-4, .mx-4 {
         margin-left: 3.5rem !important;
       }
+      .plage{
+        margin-left: 11%;
+      }
+      .chambre{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5;
+        margin-left: 38%;
+        margin-top: -13%;
+      }
+      .reserver{
+        color:white;
+        background-color:#005CA5;
+
+      }
+      .btn-primary:hover {
+        color: #fff;
+        background-color: #005CA5;
+        border-color: #005CA5;
+      }
+      .detail{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5
+
+      }
+      /* .ecriture{
+        text-align: center;
+      } */
       /*
       
       

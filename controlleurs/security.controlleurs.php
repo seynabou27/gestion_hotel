@@ -25,7 +25,7 @@
                     unset($_POST['action']);
                     unset($password['controller']);
                     
-                    inscription($_POST);
+                    inscription($_POST,$_FILES);
 
                    // header('location:'.WEB_ROUTE.'?controlleurs=admin&views=connexion');
 
@@ -50,7 +50,8 @@ function connexion(string $login, string $password): void{
         
         $user=find_user($login, $password);
 
-        if (count($user)==0) {
+        if ( $user==false) {
+           
             $arrayErreur['erreurConnexion']='login ou password incorrect' ;  
             $_SESSION['arrayErreur']=$arrayErreur;    
             header('location:'.WEB_ROUTE.'?controlleurs=security&views=connexion');
@@ -63,7 +64,7 @@ function connexion(string $login, string $password): void{
               header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
         
             }else{
-                header('location:'.WEB_ROUTE);
+                header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=mesreservation');
             }
     
         }
@@ -76,19 +77,40 @@ function connexion(string $login, string $password): void{
 
 }
 
-function inscription(array $data):void{
-    var_dump($_POST);
-    die('ok');
+function inscription(array $data,array $file):void{
+   
     extract($data);
     $arrayErreur=array();
     validation_login ($login,'login', $arrayErreur);
     validation_password ($password, 'password',$arrayErreur );
     validation_prenom($prenom, 'prenom',$arrayErreur);
     validation_nom($nom, 'nom',$arrayErreur);
+    valid_code($adresse,'adresse',$arrayErreur);
+    //valid_pays($pays,'pays',$arrayErreur);
+    //validation_phone( $phone,'telephone',$arrayErreur);
+   
+
         if(form_valid($arrayErreur)){
             $data ['id_role'] = 1;
-            find_add_user($data);
+            $target_dir="upload";
+            $target_file=$target_file.basename($_FILES['avatar']['name']);
+            $data['avatar']=$target_file;
+        
+            insert_user($data);
+            valide_image($_FILES, $arrayError, 'avatar', $target_file);
+            //upload_image($_FILES, $target_file);
+           
+              if(count($arrayError) == 0) {
+                if(!upload_image($_FILES, $target_file)) {
+                    $arrayError['avatar'] = "Erreur lors de l'upload de l'image";
+                    $_SESSION['arrayError']=$arrayError;
+                    header('location:'.WEB_ROUTE.'?controlleurs=security&view=inscription');
+                    exit();
+              }
+            }
+            
             header("location:" .WEB_ROUTE.'?controlleurs=hotel&views=catalogue');
+            
        
     
         }else{
@@ -102,7 +124,7 @@ function inscription(array $data):void{
 function deconnexion():void{
 
     unset ($_SESSION['userConnect']);
-    header('location:'.WEB_ROUTE.'?controlleurs=hotel&views=catalogue');
+    header('location:'.WEB_ROUTE.'?controlleurs=chambre&views=catalogue');
     
 }
 
