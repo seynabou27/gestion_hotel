@@ -93,18 +93,18 @@ function inscription(array $data,array $file):void{
         if(form_valid($arrayErreur)){
             $data ['id_role'] = 1;
             $target_dir="upload";
-            $target_file=$target_file.basename($_FILES['avatar']['name']);
+            $target_file=$target_dir.basename($_FILES['avatar']['name']);
             $data['avatar']=$target_file;
         
             insert_user($data);
-            valide_image($_FILES, $arrayError, 'avatar', $target_file);
+            valide_image($_FILES, $arrayErreur, 'avatar', $target_file);
             //upload_image($_FILES, $target_file);
            
-              if(count($arrayError) == 0) {
+              if(count($arrayErreur) == 0) {
                 if(!upload_image($_FILES, $target_file)) {
-                    $arrayError['avatar'] = "Erreur lors de l'upload de l'image";
-                    $_SESSION['arrayError']=$arrayError;
-                    header('location:'.WEB_ROUTE.'?controlleurs=security&view=inscription');
+                    $arrayErreur['avatar'] = "Erreur lors de l'upload de l'image";
+                    $_SESSION['arrayErreur']=$arrayErreur;
+                    header('location:'.WEB_ROUTE.'?controlleurs=security&views=inscription');
                     exit();
               }
             }

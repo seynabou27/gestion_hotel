@@ -64,7 +64,7 @@
 
     function insert_chambre(int $id_chambre):int{
         //a voir
-        extract($bien);
+        extract($chambre);
         $pdo = ouvrir_connexion_bd();
         $sql = "INSERT INTO `chambre` (`id_chambre`, `reference_chambre`, `description_chambre`, 
         `type_chambre`, `date_creation`, `prix`, `etat_chambre`, `id_user`) 

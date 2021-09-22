@@ -11,7 +11,8 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }elseif($_GET['views']=='connexion'){
             require_once(ROUTE_DIR.'views/security/connexion.html.php');
             
-        }elseif($_GET['views']=='liste.chambre'){
+        }elseif($_GET['views']=='catalogue_chambre'){
+            catalogue_chambre();
         }elseif($_GET['views']=='inscription'){
             require_once(ROUTE_DIR.'views/security/inscription.html.php');
 
@@ -99,7 +100,13 @@ function catalogue(){
     
     require_once(ROUTE_DIR.'views/hotel/catalogue.html.php');
 
+
    
+}
+function catalogue_chambre(){
+    $imagees=find_all_image();
+    require_once(ROUTE_DIR.'views/reservation/catalogue_chambre.html.php');
+
 }
 
 function detaille_chambre(){

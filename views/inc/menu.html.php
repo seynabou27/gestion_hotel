@@ -18,12 +18,18 @@
             </div>
             <?php if (est_client()): ?>
 
-              <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>">Catalogue des chambres</a><span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>">Catalogue des chambres</a><span class="sr-only">(current)</span></a>
 
                 <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>">Mes réservations</a><span class="sr-only">(current)</span></a>
               
-              <a class="nav-item nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.prestation'?>">Liste_prestations</a>
+<!--               <a class="nav-item nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.prestation'?>">Liste_prestations</a>
+ -->              <div class="row">
+               <div class="col-6">
+                  <img src="upload1 (31).jpg" class="rounded-circle" alt="Logo HTML w3" style="width:40%; height:auto;margin-left: 145%;">
+                 <p></p>
+               </div>
               
+
              
               <?php endif ?>
             <?php if(!est_client()): ?>
@@ -36,13 +42,12 @@
           <?php if(est_client()): ?>
 
             <div class="dropdown">
-              <button class="btn boutton btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn boutton btn-secondary dropdown-toggle" style="background-color: #005CA5; margin-left:30%" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 client
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=deconnexion'?>">Se déconnecter</a>
-                <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=inscription'?>">Je m'inscris</a>
-                <a class="dropdown-item" href="#">Paramettrer</a>
+                <a class="dropdown-item" href="#">Paramettre</a>
               </div>
             <?php endif ?>
 

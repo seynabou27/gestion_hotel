@@ -114,7 +114,7 @@
                 <h2 class="card-title"></h2>
                 <h4 class="card-subtitle"><?= $image['nom_categorie']?></h4>
                 <p class="card-text">
-                  <span class="badge badge-info">Prix:<?= $image['tarif_unit']?></span>
+                  <span class="badge badge-light" style="color:darkcyan;">Prix: <?= $image['tarif_unit']?></span>
                 </p>
                   <a href="#" class="btn btn-primary detail">Détail</a>
                 <?php if (est_client()): ?>
@@ -154,7 +154,7 @@
       
       
       <?php if (est_client()): ?>
-              <a href="#" class="btn btn-primary justify-content-center chambre">Voir toutes les chambres disponibles</a>
+              <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>" class="btn btn-primary justify-content-center chambre">Voir toutes les chambres disponibles</a>
             <?php endif ?>
       <div class="container-fluid partie4" style="background-color: #005CA5;">
       <div class="titre1">
@@ -472,6 +472,11 @@
         background-color:white;
         border-color:#005CA5
 
+      }
+      .btn-secondary:hover {
+        color: #fff;
+        background-color:#005CA5;
+          border-color:#005CA5;
       }
       /* .ecriture{
         text-align: center;

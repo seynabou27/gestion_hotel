@@ -13,7 +13,7 @@
 
     define('CHAINE_DE_CONNEXION', 'mysql:dbname=gestion_hotel;host='.HOST_BD);
     
-    define( 'UPLOAD_DIR',WEB_ROUTE. 'config/upload/');
+    define( 'UPLOAD_DIR',WEB_ROUTE. 'lib/upload/');
 
     define('NOMBRE_PAR_PAGE', 5);
      

@@ -17,6 +17,7 @@
         
 
     }
+    
     function insert_user(array $user):int{
         $pdo = ouvrir_connexion_bd();
         extract($user);

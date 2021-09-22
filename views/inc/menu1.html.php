@@ -13,18 +13,25 @@
               <li class="nav-item connect">
                 <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation'?>">Liste_Réservations</a><span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-              <a class="nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.chambre'?>">liste_chambres</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Chambre
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.chambre'?>">Liste_chambre</a>
+                  <a class="dropdown-item" href="#">Ajout_chambre</a>
+                </div>
               </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#">liste_prestations</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Prestation
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Liste_prestation</a>
+                  <a class="dropdown-item" href="#">Ajout_prestation</a>
+                </div>
               </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#">Ajout_chambre</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#">Ajout_prestation</a>
-              </li>
+
                
             </div>
             

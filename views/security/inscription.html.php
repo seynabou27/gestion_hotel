@@ -130,6 +130,13 @@ if (isset($_SESSION['arrayErreur'])){
 
                           
                       </div> -->
+                      <div class="mb-3 ">
+                         
+                         <div class="file">
+                             <label style="color:black;" for="file">Fichier</label>
+                             <input type="file" name="avatar">
+                             
+                         </div>
                       <div class="form-group">
 
                         <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn" style="background-color: #005CA5; color:#fff;">Je m'inscris</button>
@@ -140,13 +147,7 @@ if (isset($_SESSION['arrayErreur'])){
         </div>
         
                     
-        <div class="mb-3 ">
-                         
-          <div class="file">
-              <label style="color:black;" for="file">Fichier</label>
-              <input type="file" name="avatar">
-              
-          </div>
+       
 
 
            
