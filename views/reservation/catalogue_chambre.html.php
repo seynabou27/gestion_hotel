@@ -18,63 +18,269 @@
       </header>
       <!-- partie1 -->
       <div class="container-fluid">
-    <!-- <h1 class="mt-5">Bootstrap 4 Horizontal Scrolling</h1>
-		<p class="subtitle">Horizontal scrolling without CSS. Just copy scrolling wrapper classes</p> -->
+      <div class="col-md-4">
+            <h5><b>Nos catégorie</b></h5>
+        </div>
     <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
-			<?php foreach ($imagees as $image): ?>
+			<?php //foreach ($categories as $categorie): ?>
 			<div class="col-5">
 				<div class="card card-block card-1">
-                    <div class="card" style="width: 20rem;">
-                        <div class="card-header"><?= $image['nom_categorie']?></div>
-                        <div class="card-body">
-                        <span class="badge badge-light" style="color:darkcyan;">Prix: <?= $image['tarif_unit']?></span>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#">Voir les chambres</a>
-
-                        </div>
+                    <div class="card" style="width: 25rem; border-radius: 7px;">
+                    
+                    <div class="card-body">
+                        <p><b>Suite royale</b></p>
+<!--                         <span>Prix: <?php //$categorie['prix_unit']?></span>
+ -->                        <p class="card-text"> <b>Prix: 450 000 - 23chambres</b></p> 
+                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
+                    
+                    </div>
                     </div>
 			    </div>
             </div>
-			<!-- <div class="col-5">
-				<div class="card card-block card-2"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-3"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-4"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-5"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-6"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-7"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-8"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-9"></div>
-			</div>
-			<div class="col-5">
-				<div class="card card-block card-10"></div>
-			</div> -->
-            <?php endforeach ?>
+            <div class="col-5">
+            <div class="card card-block card-1">
+                    <div class="card" style="width: 25rem; border-radius: 7px;">
+                    
+                    <div class="card-body">
+                        <p><b>Suite simple</b></p>
+                        <p class="card-text"><b>Prix: 350 000 - 23chambres</b></p>
+                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
+                    
+                    </div>
+                    </div>
+			    </div>
+            </div>
+            <div class="col-5">
+            <div class="card card-block card-1">
+                    <div class="card" style="width: 25rem; border-radius: 7px;">
+                    
+                    <div class="card-body">
+                        <p><b>Chambre de luxe</b></p>
+                        <p class="card-text"><b>Prix: 250 000 - 23chambres</b></p>
+                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
+                    
+                    </div>
+                    </div>
+			    </div>
+            </div>
+            <div class="col-5">
+            <div class="card card-block card-1">
+                    <div class="card" style="width: 25rem; border-radius: 7px;">
+                    
+                    <div class="card-body">
+                        <p><b>Chalets</b></p>
+                        <p class="card-text"><b>Prix: 150 000 - 23chambres</b></p>
+                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
+                    
+                    </div>
+                    </div>
+			    </div>
+            </div> 
+			
+            <?php //endforeach ?>
 
             
     </div>
 </div>
 
+<div class="container-fluid">
+    <div class="row chambres">
+        <div class="col-md-4">
+            <h5><b>Liste de nos chambres</b></h5>
+        </div>
+        <div class="col-md-3">
+        <div class="form-group">
+              <label for=""></label>
+              <select class="form-control" style="background-color:#eee;" name="categorie" id="">
+                <option>Filtre par catégorie</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+<!-------------------CONTAINER --------------------------->
+<div class="container">
+      <div class="row contenu">
+        <?php foreach($categorie as $categorie): ?>
+         
+        <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?hotel"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $categorie['nom_categorie']?></span>
+                <span class="badge badge-info"><?= $categorie['tarif_unit']?></span>
+             
+            </h5>
+              <hr />
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span>
+                <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$chambre['id_chambre']?>" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+          </div>
+        </div>
+
+        <?php endforeach ?>
+        <!-- <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?chambre"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
+                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
+             
+            </h5>
+              <hr />
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span>
+                <a href="#" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?restaurant"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
+                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
+             
+            </h5>
+              <hr />
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span>
+                <a href="#" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?hotel"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
+                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
+             
+            </h5>
+              <hr /> 
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span>
+                <a href="#" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?hotel"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
+                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
+             
+            </h5>
+              <hr />
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span>
+                <a href="#" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?hotel"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
+                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
+             
+            </h5>
+              <hr />
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span>
+                <a href="#" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+  
+
+  
+
+
+
+
+
+
+
 <style>
+.chambres{
+    margin-top: 3%;
+    margin-left: 8%;
+    padding-right: 19%;
+}
+.contenu{
+    margin-top: 4%;
+}
 .scrolling-wrapper{
-	overflow-x: auto;
+    overflow: auto;
+ 
+   
 }
 
 
+.col-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 2 0 41.666667%;
+    max-width: 74.667%;
+}
 
 h1{
 	font-weight: 800;
@@ -87,7 +293,7 @@ h1{
 }
 
 .card-block{
-	height: 250px;
+	height: 150px;
 	background-color: #fff;
 	border: none;
 	background-position: center;
@@ -96,58 +302,39 @@ h1{
 	border-radius: 24px;
 	
 }
-
-/* .card-1{
-	background-color: #4158D0;
-background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-} */
-
-.card-2{
-	background-color: #0093E9;
-background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+.col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    margin-top: 2%;
+   
 }
-
-.card-3{
-	background-color: #00DBDE;
-background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+.card-text{
+    color: #3CAB85;
 }
+.btn-primary:hover {
+        color: #fff;
+        background-color: #005CA5;
+        border-color: #005CA5;
+      }
+      .detail{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5
 
-.card-4{
-	background-color: #FBAB7E;
-background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-}
+      }
+      .reserver{
+        color:white;
+        background-color:#005CA5;
 
-.card-5{
-	background-color: #85FFBD;
-background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-}
+      }
+     
+      .detail{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5
 
-.card-6{
-	background-color: #FA8BFF;
-background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
-}
-
-.card-7{
-	background-color: #FA8BFF;
-background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
-}
-
-.card-8{
-	background-color: #FBDA61;
-background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
-}
-
-.card-9{
-	background-color: #4158D0;
-background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-}
-
-.card-10{
-	background-color: #FF3CAC;
-background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-
-}
-
+      }
 
 </style>
 

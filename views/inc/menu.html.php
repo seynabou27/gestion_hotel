@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <a class="navbar-brand" href="#"></a>
+          <a class="navbar-brand" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>"></a>
           <img src="img/logo.png" width="67" height="67" class="d-inline-block align-top" alt="">
           <button class="navbar-toggler"style="color:#005CA5;" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
 <!--               <a class="nav-item nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.prestation'?>">Liste_prestations</a>
  -->              <div class="row">
                <div class="col-6">
-                  <img src="upload1 (31).jpg" class="rounded-circle" alt="Logo HTML w3" style="width:40%; height:auto;margin-left: 145%;">
+                  <img src="upload1 (33).jpg" class="rounded-circle" alt="Logo HTML w3" style="width:40%; height:auto;margin-left: 145%;">
                  <p></p>
                </div>
               

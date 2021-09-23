@@ -4,15 +4,16 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
     if(isset($_GET['views'])){
         if ($_GET['views']=='catalogue'){
     
-            
         catalogue();
         }elseif($_GET['views']=='detail'){
-            detaille_chambre();            
+        
+            //detaille_chambre();  
+            require_once(ROUTE_DIR.'views/hotel/detail.html.php');
+          
         }elseif($_GET['views']=='connexion'){
             require_once(ROUTE_DIR.'views/security/connexion.html.php');
             
-        }elseif($_GET['views']=='catalogue_chambre'){
-            catalogue_chambre();
+        
         }elseif($_GET['views']=='inscription'){
             require_once(ROUTE_DIR.'views/security/inscription.html.php');
 
@@ -73,6 +74,7 @@ function archiver_chambre   (array $id_bien):bool{
     return true;
 }
 
+
 function catalogue(){
     $images=find_all_image();
     $pagetotal=nombrePageTotal($images,3);
@@ -103,25 +105,21 @@ function catalogue(){
 
    
 }
-function catalogue_chambre(){
-    $imagees=find_all_image();
-    require_once(ROUTE_DIR.'views/reservation/catalogue_chambre.html.php');
+ 
 
-}
-
-function detaille_chambre(){
-    if (!isset($_GET['id_chambre']) || !is_numeric($_GET['id_chamre'])){
+/* function detaille_chambre(){
+    if (!isset($_GET['id_chambre']) || !is_numeric($_GET['id_chambre'])){
         catalogue();
         header('location:'.WEB_ROUTE);
         exit();
-    }
+    } 
     $id=$_GET['id_chambre'];
     $detail=find_chambre_by_id($id);
     require_once(ROUTE_DIR.'views/hotel/detail.html.php');
                    
     
 
-}
+} */
 
 
 

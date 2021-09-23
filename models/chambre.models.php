@@ -4,13 +4,25 @@
 
     function find_all_chambre():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from chambre ch ,categorie c 
-        where ch.id_categorie=c.id_categorie ;";
+        $sql = "select * from chambre ch ,categorie c ,user u
+        where ch.id_categorie=c.id_categorie";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $chambre = $sth->fetchAll();
         fermer_connexion_bd($pdo);
         return $chambre;
+
+    }
+    //categorie
+    function find_all_categorie():array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from chambre ch ,categorie c 
+        where ch.id_categorie=c.id_categorie ;";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $categorie = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $categorie;
 
     }
     function find_all_image():array{
@@ -19,9 +31,9 @@
         where i.id_categorie=c.id_categorie ;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
-        $chambre = $sth->fetchAll();
+        $image = $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $chambre;
+        return $image;
 
     }
     function find_chambre_disponible():array{

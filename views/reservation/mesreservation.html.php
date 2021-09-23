@@ -14,10 +14,52 @@
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
       </header>
+      <!---DEBUT-->
       <div class="container-fluid">
         
-        
+      <div class="container">
+      <div class="row">
+        <?php foreach($reservation as $reservation): ?>
+         
+        <div class="col-sm-4 mb-4">
+          <div class="card" style="width: 22rem">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?chambre"
+              alt="Annonce 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                <span class="badge badge-success"><?= $reservation['etat_reservation']?></span>
+                <span class="badge badge-info"><?= $reservation['date_debut_reservation']?></span>
+             
+            </h5>
+              <hr />
+              <span class="float-left btn btn-sm text-center disabled"
+                ></span
+              >
+              <!-- <a href="#" class="btn btn-sm btn-outline-info float-right ml-3"><i class="fas fa-ellipsis-h">Reserver</i></a> -->
+              <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$reservation['id_chambre']?>" class="btn btn-sm btn-outline-success float-right"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+        <?php endforeach ?>
       </div>
+      </div>
+
+
+<!--FIN-------->
+
+
+
+
+
+
+
+
+
       <footer class="footer">
        <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">

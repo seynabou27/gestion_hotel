@@ -109,14 +109,18 @@
             <div class="col-md-4">
             <div class="card-deck">
             <div class="card card1" style="width: 100%;">
-              <img src="img/pexel3.jpg" class="card-img-top" alt="Accroche HTML">
+            <img
+              class="card-img-top"
+              src="https://source.unsplash.com/1080x720/?hotel"
+              alt="Annonce 1"
+            />
               <div class="card-body">
                 <h2 class="card-title"></h2>
                 <h4 class="card-subtitle"><?= $image['nom_categorie']?></h4>
                 <p class="card-text">
                   <span class="badge badge-light" style="color:darkcyan;">Prix: <?= $image['tarif_unit']?></span>
                 </p>
-                  <a href="#" class="btn btn-primary detail">Détail</a>
+                  <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$chambre['id_chambre']?>" class="btn btn-primary detail">Détail</a>
                 <?php if (est_client()): ?>
 <!--                   <a href="#" class="btn btn-primary detail">Detail</a>
  -->                  <a href="#" class="btn btn-primary reserver">Je réserve</a>
