@@ -19,14 +19,13 @@
             <?php if (est_client()): ?>
 
               <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>">Catalogue des chambres</a><span class="sr-only">(current)</span></a>
-
                 <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>">Mes réservations</a><span class="sr-only">(current)</span></a>
               
 <!--               <a class="nav-item nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.prestation'?>">Liste_prestations</a>
  -->              <div class="row">
                <div class="col-6">
-                  <img src="upload1 (33).jpg" class="rounded-circle" alt="Logo HTML w3" style="width:40%; height:auto;margin-left: 145%;">
-                 <p></p>
+                  <img src="<?=$_SESSION['userConnect']['Avatar'] ?>" class="rounded-circle" alt="" style="width:40%; height:auto;margin-left: 145%;">
+                  <p></p>
                </div>
               
 

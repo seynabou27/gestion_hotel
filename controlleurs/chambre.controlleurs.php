@@ -70,9 +70,10 @@ function add_chambre(array $bien):bool{
 }
 
 
-function archiver_chambre   (array $id_bien):bool{
+function archiver_chambre   (array $id_chambre):bool{
     return true;
 }
+
 
 
 function catalogue(){
@@ -107,19 +108,19 @@ function catalogue(){
 }
  
 
-/* function detaille_chambre(){
-    if (!isset($_GET['id_chambre']) || !is_numeric($_GET['id_chambre'])){
+function detaille_chambre(){
+    if (!isset($_GET['id_categorie']) || !is_numeric($_GET['id_categorie'])){
         catalogue();
         header('location:'.WEB_ROUTE);
         exit();
     } 
-    $id=$_GET['id_chambre'];
-    $detail=find_chambre_by_id($id);
+    $id=$_GET['id_categorie'];
+    $detail=find_categorie_by_id($id);
     require_once(ROUTE_DIR.'views/hotel/detail.html.php');
                    
     
 
-} */
+} 
 
 
 

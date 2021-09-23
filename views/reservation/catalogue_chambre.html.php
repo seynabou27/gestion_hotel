@@ -9,6 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/bootstrap-horizon/bootstrap-horizon.css"> -->
   </head>
@@ -17,106 +18,110 @@
       <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
       </header>
       <!-- partie1 -->
-      <div class="container-fluid">
-      <div class="col-md-4">
-            <h5><b>Nos catégorie</b></h5>
-        </div>
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
-			<?php //foreach ($categories as $categorie): ?>
-			<div class="col-5">
-				<div class="card card-block card-1">
-                    <div class="card" style="width: 25rem; border-radius: 7px;">
-                    
-                    <div class="card-body">
-                        <p><b>Suite royale</b></p>
-<!--                         <span>Prix: <?php //$categorie['prix_unit']?></span>
- -->                        <p class="card-text"> <b>Prix: 450 000 - 23chambres</b></p> 
-                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
-                    
-                    </div>
-                    </div>
-			    </div>
-            </div>
-            <div class="col-5">
-            <div class="card card-block card-1">
-                    <div class="card" style="width: 25rem; border-radius: 7px;">
-                    
-                    <div class="card-body">
-                        <p><b>Suite simple</b></p>
-                        <p class="card-text"><b>Prix: 350 000 - 23chambres</b></p>
-                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
-                    
-                    </div>
-                    </div>
-			    </div>
-            </div>
-            <div class="col-5">
-            <div class="card card-block card-1">
-                    <div class="card" style="width: 25rem; border-radius: 7px;">
-                    
-                    <div class="card-body">
-                        <p><b>Chambre de luxe</b></p>
-                        <p class="card-text"><b>Prix: 250 000 - 23chambres</b></p>
-                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
-                    
-                    </div>
-                    </div>
-			    </div>
-            </div>
-            <div class="col-5">
-            <div class="card card-block card-1">
-                    <div class="card" style="width: 25rem; border-radius: 7px;">
-                    
-                    <div class="card-body">
-                        <p><b>Chalets</b></p>
-                        <p class="card-text"><b>Prix: 150 000 - 23chambres</b></p>
-                        <a href="#" class="btn btn-primary detail">Voir les chambres</a>
-                    
-                    </div>
-                    </div>
-			    </div>
-            </div> 
-			
-            <?php //endforeach ?>
-
-            
+      
+        
+            <!-- Vertical navbar -->
+<!-- <div class="vertical-nav bg-white" id="sidebar">
+  
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center"><img src="img/logo.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+      <div class="media-body">
+        <h4 class="m-0"></h4>
+        <p class="font-weight-light text-muted mb-0">Nos catégories de chambre</p>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="container-fluid">
-    <div class="row chambres">
-        <div class="col-md-4">
-            <h5><b>Liste de nos chambres</b></h5>
-        </div>
-        <div class="col-md-3">
+
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic bg-light">
+                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                <div class="col-md-3">
         <div class="form-group">
+          <?php //foreach($catego as $catego) : ?>
               <label for=""></label>
               <select class="form-control" style="background-color:#eee;" name="categorie" id="">
                 <option>Filtre par catégorie</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
+                <option>Suite royale</option>
+                <option>Suite simple</option>
+                <option>Chambre luxe</option>
+                <option>Chambre junior</option>
+                <option>Chambre twins</option>
+                <option>Chambre standard</option>
+                <option>Chambre province</option>
+                <option>Chalet complexe</option>
+                <option>Chalet simple</option>
               </select>
             </div>
+            <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn" style="background-color: #005CA5; color:#fff;"><b>Recherche <i class="bi bi-search"></i></b></button>
+              <?php //endforeach ?>
             
         </div>
-        
-    </div>
-    
-</div>
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Suite royale
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Suite simple
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Chambre de luxe
+            </a>
+    </li>
+  </ul>
 
-<!-------------------CONTAINER --------------------------->
-<div class="container">
+
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+<i class="bi bi-door-closed"></i>Chambre junior
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Chmabre twins
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Chambre standards
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Chambre province
+            </a>
+    </li>
+
+  </ul>
+  <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Chalet complet
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+      <i class="bi bi-door-closed"></i>Chalet complet
+            </a>
+    </li>
+</div>
+</div> -->
+<!-- End vertical navbar -->
+          
+        
+        <div class="container">
       <div class="row contenu">
         <?php foreach($categorie as $categorie): ?>
          
         <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
+          <div class="card" style="width: 17rem">
             <img
               class="card-img-top"
               src="https://source.unsplash.com/1080x720/?hotel"
@@ -124,132 +129,102 @@
             />
             <div class="card-body">
               <h5 class="card-title">
-                <span class="badge badge-success"><?= $categorie['nom_categorie']?></span>
-                <span class="badge badge-info"><?= $categorie['tarif_unit']?></span>
+              
+
+                <span class="badge"><h5><?= $categorie['nom_categorie']?></h5></span>
+                <span class="badge badge-info"><?= $categorie['tarif_unit']?> f</span>
              
             </h5>
               <hr />
               <span class="float-left btn btn-sm text-center disabled"
                 ></span>
-                <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$chambre['id_chambre']?>" class="btn btn-primary detail">Detail</a>
+                <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_categorie='.$categorie['id_categorie']?>" class="btn btn-primary detail">Detail</a>
                 <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
             </div>
           </div>
         </div>
 
-        <?php endforeach ?>
-        <!-- <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/1080x720/?chambre"
-              alt="Annonce 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
-                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
-             
-            </h5>
-              <hr />
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span>
-                <a href="#" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
-            </div>
-          </div>
+        <?php endforeach ?> 
         </div>
         
-        <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/1080x720/?restaurant"
-              alt="Annonce 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
-                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
-             
-            </h5>
-              <hr />
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span>
-                <a href="#" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
-            </div>
-          </div>
-        </div>
+      </div>
         
-        <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/1080x720/?hotel"
-              alt="Annonce 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
-                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
-             
-            </h5>
-              <hr /> 
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span>
-                <a href="#" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/1080x720/?hotel"
-              alt="Annonce 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
-                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
-             
-            </h5>
-              <hr />
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span>
-                <a href="#" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/1080x720/?hotel"
-              alt="Annonce 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                <span class="badge badge-success"><?= $chambre['nom_categorie']?></span>
-                <span class="badge badge-info"><?= $chambre['prix_unit']?></span>
-             
-            </h5>
-              <hr />
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span>
-                <a href="#" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
-            </div>
-          </div>
-        </div>
-      </div> -->
 
-    </div>
+      
+<style>
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.vertical-nav {
+    min-width: 23rem;
+    width: 17rem;
+    height: 179vh;
+    top: 114px;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+    margin-top: 25%;
+}
+
+/* .page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+} */
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+/* #content.active {
+  width: 100%;
+  margin: 0;
+}
+ */
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+
+
+
+</style>
+
+
+
+
+
+
+
+    
   
 
   
@@ -269,10 +244,10 @@
 .contenu{
     margin-top: 4%;
 }
-.scrolling-wrapper{
-    overflow: auto;
- 
-   
+.col-md-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 100%;
 }
 
 
@@ -463,6 +438,9 @@ h1{
       </footer>
 
       <style>
+        footer{
+          width: 100%;
+        }
         .reseau {
         vertical-align: middle;
         border-style: none;
@@ -471,6 +449,7 @@ h1{
         
           body {
           font-family:Circular_std_bold;
+          overflow-x: hidden;
           }
           .navbar-toggler {
             padding: .25rem .75rem;
@@ -609,6 +588,8 @@ h1{
       .p3{
         margin-top: 13%;
       } */
+
+    
 
       
 

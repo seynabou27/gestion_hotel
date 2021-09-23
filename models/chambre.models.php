@@ -16,8 +16,7 @@
     //categorie
     function find_all_categorie():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from chambre ch ,categorie c 
-        where ch.id_categorie=c.id_categorie ;";
+        $sql = "select * from categorie c ;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $categorie = $sth->fetchAll();
@@ -59,12 +58,12 @@
         return $chambre;
     }
 
-    function find_chambre_by_id(int $id_chambre):array{
+    function find_categorie_by_id(int $id_chambre):array{
         $pdo = ouvrir_connexion_bd();
         //Execution d'une requete non prepare avec un jocker qui est nommé
         
         //Execution d'une requete prepare avec un jocker qui est nommé
-        $sql = "select * from chambre ch where ch.id_chambre= ? ";
+        $sql = "select * from categorie c where c.id_categorie= ? ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array($id_chambre));
         $chambre = $sth->fetch();
@@ -92,6 +91,16 @@
     
 
     }
+   /*  function reserver_chambre(int $id_client){
+        $id_categorie=$_GET['id_categorie'];
+    
+        $id_client= $_SESSION['userConnect']['id_client'];
+    
+        $reser=insert_reservation($id_categorie,$id_client);
+        $etat_reservation='encour';
+    
+    
+    } */
 
     
     //filtrer les réservations
@@ -113,6 +122,25 @@
         return $reservation;
 
     }
+   
+//filtrer les categorie
+function find_filtrer_categorie(){
+    $pdo = ouvrir_connexion_bd();
+    //a voir
+    $sql = "SELECT * FROM categorie c, chambre ch
+    where 
+    ch.id_categorie=c.id_categorie
+    GROUP by
+    c.nom_categorie,ch.numero_chambre;";
+    $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+    $sth->execute(array([]));
+    $categori = $sth->fetchall();
+    fermer_connexion_bd($pdo);
+
+    return $categori;
+
+}
+
     
   
 

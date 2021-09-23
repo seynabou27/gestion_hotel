@@ -92,7 +92,7 @@ function inscription(array $data,array $file):void{
 
         if(form_valid($arrayErreur)){
             $data ['id_role'] = 1;
-            $target_dir="upload";
+            $target_dir="upload/";
             $target_file=$target_dir.basename($_FILES['avatar']['name']);
             $data['avatar']=$target_file;
         

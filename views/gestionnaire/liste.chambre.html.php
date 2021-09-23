@@ -209,3 +209,76 @@
 <!-- Footer -->
 
       </footer>
+      <style>
+        .slider{
+          margin-top: -26%;
+        }
+        .slider1{
+          margin-top: 2%;
+        }
+        .reseau {
+        vertical-align: middle;
+        border-style: none;
+        margin: 2%;
+        }
+        
+          body {
+          font-family:Circular_std_bold;
+          }
+          .navbar-toggler {
+            padding: .25rem .75rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            border: 2px solid #005CA5;
+            border-radius: .25rem;
+            color: #005CA5;
+          }
+        .navbar-nav{
+          margin-left: 9%;
+        }
+        .navbar-nav .nav-link {
+          padding-right: 0.5rem;
+          padding-left: 2.5rem;
+        }
+        a {
+            color: #000;
+        }
+        .navbar-expand-lg .navbar-nav .nav-link {
+          padding-right: 2.5rem;
+          padding-left: 0.5rem;
+        }
+        a:hover{
+        color: #005CA5;
+        
+      }
+      .droite{
+        color:white;
+        background-color:#005CA5;
+         margin-right: 2%; 
+      }
+      button, input, optgroup, select, textarea {
+        margin: 6px;
+        margin-top: -4%;
+      }
+      /* .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        margin-left: 7%;
+      } */
+      .gauche{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5 ;
+      }
+      .btn:hover {
+      color: #fff;
+      }
+      .gauche .btn:hover {
+        color: #005CA5;
+      }
+     
+      
+
+      </style>
+
+      

@@ -21,10 +21,10 @@
     function insert_user(array $user):int{
         $pdo = ouvrir_connexion_bd();
         extract($user);
-        $sql = "INSERT INTO user (nom_user, prenom_user, login, password, adresse_user,id_role)
-         VALUES (?, ?, ?, ?, ?,?);";
+        $sql = "INSERT INTO `user` (`nom_user`, `prenom_user`, `login`, `password`, `adresse_user`, `id_role`, `Avatar`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?);";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($nom,$prenom,$login,$password,$adresse,$id_role));
+        $sth->execute(array($nom,$prenom,$login,$password,$adresse,$id_role,$avatar));
         $user = $sth->fetch(PDO::FETCH_ASSOC);
         fermer_connexion_bd($pdo);
         return $sth->rowCount();

@@ -21,6 +21,7 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 
         }elseif($_GET['views']=='catalogue_chambre'){
             categorie();
+            filtre_categorie();
             
         }elseif($_GET['views']=='mesreservation'){
 
@@ -44,6 +45,13 @@ function categorie(){
     require_once(ROUTE_DIR.'views/reservation/catalogue_chambre.html.php');
 
 }
+function filtre_categorie (){
+    if (isset($_POST['action'])=='btn'){
+        $catego=find_filtrer_categorie();
+    }
+   
+}
+
 function liste_reservation(){
         $reservation=find_all_reservation();
     /*  
