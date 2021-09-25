@@ -120,7 +120,10 @@
                 <p class="card-text">
                   <span class="badge badge-light" style="color:darkcyan;">Prix: <?= $image['tarif_unit']?></span>
                 </p>
-                  <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$chambre['id_chambre']?>" class="btn btn-primary detail">Détail</a>
+                   <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$chambres['id_chambre']?>" class="btn btn-primary detail">Détail</a>
+<!--                   <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail'?>" class="btn btn-primary detail">Détail</a>
+ --> 
+
                 <?php if (est_client()): ?>
 <!--                   <a href="#" class="btn btn-primary detail">Detail</a>
  -->                  <a href="#" class="btn btn-primary reserver">Je réserve</a>

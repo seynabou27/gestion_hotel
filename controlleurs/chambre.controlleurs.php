@@ -7,8 +7,8 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         catalogue();
         }elseif($_GET['views']=='detail'){
         
-            //detaille_chambre();  
-            require_once(ROUTE_DIR.'views/hotel/detail.html.php');
+            detaille_chambre();  
+            //require_once(ROUTE_DIR.'views/hotel/detail.html.php');
           
         }elseif($_GET['views']=='connexion'){
             require_once(ROUTE_DIR.'views/security/connexion.html.php');
@@ -106,16 +106,17 @@ function catalogue(){
 
    
 }
+
  
 
-function detaille_chambre(){
-    if (!isset($_GET['id_categorie']) || !is_numeric($_GET['id_categorie'])){
+ function detaille_chambre(){
+    if (!isset($_GET['id_chambre']) || !is_numeric($_GET['id_chambre'])){
         catalogue();
         header('location:'.WEB_ROUTE);
         exit();
-    } 
-    $id=$_GET['id_categorie'];
-    $detail=find_categorie_by_id($id);
+    }  
+    $id=$_GET['id_chambre'];
+    $detail=find_chambre_by_id($id);
     require_once(ROUTE_DIR.'views/hotel/detail.html.php');
                    
     

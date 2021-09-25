@@ -5,12 +5,26 @@
     function find_all_chambre():array{
         $pdo = ouvrir_connexion_bd();
         $sql = "select * from chambre ch ,categorie c ,user u
-        where ch.id_categorie=c.id_categorie";
+        where ch.id_categorie=c.id_categorie and ch.id_user=u.id_user;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $chambre = $sth->fetchAll();
         fermer_connexion_bd($pdo);
         return $chambre;
+
+    }
+    //chambre
+    function find_all_chambre_by_categorie():array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from chambre ch ,user u, categorie c
+        where ch.id_user=u.id_user
+        and
+        ch.id_categorie=c.id_categorie ; ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $categoriees = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $categoriees;
 
     }
     //categorie
@@ -47,16 +61,29 @@
     }
 
 
-    function find_chambre_reservation_by_client(int $id_bien):array{
+    function find_chambre_reservation_by_client(int $id_chambre):array{
         $pdo = ouvrir_connexion_bd(); 
         $sql = "select * from chambre ch, reservation r,user u where 
             ch.id_chambre=r.id_chambre and r.id_user=?";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_bien));
+        $sth->execute(array($id_chambre));
         $chambre = $sth->fetchall();
         fermer_connexion_bd($pdo);
         return $chambre;
     }
+    function find_nombre_chambre_by_categorie(int $id_chambre):array{
+        $pdo = ouvrir_connexion_bd(); 
+        $sql = "SELECT SUM(c.id_categorie) FROM categorie c, chambre ch
+        where  ch.id_categorie=c.id_categorie 
+        GROUP BY c.id_categorie;";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array($id_chambre));
+        $chambre = $sth->fetchall();
+        fermer_connexion_bd($pdo);
+        return $chambre; 
+    }
+    /* SELECT SUM(id_categorie) FROM categorie c
+    where  c.id_categorie=1;  */
 
     function find_categorie_by_id(int $id_chambre):array{
         $pdo = ouvrir_connexion_bd();
@@ -72,6 +99,32 @@
         return $chambre;
 
     }
+    function find_chambre_by_id(int $id_chambre):array{
+        $pdo = ouvrir_connexion_bd();
+         $sql="select * from chambre ch where ch.id_chambre = ? ";//requete preparée sans nommée
+         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+         $sth->execute(array($id_chambre));
+         $chambres = $sth->fetch();
+         fermer_connexion_bd($pdo);
+         return $chambres;
+     }
+    /* function find_chambre_by_id(int $id_chambre):array{
+        $pdo = ouvrir_connexion_bd();
+        //Execution d'une requete non prepare avec un jocker qui est nommé
+        
+        //Execution d'une requete prepare avec un jocker qui est nommé
+        $sql = "select * from chambre ch 
+        where ch.id_chambre=?; ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array($id_chambre));
+        $chambre = $sth->fetch();
+        fermer_connexion_bd($pdo);
+
+        return $chambre;
+
+    } */
+    /* select * from chambre ch ,categorie c
+        where ch.id_chambre=ch.id_chambre ; */
 
     function insert_chambre(int $id_chambre):int{
         //a voir

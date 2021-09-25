@@ -65,8 +65,8 @@
 
     <span>
       <p class="texte">
-       <span class="badge badge-light"><?= $categorie['description']?></span>
-
+<!--        <span class="badge badge-info"><?= $chambre['id_chambre']?></span>
+ -->
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio saepe sit consequatur accusantium sed voluptatem exercitationem? Hic officia dicta ipsum numquam vero magnam velit quibusdam, repudiandae veniam error sint omnis voluptates quaerat consequatur labore, similique laborum mollitia dolor tempore fugiat excepturi quas expedita sit? Veritatis nostrum dolorem delectus temporibus voluptatum!
 
       </p>

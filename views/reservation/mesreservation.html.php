@@ -30,6 +30,8 @@
             />
             <div class="card-body">
               <h5 class="card-title">
+              <span class="badge badge-success"><?= $reservation['id_reservation']?></span>
+
                 <span class="badge badge-success"><?= $reservation['etat_reservation']?></span>
                 <span class="badge badge-info"><?= $reservation['date_debut_reservation']?></span>
              

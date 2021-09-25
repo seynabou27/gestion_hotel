@@ -1,6 +1,8 @@
 <?php
+
+
 // l'enssemble des biens reservés par un client
-function find_all_reservation($etat_reservation='valider'):array{
+function find_all_reservation():array{
     $pdo=ouvrir_connexion_bd();
     $sql="select * from reservation r , chambre ch , user u
         where
@@ -10,7 +12,7 @@ function find_all_reservation($etat_reservation='valider'):array{
         and
         r.etat_reservation like ?";
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-    $sth->execute([$etat_reservation]);
+    $sth->execute();
     $reservation = $sth->fetchAll();
     fermer_connexion_bd($pdo);
     return $reservation ;
@@ -35,6 +37,29 @@ function find_all_reservation_by_etat(  $etat_reservation='en cour'):array{
         fermer_connexion_bd($pdo);
         return $reservations;
 }
+/* function find_reservation_by_client(int $id_chambre):array{
+    $pdo = ouvrir_connexion_bd(); 
+    $sql = "select * from chambre ch, reservation r,user u 
+    where 
+    r.id_chambre=ch.id_chambre and r.id_user=?;";
+    $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+    $sth->execute(array($id_chambre));
+    $chambre = $sth->fetchall();
+    fermer_connexion_bd($pdo);
+    return $chambre;
+} */
+/* function find_chambre_reserver_by_client(int $id_client):array{
+	$pdo= ouvrir_connexion_bd();
+	$sql="select * from reservation r,chambre ch,user u
+    where r.id_chambre=ch.id_chambre
+     and ch.id_user=u.id_user 
+       and r.id_user= ? order by r.date_reservation desc" ;
+	$sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+	$sth->execute([$id_client]);
+	$reservation = $sth->fetchAll();
+    fermer_connexion_bd($pdo);//fermeture
+	return $reservation;
+} */
 /* 
 function find_all_reservation($etat_reservation='en cour'):array{
     $pdo = ouvrir_connexion_bd(); 

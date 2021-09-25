@@ -18,6 +18,10 @@ if (isset ($_REQUEST['controlleurs'])){
     }elseif ($_REQUEST['controlleurs']=='reservation'){
      
          require_once (ROUTE_DIR.'controlleurs/reservation.controlleurs.php');
+
+    }elseif ($_REQUEST['controlleurs']=='prestation'){
+     
+     require_once (ROUTE_DIR.'controlleurs/prestation.controlleurs.php');
     }else {
          require_once(ROUTE_DIR.'views/security/connexion.html.php');
     }

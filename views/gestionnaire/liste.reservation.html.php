@@ -15,6 +15,35 @@
       <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
       </header>
       <div class="container-fluid">
+  
+    
+
+        <div class="row mt-5">
+          <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Client</th>
+              <th scope="col">categorie</th>
+              <th scope="col">Date</th>
+              <th scope="col">Etat</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($reservation as $reservation):?>
+            <tr>
+              <th scope="row"></th>
+              <td><a href="#"><?=$reservation['nom_user'].' '.$reservation['prenom_user'].' '.$reservation['numero_telephone']?></a></td>            
+              <td><a href="#"><?=$reservation['numero_chambre']?></a></td>
+              <td><?=date_format(date_create($reservation['date_reservation']),'d-m-Y')?></td>
+              <td><?=$reservation['etat_reservation']?>   <a name="" id="" class="btn btn-info" href="#" role="button">Valider</a></td>
+            </tr>
+            <?php endforeach; ?>
+
+          </tbody>
+        </table>
+        </div>
         
         
       </div>

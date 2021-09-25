@@ -27,7 +27,7 @@
                   Prestation
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Liste_prestation</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste.prestation'?>">Liste_prestation</a>
                   <a class="dropdown-item" href="#">Ajout_prestation</a>
                 </div>
               </li>

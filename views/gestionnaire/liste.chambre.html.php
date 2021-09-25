@@ -15,10 +15,10 @@
   </head>
   <body>
       <header>
-        <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
+        <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
 
       </header>
- <div class="container mt-5">
+ <!-- <div class="container mt-5">
    <div class="row">
        <div class="col-md-offset-3">
          <form class="form-inline droite">
@@ -47,7 +47,7 @@
 
        </div>
      </div>
-
+ </div> -->
      <div class="row mt-5">
        <table class="table">
        <thead class="thead-dark">
@@ -85,7 +85,7 @@
        </tbody>
      </table>
      </div>
-     </div>
+     
 
      <footer class="footer">
        <!-- Footer -->
@@ -210,13 +210,7 @@
 
       </footer>
       <style>
-        .slider{
-          margin-top: -26%;
-        }
-        .slider1{
-          margin-top: 2%;
-        }
-        .reseau {
+       .reseau {
         vertical-align: middle;
         border-style: none;
         margin: 2%;
@@ -243,6 +237,21 @@
         a {
             color: #000;
         }
+        .boutton{
+            background-color:#005CA5 ;
+            color: white;
+        }
+        .btn-secondary:hover {
+            color: #fff;
+            background-color: #005CA5;
+            border-color: #005CA5;
+        }
+        .show > .btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #005CA5;
+            border-color: #005CA5;
+        }
+        
         .navbar-expand-lg .navbar-nav .nav-link {
           padding-right: 2.5rem;
           padding-left: 0.5rem;
@@ -254,17 +263,8 @@
       .droite{
         color:white;
         background-color:#005CA5;
-         margin-right: 2%; 
+        margin-right: 3%;
       }
-      button, input, optgroup, select, textarea {
-        margin: 6px;
-        margin-top: -4%;
-      }
-      /* .navbar-expand-lg .navbar-collapse {
-        display: flex !important;
-        flex-basis: auto;
-        margin-left: 7%;
-      } */
       .gauche{
         color:#005CA5;
         background-color:white;
@@ -276,8 +276,91 @@
       .gauche .btn:hover {
         color: #005CA5;
       }
+      .slide1{
+        height: 400px;
+      }
+      .partie2{
+        padding: 3%;
+      }
+      .boutton{
+        margin-top: 5%;
+      }
+      .partie3{
+        display: flex;
+        margin-top: -10%;
+      }
+      .card-deck{
+        margin-top: 9%;
+        margin: 12%;
+      }
+      .titre{
+        text-align: center;
+      }
+      .image{
+        display: contents;
+        text-align: center;
+      }
+      .titre1{
+        text-align: center;
+      } 
+      .etoile{
+        margin-top: 5%;
+        margin-left: 6%;
+      }
+      .p1{
+        margin-top: 4%;
+      }
+      .wifi{
+        margin-top: 5%;
+
+      }
+      .mobile{
+        margin-top: 2%;
+      }
+      .lit1{
+        
+        padding-top: 8%;
+      }
+      .lit2{
+        padding-top: 8%;
+      }
+     
+      .obt{
+        margin-top: -5%;
+        color: white;
+      }
+      .obt1{
+        color: white;
+      }
+      /*
+      
+      
+      .image{
+        display: flex;
+        margin-top: 7%;
+      } */
+      /* .lit{
+       
+        margin-left: 23%;
+      }
+      
+      
      
       
+
+      
+      
+      .p2{
+        margin-top: 12%;
+      }
+      .p3{
+        margin-top: 13%;
+      } */
+
+      
+
+      </style>
+
 
       </style>
 

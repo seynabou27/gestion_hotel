@@ -39,16 +39,17 @@
               <?php endif ?>
           </div>
           <?php if(est_client()): ?>
-
             <div class="dropdown">
               <button class="btn boutton btn-secondary dropdown-toggle" style="background-color: #005CA5; margin-left:30%" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                client
+                Client
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=deconnexion'?>">Se déconnecter</a>
                 <a class="dropdown-item" href="#">Paramettre</a>
               </div>
+              
             <?php endif ?>
+            
 
 
         </nav>

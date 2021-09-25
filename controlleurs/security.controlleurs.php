@@ -9,11 +9,11 @@
                 }elseif ($_GET['views']=='deconnexion'){
                     deconnexion();
                     require_once(ROUTE_DIR.'views/security/connexion.html.php');
-                
-
+                    exit();
                 }
             }else{
               require_once(ROUTE_DIR.'views/security/connexion.html.php');
+              exit();
 
             }
         }elseif($_SERVER['REQUEST_METHOD'] =='POST'){
@@ -23,7 +23,7 @@
                 }elseif ($_POST['action'] == 'inscription'){
                     unset($_POST['controller']);
                     unset($_POST['action']);
-                    unset($password['controller']);
+                    unset($password['controller']); 
                     
                     inscription($_POST,$_FILES);
 
@@ -124,7 +124,9 @@ function inscription(array $data,array $file):void{
 function deconnexion():void{
 
     unset ($_SESSION['userConnect']);
+    session_destroy() ;
     header('location:'.WEB_ROUTE.'?controlleurs=chambre&views=catalogue');
+    exit;
     
 }
 
