@@ -14,7 +14,36 @@
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
       </header>
-      <!---DEBUT-->
+      <div class="container">
+      <h5>Liste de mes reservations</h5>
+      <br> <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Categorie</th>
+            <th>N°de chambre</th>
+            <th>nbre de chambre</th>
+            <th>Nbre de personne</th>
+            <th>Période</th>
+            <th>Etats-réservation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach($reservation as $reservation): ?>
+
+          <tr>
+            <td><?=$reservation['nom_categorie']?></td>
+            <td><?=$reservation['numero_chambre']?></td>
+            <td><?=$reservation['nombre_personne']?></td>
+            <td><?=$reservation['nombre_personne']?></td>
+            <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
+            <td span class="badge p-2 mb-2 bg-warning text-white"><?= $reservation['etat_reservation']?></span></td>
+          </tr>
+          <?php endforeach ?>
+
+        </tbody>
+      </table>
+      <!---DEBUT
       <div class="container-fluid">
         
       <div class="container">
@@ -40,7 +69,7 @@
               <span class="float-left btn btn-sm text-center disabled"
                 ></span
               >
-              <!-- <a href="#" class="btn btn-sm btn-outline-info float-right ml-3"><i class="fas fa-ellipsis-h">Reserver</i></a> -->
+              <a href="#" class="btn btn-sm btn-outline-info float-right ml-3"><i class="fas fa-ellipsis-h">Reserver</i></a> 
               <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$reservation['id_chambre']?>" class="btn btn-sm btn-outline-success float-right"
                 >Details</a
               >
@@ -52,7 +81,7 @@
       </div>
 
 
-<!--FIN-------->
+FIN-------->
 
 
 

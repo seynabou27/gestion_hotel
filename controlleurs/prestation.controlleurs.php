@@ -13,8 +13,7 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }elseif($_GET['views']=='liste.chambre'){
             require_once(ROUTE_DIR.'views/gestionnaire/liste.chambre.html.php');
         }elseif($_GET['views']=='page_reservation'){
-            require_once(ROUTE_DIR.'views/reservation/page_reservation.html.php');
-
+            prestation_by_reservation();
         }elseif($_GET['views']=='inscription'){
             require_once(ROUTE_DIR.'views/security/inscription.html.php');
 
@@ -48,6 +47,11 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 function liste_prestation(){
     $prestation=find_all_prestation();
     require_once(ROUTE_DIR.'views/gestionnaire/liste_prestation.html.php');
+
+}
+function prestation_by_reservation(){
+    $pres=find_all_prestation();
+    require_once(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 
 }
 

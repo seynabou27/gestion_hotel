@@ -28,7 +28,7 @@ function find_all_reservation_by_etat(  $etat_reservation='en cour'):array{
         where ch.id_chambre = r.id_chambre
         and r.id_user = u.id_user 
         and r.etat_reservation like ?
-        " ;
+       " ;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array($etat_reservation));
 
@@ -101,17 +101,15 @@ function find_all_reservation_by_date_or_etat($etat_reservation='en cour'):array
         return $reservation;
 }
 
-function insert_reservation(int $id_chambre,int $id_client):int{
-    extract($chambre);
+function insert_reservation(int $id_categorie,int $id_client):int{
+    extract($categorie);
     $pdo = ouvrir_connexion_bd();
-    $sql = "INSERT INTO `reservation` (`id_reservation`, `date_debut_reservation`,
-     `montant_paye`, `etat_reservation`, `id_user`, `id_chambre`, 
-    `date_fin_reservation`, `date_validation`, `date_reservation`) 
-    VALUES (?, ?, ?, ?, ?,?, ?, ?);";
+    $sql = "INSERT INTO `reservation` (`date_debut_reservation`, `montant_paye`, `etat_reservation`, `id_user`, `id_chambre`, `date_fin_reservation`, `date_validation`, `date_reservation`, `nombre_chambre`) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $now=date_create();
     $now = date_format($now, 'Y-m-d H:i:s');
-    $sth->execute([$now, 'en cour','dedscription',$id_chambre, $id_user,]);
+    $sth->execute([$now, 'en cour','description',$id_categorie, $id_client]);
     
     fermer_connexion_bd($pdo);
    
@@ -119,8 +117,24 @@ function insert_reservation(int $id_chambre,int $id_client):int{
 
 
 }
+ function insert_reservation_by_client(array $reservation):int{
+     
+    $pdo = ouvrir_connexion_bd();
+    $sql="INSERT INTO `reservation` (`date_debut_reservation`, `etat_reservation`, `id_user`, `date_fin_reservation`, `date_reservation`, `nombre_chambre`) 
+    VALUES (?, ?, ?, ?, ?, ?);";
+    /* var_dump($reservation);
+    die; */
+    $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+  $sth->execute(
+    $reservation
+  );
+  $dernier_id = $pdo->lastInsertId();
+  fermer_connexion_bd($pdo);
+  return $dernier_id ;
+} 
 
 
 
 ?>
 
+ 

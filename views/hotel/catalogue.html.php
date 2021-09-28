@@ -104,7 +104,7 @@
             <?php //foreach($articles as $article) :?>
           
           
-            <?php foreach ($imagee as $image): ?>
+              <?php foreach($categorie as $categorie): ?>
 
             <div class="col-md-4">
             <div class="card-deck">
@@ -116,17 +116,18 @@
             />
               <div class="card-body">
                 <h2 class="card-title"></h2>
-                <h4 class="card-subtitle"><?= $image['nom_categorie']?></h4>
+                <h4 class="card-subtitle"><?= $categorie['nom_categorie']?></h4>
                 <p class="card-text">
-                  <span class="badge badge-light" style="color:darkcyan;">Prix: <?= $image['tarif_unit']?></span>
+                  <span class="badge badge-light" style="color:darkcyan;">Prix: <?= $categorie['tarif_unit']?></span>
                 </p>
-                   <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$chambres['id_chambre']?>" class="btn btn-primary detail">Détail</a>
+                   <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_categorie='.$categorie['id_categorie']?>" class="btn btn-primary detail">Détail</a>
 <!--                   <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail'?>" class="btn btn-primary detail">Détail</a>
  --> 
 
                 <?php if (est_client()): ?>
 <!--                   <a href="#" class="btn btn-primary detail">Detail</a>
- -->                  <a href="#" class="btn btn-primary reserver">Je réserve</a>
+ -->                  <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=page_reservation'?>" class="btn btn-primary reserver">Je réserve</a>
+
                 <?php endif ?>
               </div>
             </div>            

@@ -170,7 +170,7 @@ a {
 }
 .bleu{
   margin-top: 4%;
-  height: 23%;
+  height: 7%;
 }
 .p-2 {
     padding: -2.5rem !important;

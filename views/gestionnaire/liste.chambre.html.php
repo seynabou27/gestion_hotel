@@ -48,11 +48,10 @@
        </div>
      </div>
  </div> -->
-     <div class="row mt-5">
-       <table class="table">
-       <thead class="thead-dark">
+      <div class="container">
+     <table class="table table-striped">
+       <thead>
          <tr>
-           <th scope="col">#</th>
            <th scope="col">Client</th>
            <th scope="col">numero_Chambre</th>
            <th scope="col">Categorie</th>
@@ -73,7 +72,6 @@
          $chambre=find_all_chambre(); foreach ($chambre as $chambre):
          ?>
          <tr>
-           <th scope="row"></th>
            <td><a href="#"><?=$chambre['nom_user'].' '.$chambre['prenom_user']?></a></td> 
            <td><a href="#"><?=$chambre['numero_chambre'] ?></a></td>
            <td><a href="#"><?=$chambre['nom_categorie']?></a></td>     

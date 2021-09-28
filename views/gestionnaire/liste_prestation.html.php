@@ -19,11 +19,10 @@
 
       </header>
 
-     <div class="row mt-5">
-       <table class="table">
-       <thead class="thead-dark">
+     <div class="container      ">
+     <table class="table table-striped">
+       <thead>
          <tr>
-           <th scope="col">#</th>
            <th scope="col">Designation</th>
            <th scope="col">code_prestation</th>
            <th scope="col">prix_prestation</th>
@@ -43,9 +42,8 @@
          }
          $prestation=find_all_prestation(); foreach ($prestation as $prestation):
          ?>
-         <tr>
-           <th scope="row"></th>
-           <td><a href="#"><?=$prestation['designation_pres']?></a></td> 
+         <tr>           
+          <td><a href="#"><?=$prestation['designation_pres']?></a></td> 
            <td><a href="#"><?=$prestation['code_pres'] ?></a></td>    
            <td><a href="#"><?=$prestation['prix_unit']?></a></td> 
            <td><a href="#"><?=$prestation['prenom_user'].' '.$prestation['nom_user']?></a></td> 
@@ -55,8 +53,7 @@
          <?php endforeach; ?>
        </tbody>
      </table>
-     </div>
-     
+     </div>     
 
      <footer class="footer">
        <!-- Footer -->

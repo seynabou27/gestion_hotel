@@ -6,6 +6,8 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
     
         catalogue();
         }elseif($_GET['views']=='detail'){
+            /* var_dump($_GET);
+            die('okk'); */
         
             detaille_chambre();  
             //require_once(ROUTE_DIR.'views/hotel/detail.html.php');
@@ -77,8 +79,8 @@ function archiver_chambre   (array $id_chambre):bool{
 
 
 function catalogue(){
-    $images=find_all_image();
-    $pagetotal=nombrePageTotal($images,3);
+    $categorie=find_all_categorie();
+    $pagetotal=nombrePageTotal($categorie,3);
     $page = 1;
     if(isset($_GET['suivante'])){
         $suivante = $_GET['suivante'];
@@ -97,7 +99,7 @@ function catalogue(){
     }
    
    
-    $imagee= get_element_to_display($images,$page,3);
+    $imagee= get_element_to_display($categorie,$page,3);
     
    
     
@@ -110,13 +112,15 @@ function catalogue(){
  
 
  function detaille_chambre(){
-    if (!isset($_GET['id_chambre']) || !is_numeric($_GET['id_chambre'])){
+     
+    if (!isset($_GET['id_categorie']) || !is_numeric($_GET['id_categorie'])){
         catalogue();
         header('location:'.WEB_ROUTE);
         exit();
     }  
-    $id=$_GET['id_chambre'];
-    $detail=find_chambre_by_id($id);
+    $id=$_GET['id_categorie']; 
+    $categorie=find_categorie_by_id($id);
+  
     require_once(ROUTE_DIR.'views/hotel/detail.html.php');
                    
     

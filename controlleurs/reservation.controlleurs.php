@@ -1,12 +1,18 @@
-<?php 
+<?php
+
 if(($_SERVER['REQUEST_METHOD']=='GET')){
     if(isset($_GET['views'])){
         if ($_GET['views']=='catalogue'){
             catalogue();
+         
     
         }elseif($_GET['views']=='liste.chambre'){
             require_once(ROUTE_DIR.'views/gestionnaire/liste.chambre.html.php');
         }elseif($_GET['views']=='page_reservation'){
+            
+			//reserver_chambre_by_categorie($_SESSION['userConnect']['id_user']);
+            /* var_dump($id_client);
+            die();  */ 
             require_once(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 
         }elseif($_GET['views']=='inscription'){
@@ -34,10 +40,41 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         catalogue();
 
     }
-}
+} elseif($_SERVER['REQUEST_METHOD']=='POST'){
+    if (isset($_POST['action'])) {
+		if ($_POST['action']=="page_reservation") {
+               
+				add_reservation($_POST);
+		 }
+		}	
+	} 
 
 
+    
+ function add_reservation(array $post):void{
+    
+    //`date_debut_reservation`, `montant_paye`, `etat_reservation`, `id_user`, `id_chambre`, `date_fin_reservation`, `date_validation`, `date_reservation`, `nombre_chambre`         extract($post);
+       extract($post);
+       $date=date_format(date_create($date),'Y-m-d');
+       $date_fin=date_format(date_create($date_fin),'Y-m-d');
 
+    $reservation=[
+           $date,
+          "en cour",
+          (int)$_SESSION['userConnect']['id_user'],
+          $date_fin,
+          date_format(date_create(),'Y-m-d'),
+          2
+        ];
+        /* var_dump($post);
+        die; */
+        $id_reservation=insert_reservation_by_client($reservation);
+        var_dump($id_reservation);
+        die('okkk'); 
+         
+        show_prestation();
+        
+    } 
 function catalogue_chambre(){
     $chambres=find_all_chambre();
     require_once(ROUTE_DIR.'views/reservation/catalogue_chambre.html.php');
@@ -78,15 +115,32 @@ function traiter_reservation(int $id_reservation,string $etat='annuler'):bool{
     return false;
 
 }
-function reserver_chambre_by_categorie(int $id_client){
+function reserver_chambre_by_categorie(array $data):void{
     $id_categorie=$_GET['id_categorie'];
 
     $id_client= $_SESSION['userConnect']['id_client'];
 
-    $reser=insert_reservation($id_categorie,$id_client);
-    $etat_reservation='encour';
+/*     $reser=insert_reservation_by_client($data); */
+   
+   
+
+	/* insert_reservation([
+		$date_debut_reservation,
+        $date_fin_reservation,
+		$etat_reservation,
+		$id_categorie,
+		$id_client
+	]); */ 
+	/* lister_reservation_en_cours($id_client); */
+   
 
 
+
+}
+function show_prestation($nbre=1){
+	$zones=find_all_prestation();
+	$_SESSION['nbre']=$nbre;
+	require(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 }
 
 

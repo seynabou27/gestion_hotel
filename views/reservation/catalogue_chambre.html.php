@@ -139,7 +139,7 @@
               <span class="float-left btn btn-sm text-center disabled"
                 ></span>
                 <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_categorie='.$categorie['id_categorie']?>" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=mesreservation'?>" class="btn btn-primary reserver">Je réserve</a> 
+                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=page_reservation&id_categorie='.$categorie['id_categorie']?>" class="btn btn-primary reserver">Je réserve</a> 
             </div>
           </div>
         </div>

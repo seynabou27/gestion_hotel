@@ -51,7 +51,11 @@
     }
     function find_chambre_disponible():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from chambre ch where ch.etat_chambre=?";
+        $sql = "select * from image i ,categorie c , chambre ch
+        where i.id_categorie=c.id_categorie and
+                ch.id_categorie=c.id_categorie and
+
+         ch.etat_chambre=?";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array('disponible'));
         $chambredispo = $sth->fetchAll();
@@ -85,14 +89,17 @@
     /* SELECT SUM(id_categorie) FROM categorie c
     where  c.id_categorie=1;  */
 
-    function find_categorie_by_id(int $id_chambre):array{
+    function find_categorie_by_id(int $id_categorie):array{
         $pdo = ouvrir_connexion_bd();
         //Execution d'une requete non prepare avec un jocker qui est nommé
         
         //Execution d'une requete prepare avec un jocker qui est nommé
-        $sql = "select * from categorie c where c.id_categorie= ? ";
+        $sql = "select * from categorie c , chambre ch where
+        ch.id_categorie=c.id_categorie
+        and
+         c.id_categorie= ? ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_chambre));
+        $sth->execute(array($id_categorie));
         $chambre = $sth->fetch();
         fermer_connexion_bd($pdo);
 
@@ -101,7 +108,11 @@
     }
     function find_chambre_by_id(int $id_chambre):array{
         $pdo = ouvrir_connexion_bd();
-         $sql="select * from chambre ch where ch.id_chambre = ? ";//requete preparée sans nommée
+         $sql=" select * from image i ,categorie c , chambre ch
+         where 
+                 ch.id_categorie=c.id_categorie and
+ 
+                 ch.id_categorie=?";//requete preparée sans nommée
          $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
          $sth->execute(array($id_chambre));
          $chambres = $sth->fetch();

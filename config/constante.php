@@ -1,4 +1,5 @@
 <?php
+
     define('WEB_ROUTE','http://localhost:8000/');
 
     define('HOST_BD','localhost');
@@ -20,3 +21,5 @@
 
 
 ?>
+
+

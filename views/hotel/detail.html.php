@@ -19,7 +19,7 @@
 
 <!---------------------------EXAMPLE------------------>
 <div class="container-fluid">
-  <a class="lien" style="margin-top:6%; color:#eee;" href="#">Catalogue des chambres</a> - <a href="#">Détail des chambres</a>
+  <a class="lien" style="margin-top:6%; color:#eee;" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue_chambre'?>">Catalogue des chambres</a> - <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail'?>">Détail des chambres</a>
   <br>
   <div class=row>
     <div class="col-md-6">
@@ -31,18 +31,15 @@
       
     </div>
     <div class="col-md-4 li1">
+       
        <div>
-        <span class="badge badge-light" style="background-color: #3CAB85; color:white;">Chambre de luxe</span>
-      </div> 
-       <div>
-        <span class=""><h2><b>Suite twin</b></h2></span>
+        <h2><b><?= $categorie['nom_categorie']?></b></h2>
       </div> 
       
       <div>
-              <!-- <span class="badge badge-light">Nom: <?= $detail['Nom_categorie']?></span>
-              <span class="badge badge-light"><?= $detail['tarif_unit']?></span>
- -->
-         <span class="badge" style="color:#3CAB85;"><h2>250 000</h2></span>
+
+ 
+         <span class="badge" style="color:#3CAB85;"><h2><?= $categorie['tarif_unit']?></h2></span>
       </div>
       <div class="li">
       <ul style="list-style-type:circle;">
@@ -52,10 +49,17 @@
       </ul>
       </div>  
       
+      <?php if (est_client()):?>
+      <a href="<?=WEB_ROUTE.'controlleurs=reservation&views=page_reservation'?>" class="btn btn-sm btn-primary reserver ">Réserver</a>
 
+      <?php endif ?>
+      
   
     
-    <a href="#" class="btn btn-sm btn-primary reserver ">Réserver</a>
+    <?php if (!est_client()) :?>
+    <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?> " class="btn btn-sm btn-primary reserver ">Réserver</a>
+
+     <?php endif ?>
       
     </div>
     
@@ -65,9 +69,8 @@
 
     <span>
       <p class="texte">
-<!--        <span class="badge badge-info"><?= $chambre['id_chambre']?></span>
- -->
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio saepe sit consequatur accusantium sed voluptatem exercitationem? Hic officia dicta ipsum numquam vero magnam velit quibusdam, repudiandae veniam error sint omnis voluptates quaerat consequatur labore, similique laborum mollitia dolor tempore fugiat excepturi quas expedita sit? Veritatis nostrum dolorem delectus temporibus voluptatum!
+      <?= $categorie['description']?>
+
 
       </p>
     </span> 
@@ -97,7 +100,7 @@
         </div>        
       </div>
       <div class="row justify-content-center">
-        <a href="#" class="btn btn-sm btn-primary reserver1 ">Réserver</a>
+        <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?>" class="btn btn-sm btn-primary reserver1 ">Réserver</a>
 
       </div>
       
