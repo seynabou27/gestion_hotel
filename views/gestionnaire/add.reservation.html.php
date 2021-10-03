@@ -9,216 +9,173 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/bootstrap-horizon/bootstrap-horizon.css"> -->
   </head>
   <body>
       <header>
-      <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
-      </header>
-      <!-- partie1 -->
+      <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
       
-        
-            <!-- Vertical navbar -->
-<!-- <div class="vertical-nav bg-white" id="sidebar">
-  
-  <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center"><img src="img/logo.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-      <div class="media-body">
-        <h4 class="m-0"></h4>
-        <p class="font-weight-light text-muted mb-0">Nos catégories de chambre</p>
-      </div>
-    </div>
-  </div>
-
-
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic bg-light">
-                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                <div class="col-md-3">
-        <div class="form-group">
-          <?php //foreach($catego as $catego) : ?>
-              <label for=""></label>
-              <select class="form-control" style="background-color:#eee;" name="categorie" id="">
-                <option>Filtre par catégorie</option>
-                <option>Suite royale</option>
-                <option>Suite simple</option>
-                <option>Chambre luxe</option>
-                <option>Chambre junior</option>
-                <option>Chambre twins</option>
-                <option>Chambre standard</option>
-                <option>Chambre province</option>
-                <option>Chalet complexe</option>
-                <option>Chalet simple</option>
-              </select>
-            </div>
-            <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn" style="background-color: #005CA5; color:#fff;"><b>Recherche <i class="bi bi-search"></i></b></button>
-              <?php //endforeach ?>
-            
-        </div>
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Suite royale
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Suite simple
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chambre de luxe
-            </a>
-    </li>
-  </ul>
-
-
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-<i class="bi bi-door-closed"></i>Chambre junior
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chmabre twins
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chambre standards
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chambre province
-            </a>
-    </li>
-
-  </ul>
-  <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chalet complet
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chalet complet
-            </a>
-    </li>
-</div>
-</div> -->
-<!-- End vertical navbar -->
-          
-        
-        <div class="container">
-          <br> <br>
-          <h4><b>Liste de nos catégorie</b></h5>
-      <div class="row contenu">
-        <?php foreach($categorie as $categorie): ?>
-         
-        <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 17rem">
+      </header>
+      <div class="container bg-light">
+        <br> <br>
+        <h5 class="" style="text-align: center;"><b>Formulaire de reservation</b></h5>
+        <br> 
+        <form method="POST" action="<?=WEB_ROUTE?>">
+          <input type="hidden" name="controlleurs" value="reservation">
+          <input type="hidden" name="action" value="<?=isset($reservation['id_reservation']) ? 'edit':'page_reservation';?>">
+          <input type="hidden" name="id" value="<?=isset($user['id_user']) ? $user['id_user']:'';?>">
+                                
+          <!---------------- DEBUT--------------------->
+          <div class="card shadow mb-4 bg-white rounded">
+    <!--Card-Body-->
+    <div class="card-body">
+       
+       <div class="row">
+          <div class="col-sm-6"> 
+          <div  style="width: 17rem">
             <img
               class="card-img-top"
               src="https://source.unsplash.com/1080x720/?hotel"
               alt="Annonce 1"
             />
-            <div class="card-body">
-              <h5 class="card-title">
-              
+          </div>
+          </div>
+          <div class="col-sm-6 debut"> 
+            <div>
+              <span class="badge"><h5><b><?= $categorie['nom_categorie']?></h5></b></span>
+            </div> 
+        
+      
+          <div>
+            <span class=""style="color:#3CAB85;"><h5><b><?= $categorie['tarif_unit']?></h5></b></span>
+         
+          </div>
+          <div class="li">
+            <ul style="list-style-type:circle;">
+              <li>Lit queen size</li>
+              <li>2 Adultes</li>
+              <li>32m2</li>
+            </ul>
+          </div> 
+          </div>
+        </div> 
+        <br> <br>
+        <div class="row">
+            <div class="col-sm-6"> 
+              <div class="form-group">
+              Nombre de personne
+                <label for=""></label>
+                <input type="text" class="form-control" name="personne" id="" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted">Help text</small>
+              </div>
 
-                <span class="badge"><h5><?= $categorie['nom_categorie']?></h5></span>
-                <span class="badge badge-info"><?= $categorie['tarif_unit']?> f</span>
-             
-            </h5>
-              <hr />
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span>
-                <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_categorie='.$categorie['id_categorie']?>" class="btn btn-primary detail">Detail</a>
-                <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=page_reservation&id_categorie='.$categorie['id_categorie'].' '.$user['id_user']?>" class="btn btn-primary reserver">Je réserve</a> 
+            </div>
+            <div class="col-sm-6"> 
+            Nombre de chambre
+            <br>
+              <select class="browser-default custom-select mb-4" name="nbr_chambre" id="select">
+            
+                    <option value="" disabled="" selected=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+
+
+                </select> </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"> 
+
+          </div>
+          <div class="col-sm-6"> 
+            <div class="form-group">
+                  <label for="">Etat_reservation</label>
+                  <select class="form-control" name="etat" id="">
+                    <?php foreach ($reservation as $reservation):?>
+                    <option value="<?=$reservation['id_reservation'] ?>"><?=$reservation['etat_reservation'] ?></option>
+                    <?php endforeach ?>
+                  </select>
+            </div>
+            
+          </div>
+
+
+          
+        </div>
+        <!--Third Row-->
+        <div class="row">
+          <div class="col-sm-6 col-md-6 form-group">
+            Date de debut
+            <input type="date" name="date" class="form-control" id="date" placeholder="Date">
+            </div>
+            <div class="col-sm-6 col-md-6 form-group">
+              Date de fin
+            <input type="date" name="date_fin" class="form-control" id="date" placeholder="Date">
+            </div>
+        </div>
+        <!--Fourth Row-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6"> 
+              <h6><b>Voulez vous une de nos prestation</b></h6> 
+            </div>
+            <div class="col-sm-6"> 
+              <h6><b>Prix</b></h6> 
             </div>
           </div>
-        </div>
+        
+        <?php foreach ($prestation as $prestation) : ?>
+        <div class="row ">
+            <div class="col-sm-6">  
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="<?=$prestation['id_pres']?>" name="prestation[]" id="ck1">
+              <label class="form-check-label" for="ck1"><?=$prestation['designation_pres'] ?></label>
+            </div>
+            </div>
+            <div class="col-sm-4"> 
+              <ul>
+                <li><?=$prestation['prix_unit'] ?>f</li> 
+              </ul>
+              
+              
+              
 
-        <?php endforeach ?> 
+            </div>
+            
+       
+        <!--Fifth Row-->
+        </div> 
+        <?php endforeach ?>
         </div>
+        <div class="row boutton1">
+          <div class="col-md-6">
+          <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
+          </div>
+          <div class="col-md-6">
+          <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="reservation">Je réserve</button>
+<!--           <a href="<?=WEB_ROUTE.'?controlleurs=hotel&views=mesreservation'?>" class="btn btn-primary float-left mt-5 annuler1">Je réserve</a>
+ -->
+          </div>
+          
+        </div>
+    </div>
+    </form>
+</div>
+          <!---------------- FIN--------------------->
+         
+
+
+                 
+        
+
         
       </div>
-        
-
-      
-<style>
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
-
-.vertical-nav {
-    min-width: 23rem;
-    width: 17rem;
-    height: 179vh;
-    top: 114px;
-    left: 0;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s;
-    margin-top: 25%;
-}
-
-/* .page-content {
-  width: calc(100% - 17rem);
-  margin-left: 17rem;
-  transition: all 0.4s;
-} */
-
-/* for toggle behavior */
-
-#sidebar.active {
-  margin-left: -17rem;
-}
-
-/* #content.active {
-  width: 100%;
-  margin: 0;
-}
- */
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -17rem;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #content {
-    width: 100%;
-    margin: 0;
-  }
-  #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
-  }
-}
-
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSE
-* ==========================================
-*
-*/
-
-
-
-
-</style>
 
 
 
@@ -226,96 +183,8 @@
 
 
 
-    
-  
-
-  
 
 
-
-
-
-
-
-<style>
-.chambres{
-    margin-top: 3%;
-    margin-left: 8%;
-    padding-right: 19%;
-}
-.contenu{
-    margin-top: 4%;
-}
-.col-md-3 {
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 100%;
-}
-
-
-.col-5 {
-    -ms-flex: 0 0 41.666667%;
-    flex: 2 0 41.666667%;
-    max-width: 74.667%;
-}
-
-h1{
-	font-weight: 800;
-	font-size: 3em;
-}
-
-.subtitle{
-	font-size: 1.25em;
-	opacity: 0.65;
-}
-
-.card-block{
-	height: 150px;
-	background-color: #fff;
-	border: none;
-	background-position: center;
-	background-size: cover;
-	transition: all 0.2s ease-in-out !important;
-	border-radius: 24px;
-	
-}
-.col-md-4 {
-    -ms-flex: 0 0 33.333333%;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-    margin-top: 2%;
-   
-}
-.card-text{
-    color: #3CAB85;
-}
-.btn-primary:hover {
-        color: #fff;
-        background-color: #005CA5;
-        border-color: #005CA5;
-      }
-      .detail{
-        color:#005CA5;
-        background-color:white;
-        border-color:#005CA5
-
-      }
-      .reserver{
-        color:white;
-        background-color:#005CA5;
-
-      }
-     
-      .detail{
-        color:#005CA5;
-        background-color:white;
-        border-color:#005CA5
-
-      }
-
-</style>
-
-      
       <footer class="footer">
        <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
@@ -440,8 +309,8 @@ h1{
       </footer>
 
       <style>
-        footer{
-          width: 100%;
+        .debut{
+          margin-top: 3%;
         }
         .reseau {
         vertical-align: middle;
@@ -451,7 +320,6 @@ h1{
         
           body {
           font-family:Circular_std_bold;
-          overflow-x: hidden;
           }
           .navbar-toggler {
             padding: .25rem .75rem;
@@ -504,6 +372,20 @@ h1{
         background-color:white;
         border-color:#005CA5 ;
       }
+      .annuler1{
+        color:white;
+        background-color:#005CA5;
+        margin-right: 3%;
+        width: 60%;
+      }
+      .annuler{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5 ;
+        width: 60%;
+
+      }
+      
       .btn:hover {
       color: #fff;
       }
@@ -551,6 +433,10 @@ h1{
       .mobile{
         margin-top: 2%;
       }
+      .li{
+       
+       margin-left: -7%;
+     }
       .lit1{
         
         padding-top: 8%;
@@ -590,8 +476,101 @@ h1{
       .p3{
         margin-top: 13%;
       } */
+     
+      .card {
+    margin: auto;
+    margin-bottom: auto;
+    border: solid 1px #dbdad7;
+    width: 70%;
+    height: 800px;
+    padding-left: 34px !important;
+    padding-bottom: 10px !important;
+    padding-right: 34px !important;
+    padding-top: 30px !important;
+}
 
-    
+
+.card-title {
+    margin: auto;
+    padding: 15px;
+    background-color: #2f7fad;
+    color: white;
+    width: 80%
+}
+
+div.card-body {
+    padding: 0px
+}
+
+.custom-select {
+    width: 100%
+}
+
+.btn2 {
+    margin-left: 10%
+}
+
+input {
+    outline: 0 !important;
+    border-color: #d1d1cf !important
+}
+
+input:focus {
+    border-color: #d1d1cf !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+}
+
+select {
+    outline: 0 !important;
+    border-color: #d1d1cf !important
+}
+
+select:focus {
+    border-color: #d1d1cf !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+}
+
+.radiobtn {
+    margin-left: 3.5%
+}
+
+.icons {
+    margin: auto !important
+}
+
+.fa {
+    border-radius: 25px;
+    width: 10%;
+    margin-left: 5%;
+    border: solid 2px #dbdad7;
+    margin-top: 5%;
+    text-align: center
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .card {
+        margin: auto;
+        border: solid 1px #dbdad7;
+        width: 90%;
+        padding-left: 10px !important;
+        padding-bottom: 10px !important;
+        padding-right: 10px !important;
+        padding-top: 0px !important
+    }
+
+    .fa {
+        border-radius: 25px;
+        width: 15%;
+        margin-left: 5%;
+        border: solid 2px #dbdad7;
+        margin-top: 5%;
+        text-align: center
+    }
+}
 
       
 

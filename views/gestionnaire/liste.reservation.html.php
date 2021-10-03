@@ -16,12 +16,16 @@
       </header>
 
       <div class="container">
+        <br> 
+      <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&add.reservation&id_reservation&id_user='.$reservation['id_reservation'].' '.$reservation['id_user']?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
+        <br> <br>
           <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">Client</th>
               <th scope="col">categorie</th>
-              <th scope="col">Date</th>
+              <th scope="col">Date reservation</th>
+              <th scope="col">Periode</th>
               <th scope="col">Etat</th>
               <th scope="col"></th>
               <th scope="col"></th>
@@ -36,15 +40,29 @@
               <td><a href="#"><?=$reservation['nom_user'].' '.$reservation['prenom_user'].' '.$reservation['numero_telephone']?></a></td>            
               <td><a href="#"><?=$reservation['numero_chambre']?></a></td>
               <td><?=date_format(date_create($reservation['date_reservation']),'d-m-Y')?></td>
+              <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
               <td><?=$reservation['etat_reservation']?></td>
-              <td><a name="" id="" class="btn btn-success" href="#" role="button">Valider</a></td><td><a name="" id="" class="btn btn-danger" href="#" role="button">Anuler</a></td>
-
+              <td><a name="" id="" class="btn btn-success" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=add.reservation&id_reservation&id_user='.$reservation['id_reservation'].' '.$reservation['id_user']?>" role="button">Modifier</a></td>
             </tr>
             <?php endforeach; ?>
 
           </tbody>
         </table>
-        
+        <nav>
+      <ul class="pagination">
+        <li class="page-item  <?= ($currentPage == 1) ? "disabled" : "" ?>">
+          <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation&page='. ($currentPage - 1) ?>" class="page-link"> «Précédente</a>
+        </li>
+        <?php for($i=1;$i<=$pages;$i++):?>
+        <li class="page-item"><a class="page-link" href="<?= WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation&page='.$i?>"><?=$i?></a></li>
+        <?php endfor ?>
+                 
+        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+          <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation&page='.($currentPage + 1) ?>" class="page-link">»Suivante</a>
+        </li>
+    </ul>
+
+    </nav>
         
         
       </div>

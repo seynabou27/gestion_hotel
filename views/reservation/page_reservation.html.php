@@ -1,3 +1,9 @@
+<?php 
+if (isset($_SESSION['arrayErreur'])){
+    $arrayErreur =$_SESSION['arrayErreur'];
+    unset ($_SESSION['arrayErreur']);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,6 +19,7 @@
   <body>
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
+      
       </header>
       <div class="container bg-light">
         <br> <br>
@@ -36,34 +43,36 @@
             />
           </div>
           </div>
-          <div class="col-sm-6"> 
-          <div>
-          <span class="badge"><h5><?= $categorie['nom_categorie']?>Suite royale</h5></span>
-        </div> 
+          <div class="col-sm-6 debut"> 
+            <div>
+              <span class="badge"><h5><b><?= $categorie['nom_categorie']?></h5></b></span>
+            </div> 
         
       
-      <div>
-                <span class="badge badge-info"style="color:#3CAB85;"><?= $categorie['tarif_unit']?>250 000f</span>
+          <div>
+            <span class=""style="color:#3CAB85;"><h5><b><?= $categorie['tarif_unit']?></h5></b></span>
          
-      </div>
-      <div class="li">
-      <ul style="list-style-type:circle;">
-        <li>Lit queen size</li>
-        <li>2 Adultes</li>
-        <li>32m2</li>
-      </ul>
-      </div> 
+          </div>
+          <div class="li">
+            <ul style="list-style-type:circle;">
+              <li>Lit queen size</li>
+              <li>2 Adultes</li>
+              <li>32m2</li>
+            </ul>
+          </div> 
           </div>
         </div> 
         <br> <br>
         <div class="row">
             <div class="col-sm-6"> 
-            Nombre de personne
+              <div class="form-group">
+              Nombre de personne
+                <label for=""></label>
+                <input type="text" class="form-control" name="personne" id="" aria-describedby="helpId" placeholder="">
+                <small id="passwordlHelp" class="form-text text-danger"><?php echo isset($arrayErreur['personne'])? $arrayErreur['personne']:'';?></small>
+              </div>
 
-              <select class="browser-default custom-select mb-4" id="select">
-                    <option value="" disabled="" selected="">Nombre de personne est 2 au maximum
-                    
-                </select> </div>
+            </div>
             <div class="col-sm-6"> 
             Nombre de chambre
             <br>
@@ -82,53 +91,61 @@
                     <option value="10">10</option>
 
 
-                </select> </div>
+                </select> 
+                <small id="passwordlHelp" class="form-text text-danger"><?php echo isset($arrayErreur['nbr_chambre'])? $arrayErreur['nbr_chambre']:'';?></small>
+
+              </div>
         </div>
         <!--Third Row-->
         <div class="row">
           <div class="col-sm-6 col-md-6 form-group">
             Date de debut
             <input type="date" name="date" class="form-control" id="date" placeholder="Date">
+            <small id="passwordlHelp" class="form-text text-danger"><?php echo isset($arrayErreur['date'])? $arrayErreur['date']:'';?></small>
+
             </div>
             <div class="col-sm-6 col-md-6 form-group">
               Date de fin
             <input type="date" name="date_fin" class="form-control" id="date" placeholder="Date">
+            <small id="passwordlHelp" class="form-text text-danger"><?php echo isset($arrayErreur['date_fin'])? $arrayErreur['date_fin']:'';?></small>
+
             </div>
         </div>
         <!--Fourth Row-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6"> 
+              <h6><b>Voulez vous une de nos prestation</b></h6> 
+            </div>
+            <div class="col-sm-6"> 
+              <h6><b>Prix</b></h6> 
+            </div>
+          </div>
+        
+        <?php foreach ($prestation as $prestation) : ?>
         <div class="row ">
             <div class="col-sm-6">  
-            Voulais vous une de nos prestations
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio1">Petit déjeuner</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio2">Déjeuner</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio3">Dinner</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="<?=$prestation['id_pres']?>" name="prestation[]" id="ck1">
+              <label class="form-check-label" for="ck1"><?=$prestation['designation_pres'] ?></label>
             </div>
             </div>
             <div class="col-sm-4"> 
               <ul>
-              Prix
-                <li>15000f</li>
-                <li>15000f</li>
-                <li>15000f</li>
+                <li><?=$prestation['prix_unit'] ?>f</li> 
               </ul>
               
               
               
 
             </div>
-        </div>
+            
+       
         <!--Fifth Row-->
-        
         </div> 
-        <div class="row">
+        <?php endforeach ?>
+        </div>
+        <div class="row boutton1">
           <div class="col-md-6">
           <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
           </div>
@@ -284,6 +301,9 @@
       </footer>
 
       <style>
+        .debut{
+          margin-top: 3%;
+        }
         .reseau {
         vertical-align: middle;
         border-style: none;
@@ -405,6 +425,10 @@
       .mobile{
         margin-top: 2%;
       }
+      .li{
+       
+       margin-left: -7%;
+     }
       .lit1{
         
         padding-top: 8%;
@@ -447,13 +471,16 @@
      
       .card {
     margin: auto;
+    margin-bottom: auto;
     border: solid 1px #dbdad7;
-    width: 65%;
-    padding-left: 10px !important;
+    width: 70%;
+    height: 700px;
+    padding-left: 34px !important;
     padding-bottom: 10px !important;
-    padding-right: 10px !important;
-    padding-top: 30px !important
+    padding-right: 34px !important;
+    padding-top: 30px !important;
 }
+
 
 .card-title {
     margin: auto;

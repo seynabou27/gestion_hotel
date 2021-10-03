@@ -27,7 +27,6 @@
                     
                     inscription($_POST,$_FILES);
 
-                   // header('location:'.WEB_ROUTE.'?controlleurs=admin&views=connexion');
 
                 }elseif ($_POST['action']== 'btn') {
                     

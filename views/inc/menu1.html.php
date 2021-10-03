@@ -6,6 +6,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <?php if (est_gestionnaire()) :?>
             <div class="navbar-nav ">
             <!-- <li class="nav-item">
               <a class="nav-item nav-link " href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>">Accueil <span class="sr-only">(current)</span></a>
@@ -14,16 +15,17 @@
                 <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation'?>">Liste_Réservations</a><span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.chambre'?>" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Chambre
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>">Catalogue_chambres</a><span class="sr-only">(current)</span></a>
                   <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.chambre'?>">Liste_chambre</a>
                   <a class="dropdown-item" href="#">Ajout_chambre</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste.prestation'?>" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Prestation
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -34,8 +36,10 @@
 
                
             </div>
+            <?php endif ?>
             
           </div>
+          <?php if (est_gestionnaire()) :?>
           
           <div class="dropdown">
             <button class="btn boutton btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,6 +51,7 @@
               <a class="dropdown-item" href="#">Paramettrer</a>
             </div>
           </div>
+          <?php endif ?>
             <!-- div class="collapse navbar-collapse mr-o ml-4" id="navbarNavAltMarkup">
               <a class="btn btn droite" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?>">Je me connecter</a>
               <a class="btn btn gauche" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=inscription'?>" style="color: #005CA5">je crée une compte</a>

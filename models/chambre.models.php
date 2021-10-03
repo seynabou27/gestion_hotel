@@ -27,15 +27,38 @@
         return $categoriees;
 
     }
-    //categorie
-    function find_all_categorie():array{
+    //les categorie dans catalogue de chambre
+    function find_all_categorie_by_catalogue():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from categorie c ;";
+        $sql = "select * from categorie c ; ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $categorie = $sth->fetchAll();
         fermer_connexion_bd($pdo);
         return $categorie;
+
+    }
+    //categorie
+    function find_all_categorie(int $offset=0):array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from categorie c limit $offset,".NOMBRE_PAR_PAGE;
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $categorie = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return [
+            "data" =>$categorie,
+            "count" => $sth->rowCount()
+        ];
+
+    }
+    function count_all_categorie():int{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from categorie c ;";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        fermer_connexion_bd($pdo);
+        return $sth->rowCount();
 
     }
     function find_all_image():array{

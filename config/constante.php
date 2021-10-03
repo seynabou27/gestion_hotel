@@ -16,7 +16,11 @@
     
     define( 'UPLOAD_DIR',WEB_ROUTE. 'lib/upload/');
 
-    define('NOMBRE_PAR_PAGE', 5);
+    define('NOMBRE_PAR_PAGE', 3);
+
+    define('NOMBRE_PAR_PAGE1', 5);
+
+    define('NOMBRE_PAR_PAGE2', 10);
      
 
 

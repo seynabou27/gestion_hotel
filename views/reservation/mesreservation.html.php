@@ -9,13 +9,26 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
   </head>
   <body>
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu.html.php'); ?>
       </header>
       <div class="container">
-      <h5>Liste de mes reservations</h5>
+        <br> <br> <br>
+        <div class="row ">
+          <div class="col-md-6">
+            <h5 class="texte float-left"><b>Liste de mes réservations</b></h5>
+          </div>
+          <div class="col-md-6">
+          <a name="" id="" class="btn btn-primary float-right boutton2" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=page_reservation&id_categorie='.$categorie['id_categorie']?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
+
+            
+          </div>
+          
+        </div>
       <br> <br>
       <table class="table table-striped">
         <thead>
@@ -29,59 +42,40 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach($reservation as $reservation): ?>
+          <?php foreach($reservat as $reservat): ?>
 
           <tr>
-            <td><?=$reservation['nom_categorie']?></td>
-            <td><?=$reservation['numero_chambre']?></td>
-            <td><?=$reservation['nombre_personne']?></td>
-            <td><?=$reservation['nombre_personne']?></td>
-            <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
-            <td span class="badge p-2 mb-2 bg-warning text-white"><?= $reservation['etat_reservation']?></span></td>
+
+            <td><?=$reservat['nom_categorie']?></td>
+            <td><?=$reservat['numero_chambre']?></td>
+            <td><?=$reservat['nombre_chambre']?></td>
+            <td><?=$reservat['nombre_personne']?></td>
+            <td><?=$reservat['date_debut_reservation']?> / <?=$reservat['date_fin_reservation']?></td>
+            <td span class="badge p-2 mb-2 text-white" style="background-color: #ff7f00;"><?= $reservat['etat_reservation']?></span></td>
           </tr>
           <?php endforeach ?>
 
         </tbody>
       </table>
-      <!---DEBUT
-      <div class="container-fluid">
-        
-      <div class="container">
-      <div class="row">
-        <?php foreach($reservation as $reservation): ?>
-         
-        <div class="col-sm-4 mb-4">
-          <div class="card" style="width: 22rem">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/1080x720/?chambre"
-              alt="Annonce 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-              <span class="badge badge-success"><?= $reservation['id_reservation']?></span>
 
-                <span class="badge badge-success"><?= $reservation['etat_reservation']?></span>
-                <span class="badge badge-info"><?= $reservation['date_debut_reservation']?></span>
-             
-            </h5>
-              <hr />
-              <span class="float-left btn btn-sm text-center disabled"
-                ></span
-              >
-              <a href="#" class="btn btn-sm btn-outline-info float-right ml-3"><i class="fas fa-ellipsis-h">Reserver</i></a> 
-              <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail&id_chambre='.$reservation['id_chambre']?>" class="btn btn-sm btn-outline-success float-right"
-                >Details</a
-              >
-            </div>
-          </div>
-        </div>
-        <?php endforeach ?>
-      </div>
+      <nav>
+      <ul class="pagination">
+        <li class="page-item  <?= ($currentPage == 1) ? "disabled" : "" ?>">
+          <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=mesreservation&page='. ($currentPage - 1) ?>" class="page-link"> «Précédente</a>
+        </li>
+        <?php for($i=1;$i<=$pages;$i++):?>
+        <li class="page-item"><a class="page-link" href="<?= WEB_ROUTE.'?controlleurs=reservation&views=mesreservation&page='.$i?>"><?=$i?></a></li>
+        <?php endfor ?>
+                 
+        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+          <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=mesreservation&page='.($currentPage + 1) ?>" class="page-link">»Suivante</a>
+        </li>
+    </ul>
+
+    </nav>
       </div>
 
 
-FIN-------->
 
 
 
@@ -281,6 +275,15 @@ FIN-------->
       .gauche .btn:hover {
         color: #005CA5;
       }
+      .boutton2{
+        color:white;
+        background-color:#005CA5;
+
+      }
+      .btn:hover{
+        background-color:#005CA5;
+
+      }
       .slide1{
         height: 400px;
       }
@@ -337,6 +340,7 @@ FIN-------->
       .obt1{
         color: white;
       }
+      
       /*
       
       

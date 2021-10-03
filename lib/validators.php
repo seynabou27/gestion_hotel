@@ -70,6 +70,29 @@ function valid_code(string $valeur , string $key,array &$arrayErreur){
     }
 
 }
+function valid_nbr_personne(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }elseif($valeur<=0){
+        $arrayErreur[$key]= 'Saisir un nombre positif';
+    }
+
+}
+function valid_nbr_chambre(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }elseif($valeur<=0){
+        $arrayErreur[$key]= 'Saisir un nombre positif';
+    } 
+
+}
+
+function validation_dat(string $valeur , string $key,array &$arrayErreur){
+    if(est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire'; 
+    }
+}
+
 /* 
 function valid_pays(string $valeur , string $key,array &$arrayErreur){
     if(est_vide($valeur)) {
@@ -150,11 +173,7 @@ function verif_taille(string $valeur, int $min=6 , int $max=10):bool{
 }
     
     
-    function validation_dat(string $valeur , string $key,array &$arrayErreur){
-        if(est_vide($valeur)) {
-            $arrayErreur[$key]= 'le champs est obligatoire'; 
-        }
-    }
+    
 
    
     
