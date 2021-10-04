@@ -10,12 +10,22 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 
         }elseif($_GET['views']=='liste.chambre'){
             require_once(ROUTE_DIR.'views/gestionnaire/liste.chambre.html.php');
-        }elseif($_GET['views']=='page_reservation'){
-            show_prestation();
 
-            if (est_gestionnaire()) {
-                show_prestation();
-            }
+        }elseif($_GET['views']=='liste.client'){
+            liste_client();
+
+        }elseif($_GET['views']=='ajout_prestation'){
+            require_once(ROUTE_DIR.'views/gestionnaire/ajout_prestation.html.php');
+
+        }elseif($_GET['views']=='ajout.chambre'){
+            require_once(ROUTE_DIR.'views/gestionnaire/ajout.chambre.html.php');
+
+        }elseif($_GET['views']=='ajout.categorie'){
+            require_once(ROUTE_DIR.'views/gestionnaire/ajout.categorie.html.php');
+
+        }elseif($_GET['views']=='liste.categorie'){
+            categorie_by_gestionnaire();    
+            
         }elseif($_GET['views']=='liste.reservation'){
             $id_user=$_SESSION['userConnect']['id_user'];
             lister_reservation_en_cours(); 
@@ -34,14 +44,8 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             categorie();
             //filtre_categorie();
             
-        }elseif($_GET['views']=='mesreservation'){
-            
-            if (est_client()) {
-                 liste_reservation($id_user=$_SESSION['userConnect']['id_user']);
-
-            }else {
-                catalogue();
-            }
+        }elseif($_GET['views']=='ajout.reservation'){
+            prestation_by_reservation();
 
         }
         
@@ -102,10 +106,51 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }
         
     }
+
+    //inserer catégorie
+    function add_categorie(array $post):void{
+        $arrayErreur=array();
+         extract($post);
+         valid_prix_categorie($prix,'prix', $arrayErreur);
+        valid_code_categorie($code, 'code',$arrayErreur );
+        valid_nom_categorie($nom, 'nom',$arrayErreur );
+        valid_nom_categorie($nom, 'nom',$arrayErreur );
+        if (form_valid($arrayErreur)) {
+            $reservation=[
+                $date,
+                0,
+               "en cour",
+               (int)$_SESSION['userConnect']['id_user'],
+               $date_fin,
+               date_format(date_create(),'Y-m-d'),
+               $nbre_chambre,
+                $personne,
+               
+             ];
+            
+            
+            $id_reservation=insert_reservation_by_client($reservation);
+
+            
+            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=mesreservation');
+               exit();
+
+        }else{
+       
+            $_SESSION['arrayErreur']=$arrayErreur;
+            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=page_reservation');
+        }
+        
+    }
     
 function categorie(){
     $categorie=find_all_categorie_by_catalogue();
     require_once(ROUTE_DIR.'views/reservation/catalogue_chambre.html.php');
+
+}
+function categorie_by_gestionnaire(){
+    $categorie=find_all_categorie_by_catalogue();
+    require_once(ROUTE_DIR.'views/gestionnaire/liste.categorie.html.php');
 
 }
 function reservation($nbre=1){
@@ -124,6 +169,15 @@ function filtre_etat(){
     }
    
 }
+function prestation_by_reservation(){
+    $pres=find_all_prestation_by_gestionnaire();
+    $chambres= find_chambre_disponible_by_gestionnaire();
+    $reservation=find_reservation();
+    $categorie=find_all_categorie_by_gestionnaire();
+    require_once(ROUTE_DIR.'views/gestionnaire/ajout.reservation.html.php');
+
+}
+
 
 //liste reservation cote gestionnaire
 function lister_reservation_en_cours(){
@@ -138,7 +192,12 @@ function lister_reservation_en_cours(){
   
     require_once(ROUTE_DIR.'views/gestionnaire/liste.reservation.html.php');
 }
+ function liste_client(){
+     $clients=find_all_client();
+    require_once(ROUTE_DIR.'views/gestionnaire/liste.client.html.php');
 
+
+ }
 
 
 

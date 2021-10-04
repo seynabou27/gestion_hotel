@@ -9,13 +9,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
   </head>
   <body>
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
       </header>
-
-      <div class="container">
+      <div class="container-fluid">
       <!-- <div class="row" style="margin-left:28% ; margin-top:3%;">
        <form method="POST" action="<?=WEB_ROUTE?>" class="form-inline">
 				  <div class="form-group">
@@ -31,17 +32,27 @@
 			  </form>
 		  </div> -->
         <br> 
-      <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit='.$reservat['id_reservation'].' '.$reservation['id_user']?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
+        <div class="row">
+          <div class="col-md-4">
+            <h4><b>Liste réservation</b></h4>            
+          </div>
+          <div class="col-md-4">
+            <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.reservation'?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
+
+          </div>
+        </div>
         <br> <br>
           <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">Client</th>
               <th scope="col">categorie</th>
+              <th scope="col">Nbr.chambre</th>
+              <th scope="col">Nbr.personne</th>
               <th scope="col">Date reservation</th>
               <th scope="col">Periode</th>
               <th scope="col">Etat</th>
-              <th scope="col"></th>
+              <th scope="col">Action</th>
               <th scope="col"></th>
 
 
@@ -51,12 +62,17 @@
           <tbody>
             <?php foreach ($reservation as $reservation):?>
             <tr>
-              <td><a href="#"><?=$reservation['nom_user'].' '.$reservation['prenom_user'].' '.$reservation['numero_telephone']?></a></td>            
-              <td><a href="#"><?=$reservation['numero_chambre']?></a></td>
+              <td><a href="#"><?=$reservation['nom_user'].' '.$reservation['prenom_user'].' '.$reservation['numero_telephone']?></a></td>  
+              <td><a href="#"><?=$reservation['nom_categorie']?></a></td>
+          
+              <td><a href="#"><?=$reservation['nombre_chambre']?></a></td>
+              <td><a href="#"><?=$reservation['nombre_personne']?></a></td>
+
               <td><?=date_format(date_create($reservation['date_reservation']),'d-m-Y')?></td>
               <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
               <td><?=$reservation['etat_reservation']?></td>
-              <td><a name="" id="" class="btn btn-success" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&id_reservation='.$reservation['id_reservation'] ?>" role="button">Modifier</a></td>
+              <td><a name="" id="" class="btn b" style="background-color: #005CA5; color:white;" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&id_reservation='.$reservation['id_reservation'] ?>" role="button">Gérer</a></td> <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-trash"></i></a></td>
+
             </tr>
             <?php endforeach ?>
 
@@ -276,7 +292,7 @@
         padding: 3%;
       }
       .boutton{
-        margin-top: 5%;
+        margin-right: -30%;
       }
       .partie3{
         display: flex;
@@ -325,32 +341,6 @@
       .obt1{
         color: white;
       }
-      /*
-      
-      
-      .image{
-        display: flex;
-        margin-top: 7%;
-      } */
-      /* .lit{
-       
-        margin-left: 23%;
-      }
-      
-      
-     
-      
-
-      
-      
-      .p2{
-        margin-top: 12%;
-      }
-      .p3{
-        margin-top: 13%;
-      } */
-
-      
 
       </style>
 

@@ -1,9 +1,3 @@
-<?php 
-if (isset($_SESSION['arrayErreur'])){
-    $arrayErreur =$_SESSION['arrayErreur'];
-    unset ($_SESSION['arrayErreur']);
-}
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,96 +15,54 @@ if (isset($_SESSION['arrayErreur'])){
   <body>
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
-      
       </header>
-      <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>" role="button"><i class="bi bi-arrow-left"></i>Liste catégorie</a>
-    <br> <br>
-      <div class="container bg-light">
-        <br> <br>
-        <h5 class="" style="text-align: center;"><b>Ajouter une catégorie</b></h5>
-        <br> 
 
-        <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
-              <input type="hidden" name="controlleurs" value="gestionnaire"/>
-              <input type="hidden" name="action" value="ajout.categorie"/>
-              <input type="hidden" name="id_categorie" value="<?=isset($categorie['id_categorie']) ? $categorie['id_categorie']:'';?>">     
-          <!---------------- DEBUT--------------------->
-          <div class="card shadow mb-4 bg-white rounded">
-        <!--Card-Body-->
-        <div class="card-body">
-        <br>
+      <div class="container">
+
       
-                <div class="form-group">
-                <label for="">Nom catégorie</label>
-                <input type="text"
-                class="form-control" name="nom" id="" aria-describedby="helpId" placeholder="">
-                <small class="form-text text-danger"><?php echo isset($arrayErreur['nom'])? $arrayErreur['nom']:'';?></small>
-                </div>       
-       <br>
-     
-        <!--Third Row-->
-        <div class="row">
-          <div class="col-sm-6 col-md-6 form-group">
-            Code catégorie
-            <input type="text" name="code" class="form-control" id="date" placeholder="" value="<?=isset($reservat['date_debut_reservation']) ? $reservat['date_debut_reservation']:'';?>">
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['code'])? $arrayErreur['code']:'';?></small>
+        <br> <br> 
+        <div class=row>
+            <div class=col-sm-6>
+            <h4><b>Liste des catégories</b></h4>
 
             </div>
-            <div class="col-sm-6 col-md-6 form-group">
-              Prix
-            <input type="text" name="prix" class="form-control" id="date" placeholder="">
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['prix'])? $arrayErreur['prix']:'';?></small>
+            <div class=col-sm-6>
+            <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.categorie'?>" role="button"><i class="bi bi-plus"></i>Ajouter une Categorie</a>
 
             </div>
+            
         </div>
-          <div class="form-group">
-            <label for="">Description</label>
-            <textarea class="form-control" name="texte" id="" rows="3"></textarea>
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['texte'])? $arrayErreur['texte']:'';?></small>
-
-          </div>
-                
-      
-            <div class="form-group">
-                <label for=""></label>
-        
-                <i class="bi bi-camera-fill"></i><input type="file" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-            </div>
-       
-
-         
-        <div class="row boutton1">
-          <div class="col-md-6">
-          <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
-          </div>
-          <div class="col-md-6">
-            <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="categorie">Je valide</button>
-
- 
-          </div>
-          
-        </div>
-    
-    </div>
-    </form>
-</div>
-          <!---------------- FIN--------------------->
-         
+        <br> <br> <br>
+          <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Code categorie</th>
+              <th scope="col">Nom categorie</th>
+              <th scope="col">Prix</th>
+              <th scope="col">Action</th>
+              <th scope="col"></th>
 
 
-                 
-        
-
-        
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($categorie as $categorie):?>
+            <tr>
+              <td><?=$categorie['code_categorie']?></td>  
+              <td><?=$categorie['nom_categorie']?></td>
+              <td><?=$categorie['tarif_unit']?></td>
+              <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-pencil-fill"></i></a></td> <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-trash"></i></a></td>
 
 
 
 
+              
+            </tr>
+            <?php endforeach ?>
 
-
-
-
-
+          </tbody>
+        </table>   
+      </div>
       <footer class="footer">
        <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
@@ -235,8 +187,18 @@ if (isset($_SESSION['arrayErreur'])){
       </footer>
 
       <style>
-        .debut{
-          margin-top: 3%;
+
+.retour{
+            margin-left: -40%;
+            color:white;
+            background-color:#005CA5;
+            border-color:#005CA5;
+
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #005CA5;
+            border-color:#005CA5;
         }
         .reseau {
         vertical-align: middle;
@@ -274,18 +236,6 @@ if (isset($_SESSION['arrayErreur'])){
             background-color: #005CA5;
             border-color: #005CA5;
         }
-        .retour{
-            margin-left: 2%;
-            color:#005CA5;
-            background-color:white;
-            border-color:#005CA5 ;
-
-        }
-        .btn-primary:hover {
-            color: #fff;
-            background-color: #005CA5;
-            border-color:#005CA5;
-        }
         .show > .btn-secondary.dropdown-toggle {
             color: #fff;
             background-color: #005CA5;
@@ -310,20 +260,6 @@ if (isset($_SESSION['arrayErreur'])){
         background-color:white;
         border-color:#005CA5 ;
       }
-      .annuler1{
-        color:white;
-        background-color:#005CA5;
-        margin-right: 3%;
-        width: 60%;
-      }
-      .annuler{
-        color:#005CA5;
-        background-color:white;
-        border-color:#005CA5 ;
-        width: 60%;
-
-      }
-      
       .btn:hover {
       color: #fff;
       }
@@ -371,10 +307,6 @@ if (isset($_SESSION['arrayErreur'])){
       .mobile{
         margin-top: 2%;
       }
-      .li{
-       
-       margin-left: -7%;
-     }
       .lit1{
         
         padding-top: 8%;
@@ -390,102 +322,30 @@ if (isset($_SESSION['arrayErreur'])){
       .obt1{
         color: white;
       }
-    
+      /*
+      
+      
+      .image{
+        display: flex;
+        margin-top: 7%;
+      } */
+      /* .lit{
+       
+        margin-left: 23%;
+      }
+      
+      
      
-      .card {
-    margin: auto;
-    margin-bottom: auto;
-    border: solid 1px #dbdad7;
-    width: 65%;
-    height: 600px;
-    padding-left: 34px !important;
-    padding-bottom: 10px !important;
-    padding-right: 34px !important;
-    padding-top: 20px !important;
-}
+      
 
-
-.card-title {
-    margin: auto;
-    padding: 15px;
-    background-color: #2f7fad;
-    color: white;
-    width: 80%
-}
-
-div.card-body {
-    padding: 0px
-}
-
-.custom-select {
-    width: 100%
-}
-
-.btn2 {
-    margin-left: 10%
-}
-
-input {
-    outline: 0 !important;
-    border-color: #d1d1cf !important
-}
-
-input:focus {
-    border-color: #d1d1cf !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important
-}
-
-select {
-    outline: 0 !important;
-    border-color: #d1d1cf !important
-}
-
-select:focus {
-    border-color: #d1d1cf !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important
-}
-
-.radiobtn {
-    margin-left: 3.5%
-}
-
-.icons {
-    margin: auto !important
-}
-
-.fa {
-    border-radius: 25px;
-    width: 10%;
-    margin-left: 5%;
-    border: solid 2px #dbdad7;
-    margin-top: 5%;
-    text-align: center
-}
-
-
-
-@media only screen and (max-width: 600px) {
-    .card {
-        margin: auto;
-        border: solid 1px #dbdad7;
-        width: 90%;
-        padding-left: 10px !important;
-        padding-bottom: 10px !important;
-        padding-right: 10px !important;
-        padding-top: 0px !important
-    }
-
-    .fa {
-        border-radius: 25px;
-        width: 15%;
-        margin-left: 5%;
-        border: solid 2px #dbdad7;
-        margin-top: 5%;
-        text-align: center
-    }
-}
+      
+      
+      .p2{
+        margin-top: 12%;
+      }
+      .p3{
+        margin-top: 13%;
+      } */
 
       
 

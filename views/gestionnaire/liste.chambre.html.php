@@ -18,6 +18,20 @@
         <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
 
       </header>
+
+      <br>
+      <div class=row>
+            <div class=col-sm-6>
+            <h4 style="margin-left:19%;"><b>Liste des chambres</b></h4>
+
+            </div>
+            <div class=col-sm-6>
+            <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.chambre'?>" role="button"><i class="bi bi-plus"></i>Ajouter une Chambre</a>
+
+            </div>
+            
+        </div>
+        <br> <br>
  <!-- <div class="container mt-5">
    <div class="row">
        <div class="col-md-offset-3">
@@ -208,6 +222,18 @@
 
       </footer>
       <style>
+        .retour{
+            margin-left: -40%;
+            color:white;
+            background-color:#005CA5;
+            border-color:#005CA5;
+
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #005CA5;
+            border-color:#005CA5;
+        }
        .reseau {
         vertical-align: middle;
         border-style: none;

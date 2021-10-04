@@ -231,7 +231,7 @@ function categorie(){
 
 }
 function reservation($nbre=1){
-    $reservation=find_reservation();
+    $reservation=find_reservation_by_gestionnaire();
     $_SESSION['nbre']=$nbre;
     $prestation=find_all_prestation();
 

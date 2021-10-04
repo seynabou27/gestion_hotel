@@ -86,6 +86,36 @@ function valid_nbr_chambre(string $valeur , string $key,array &$arrayErreur){
     } 
 
 }
+//pour le gestionnaire
+function valid_prix_categorie(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }elseif($valeur<=0){
+        $arrayErreur[$key]= 'Saisir un nombre positif';
+    } 
+
+}
+function valid_code_categorie(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }
+
+}
+function valid_nom_categorie(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }
+
+}
+
+function valid_descrip(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }
+
+}
+
+//fin
 
 function validation_dat(string $valeur , string $key,array &$arrayErreur){
     if(est_vide($valeur)) {

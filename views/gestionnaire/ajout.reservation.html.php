@@ -1,9 +1,4 @@
-<?php 
-if (isset($_SESSION['arrayErreur'])){
-    $arrayErreur =$_SESSION['arrayErreur'];
-    unset ($_SESSION['arrayErreur']);
-}
-?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,74 +18,192 @@ if (isset($_SESSION['arrayErreur'])){
       <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
       
       </header>
-      <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>" role="button"><i class="bi bi-arrow-left"></i>Liste catégorie</a>
+      <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation'?>" role="button"><i class="bi bi-arrow-left"></i>Liste réservation</a>
     <br> <br>
       <div class="container bg-light">
         <br> <br>
-        <h5 class="" style="text-align: center;"><b>Ajouter une catégorie</b></h5>
+        <h5 class="" style="text-align: center;"><b>Choisir</b></h5>
         <br> 
 
-        <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
-              <input type="hidden" name="controlleurs" value="gestionnaire"/>
-              <input type="hidden" name="action" value="ajout.categorie"/>
-              <input type="hidden" name="id_categorie" value="<?=isset($categorie['id_categorie']) ? $categorie['id_categorie']:'';?>">     
+        <form method="POST" action="<?=WEB_ROUTE?>">
+          <input type="hidden" name="controlleurs" value="reservation">
+          <input type="hidden" name="action" value="<?=isset($reservat['id_reservation']) ? 'edit':'add.reservation';?>"/>
+          <input type="hidden" name="id_reservation" value="<?=isset($reservat['id_reservation']) ? $reservat['id_reservation']:'';?>">
+                          
           <!---------------- DEBUT--------------------->
           <div class="card shadow mb-4 bg-white rounded">
-        <!--Card-Body-->
-        <div class="card-body">
+    <!--Card-Body-->
+    <div class="card-body">
         <br>
-      
+       <div class="row">
+          <div class="col-sm-6 "> 
+          Catégorie de chambre
+            <br>
+            <select class="browser-default custom-select mb-4" name="nbr_chambre" id="select">
+            <?php foreach ($categorie as $categorie):?>
+                <option value="" disabled="" selected=""></option>
+                <option value="1"><?=$categorie['nom_categorie'] ?></option>
+                    
+                <?php endforeach ?>
+
+            </select>
+          
+            </div> 
+       </div>
+        <div class="row">
+          <div class="col-sm-6 "> 
                 <div class="form-group">
-                <label for="">Nom catégorie</label>
+                <label for="">Nom client</label>
                 <input type="text"
-                class="form-control" name="nom" id="" aria-describedby="helpId" placeholder="">
-                <small class="form-text text-danger"><?php echo isset($arrayErreur['nom'])? $arrayErreur['nom']:'';?></small>
-                </div>       
+                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+                </div>
+            </div> 
+            <div class="col-sm-6 "> 
+                <div class="form-group">
+                <label for="">Téléphone client</label>
+                <input type="text"
+                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+                </div>
+            </div> 
+       </div>
+       <div class="row">
+          <div class="col-sm-6 "> 
+                <div class="form-group">
+                <label for="">Email client</label>
+                <input type="text"
+                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+                </div>
+            </div> 
+       </div>
        <br>
-     
+        <div class="row">
+            <div class="col-sm-6"> 
+              <div class="form-group">
+              Nombre de personne
+                <label for=""></label>
+                <input type="text" class="form-control" name="personne" id="" aria-describedby="helpId" placeholder="" value="<?=isset($reservat['nombre_personne']) ? $reservat['nombre_personne']:'';?>">
+                <small id="helpId" class="form-text text-muted"></small>
+              </div>
+
+            </div>
+            <div class="col-sm-6"> 
+            Nombre de chambre
+            <br>
+              <select class="browser-default custom-select mb-4" name="nbr_chambre" id="select">
+            
+                    <option value="<?=isset($reservat['nombre_chambre']) ? $reservat['nombre_chambre']:'';?>" disabled="" selected=""><?=isset($reservat['nombre_chambre']) ? $reservat['nombre_chambre']:'';?></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+
+
+                </select> </div>
+        </div>
         <!--Third Row-->
         <div class="row">
           <div class="col-sm-6 col-md-6 form-group">
-            Code catégorie
-            <input type="text" name="code" class="form-control" id="date" placeholder="" value="<?=isset($reservat['date_debut_reservation']) ? $reservat['date_debut_reservation']:'';?>">
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['code'])? $arrayErreur['code']:'';?></small>
-
+            Date de debut
+            <input type="date" name="date" class="form-control" id="date" placeholder="Date" value="<?=isset($reservat['date_debut_reservation']) ? $reservat['date_debut_reservation']:'';?>">
             </div>
             <div class="col-sm-6 col-md-6 form-group">
-              Prix
-            <input type="text" name="prix" class="form-control" id="date" placeholder="">
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['prix'])? $arrayErreur['prix']:'';?></small>
-
+              Date de fin
+            <input type="date" name="date_fin" class="form-control" id="date" placeholder="Date">
             </div>
         </div>
-          <div class="form-group">
-            <label for="">Description</label>
-            <textarea class="form-control" name="texte" id="" rows="3"></textarea>
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['texte'])? $arrayErreur['texte']:'';?></small>
-
-          </div>
-                
-      
-            <div class="form-group">
-                <label for=""></label>
-        
-                <i class="bi bi-camera-fill"></i><input type="file" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+        <!--Fourth Row-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6"> 
+              <h6><b>Voulez vous une de nos prestation</b></h6> 
             </div>
-       
+            
+          </div>
+        
+        <?php foreach ($pres as $pres) : ?>
+        <div class="row ">
+            <div class="col-sm-6">  
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="<?=$pres['id_pres']?>" name="prestation[]" id="ck1">
+              <label class="form-check-label" for="ck1"><?=$pres['designation_pres'] ?></label>
+            </div>
+            </div>
+            <div class="col-sm-6"> 
+              <ul>
+                <li><?=$pres['prix_unit'] ?>f</li> 
+              </ul>
+              
+              
+              
 
+            </div>
+            
+       
+        <!--Fifth Row-->
+        </div> 
+        <?php endforeach ?>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6"> 
+              <h6><b>Chambre disponible</b></h6> 
+            </div>
+            <div class="col-sm-6"> 
+              <h6><b>Etat de la réservation</b></h6> 
+            </div>
+            
+          </div>
+        
+        <div class="row ">
+            <div class="col-sm-6"> 
+                <?php foreach ($chambres as $chambres) : ?> 
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<?=$chambres['id_pres']?>" name="prestation[]" id="ck1">
+                <label class="form-check-label" for="ck1"><?=$chambres['numero_chambre'] ?></label>
+                </div>
+                <?php endforeach ?>
+            </div>
+
+            <div class=col-sm-6>
+                <div class="form-group">
+                    <label for="">Etat_reservation</label>
+                    <select class="form-control" name="etat" id=""> 
+                        <option value="<?=isset($reservat['etat_reservation']) ? $reservat['etat_reservation']:'';?>"><?=isset($reservat['etat_reservation']) ? $reservat['etat_reservation']:'';?>En cours</option>
+                        <?php foreach ($reservation as $reservation):?>
+                        <option value="<?=$reservation['etat_reservation'] ?>"><?=$reservation['etat_reservation'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+            </div>
+                
+        </div>
+            
+            
+       
+        <!--Fifth Row-->
          
         <div class="row boutton1">
           <div class="col-md-6">
-          <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
+          <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
           </div>
           <div class="col-md-6">
-            <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="categorie">Je valide</button>
+            <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="reservation">Je valide</button>
 
  
           </div>
           
         </div>
-    
+    </div>
     </div>
     </form>
 </div>
@@ -396,12 +509,12 @@ if (isset($_SESSION['arrayErreur'])){
     margin: auto;
     margin-bottom: auto;
     border: solid 1px #dbdad7;
-    width: 65%;
-    height: 600px;
+    width: 70%;
+    height: 937px;
     padding-left: 34px !important;
     padding-bottom: 10px !important;
     padding-right: 34px !important;
-    padding-top: 20px !important;
+    padding-top: 30px !important;
 }
 
 

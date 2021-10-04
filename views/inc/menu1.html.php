@@ -11,8 +11,19 @@
             <!-- <li class="nav-item">
               <a class="nav-item nav-link " href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>">Accueil <span class="sr-only">(current)</span></a>
             </li> -->
-              <li class="nav-item connect">
-                <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation'?>">Liste_Réservations</a><span class="sr-only">(current)</span></a>
+            <li class="nav-item connect">
+                <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.client'?>">Clients</a><span class="sr-only">(current)</span></a>
+              </li>
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre'?>" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Réservations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation'?>">Liste_Réservations</a><span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.reservation'?>">Ajout_reservation</a><span class="sr-only">(current)</span></a>
+
+                </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.chambre'?>" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -20,10 +31,10 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>">Catalogue_chambres</a><span class="sr-only">(current)</span></a>
-                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.chambre'?>">Liste_chambre</a>
-                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.categorie'?>">Liste_categorie</a>
-                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=ajout.chambre'?>">Ajout_chambre</a>
-                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=ajout.categorie'?>">Ajout_categorie</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre'?>">Liste_chambre</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>">Liste_categorie</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.chambre'?>">Ajout_chambre</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.categorie'?>">Ajout_categorie</a>
 
                 </div>
               </li>
