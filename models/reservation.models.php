@@ -5,11 +5,11 @@
 
 function find_all_reservation(int $offset=0):array{
     $pdo=ouvrir_connexion_bd();
-    $sql="select * from reservation r , chambre ch , user u 
-        where
-        r.id_chambre=ch.id_chambre
-        and
-        r.id_user=u.id_user  limit $offset,".NOMBRE_PAR_PAGE1 ;
+    $sql="select * from reservation r , categorie c, user u 
+    where
+    r.id_categorie=c.id_categorie
+    and
+    r.id_user=u.id_user  limit $offset,".NOMBRE_PAR_PAGE1 ;
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sth->execute();
     $reservation = $sth->fetchAll();
@@ -21,16 +21,25 @@ function find_all_reservation(int $offset=0):array{
 }
 function count_all_reservation():int{
     $pdo=ouvrir_connexion_bd();
-    $sql="select * from reservation r , chambre ch , user u
-        where
-        r.id_chambre=ch.id_chambre
-        and
-        r.id_user=u.id_user
-        ";
+    $sql="select * from reservation r , categorie c, user u 
+    where
+    r.id_categorie=c.id_categorie
+    and
+    r.id_user=u.id_user";
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sth->execute();
     fermer_connexion_bd($pdo);
     return $sth->rowCount();
+}
+function find_all_reservation_by_id($id_reservation):array{
+    $pdo = ouvrir_connexion_bd(); 
+        $sql = " SELECT * from reservation r where r.id_reservation= ?; ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array($id_reservation));
+        //$user = $sth->fetchAll();
+        $reservat= $sth->fetch(PDO::FETCH_ASSOC);
+        fermer_connexion_bd($pdo);
+        return $reservat; 
 }
 
 
@@ -56,8 +65,12 @@ function find_all_reservation_by_etat($id_user,$etat_reservation):array{
 function find_all_reservation_client($id_user,$etat_reservation, int $offset=0):array{
     
     $pdo = ouvrir_connexion_bd(); 
-        $sql = "select DISTINCT * from reservation r where
-        r.id_user=? and r.etat_reservation like ?  limit $offset,".NOMBRE_PAR_PAGE2;
+        $sql = "select * from reservation r ,user u , categorie c
+        where 
+        r.id_categorie=c.id_categorie and
+        r.id_user = u.id_user and
+        r.id_user= ? and 
+        r.etat_reservation like ? limit $offset,".NOMBRE_PAR_PAGE2;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array($id_user,$etat_reservation));
       
@@ -73,8 +86,12 @@ function find_all_reservation_client($id_user,$etat_reservation, int $offset=0):
 function count_all_reservation_client($id_user,$etat_reservation):int{
     
     $pdo = ouvrir_connexion_bd(); 
-        $sql = "select DISTINCT * from reservation r where
-         r.id_user=? and r.etat_reservation like ? ;";
+        $sql = "select * from reservation r ,user u , categorie c
+        where 
+        r.id_categorie=c.id_categorie and
+        r.id_user = u.id_user and
+        r.id_user= ? and 
+        r.etat_reservation like =? ;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array($id_user,$etat_reservation));
         fermer_connexion_bd($pdo);
@@ -169,30 +186,40 @@ function insert_reservation_by_client(array $reservation):int{
     return $dernier_id ;
 }
 // traiter les reservations par etat
-function update_reservation($id_reservation,$etat_reservation):array{
+function update_reservation($reservation):int{
     
     $pdo = ouvrir_connexion_bd(); 
         $sql = "UPDATE reservation r   
                     SET etat_reservation = ? 
                     WHERE r.id_reservation= ?; " ;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_reservation,$etat_reservation));
-      
-        $reser = $sth->fetchAll(PDO::FETCH_ASSOC);
-
+        $sth->execute($reservation);
+        $dernier_id = $pdo->lastInsertId();
         fermer_connexion_bd($pdo);
-        return $reser;
-} 
+        return $dernier_id ;
+    } 
 function find_reservation():array{
     $pdo = ouvrir_connexion_bd(); 
         $sql = "select * from reservation r " ;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
-      
         $reser = $sth->fetchAll(PDO::FETCH_ASSOC);
 
         fermer_connexion_bd($pdo);
         return $reser;
+
+}
+function find_reservation_by_filtre():array{
+    $pdo = ouvrir_connexion_bd(); 
+        $sql = "select * from reservation r 
+        where 
+        r.etat_reservation like= ?" ;
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $filtre= $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        fermer_connexion_bd($pdo);
+        return $filtre;
 
 }
 

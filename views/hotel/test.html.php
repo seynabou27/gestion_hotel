@@ -1,11 +1,6 @@
-<!-- pagination 
+<!--  pagination 
 <?php  
-    /**
- * Calcul du nombre de pages total d'un tableau
- * @param $array
- * @param $nombreElement
- * @return int
- */
+   
 function nombrePageTotal($array, $nombreElement): int {
     $nombrePage = 0;
     $longueurArray = count($array);
@@ -49,8 +44,8 @@ if(isset($_POST['btn_submit'])) {
     if(form_valid($arrayErrors)) {
         unset($_GET['page']);
         ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
-        $arrayValeurs = creer_tableau($_POST['nombre']);
-        $_SESSION['valeurs'] = $arrayValeurs;
+/*         $arrayValeurs = creer_tableau($_POST['nombre']);
+ */        $_SESSION['valeurs'] = $arrayValeurs;
         $nombrePages = nombrePageTotal($arrayValeurs['premier'], 30);
         $arrayPremier = get_element_to_display($arrayValeurs['premier'],$page, 30);
         $nombreValPremier = count($arrayPremier);
@@ -92,4 +87,4 @@ if(isset($_POST['btn_submit'])) {
         <?php endfor; ?>
     </ul>
 </nav>
-?>
+?> -->

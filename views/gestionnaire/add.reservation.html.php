@@ -1,3 +1,6 @@
+<?php var_dump($reservat);
+die();
+ ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,9 +24,9 @@
         <br> 
         <form method="POST" action="<?=WEB_ROUTE?>">
           <input type="hidden" name="controlleurs" value="reservation">
-          <input type="hidden" name="action" value="<?=isset($reservation['id_reservation']) ? 'edit':'page_reservation';?>">
-          <input type="hidden" name="id" value="<?=isset($user['id_user']) ? $user['id_user']:'';?>">
-                                
+          <input type="hidden" name="action" value="<?=isset($reservat['id_reservation']) ? 'edit':'add.reservation';?>"/>
+          <input type="hidden" name="id_reservation" value="<?=isset($reservat['id_reservation']) ? $reservat['id_reservation']:'';?>">
+                          
           <!---------------- DEBUT--------------------->
           <div class="card shadow mb-4 bg-white rounded">
     <!--Card-Body-->
@@ -64,8 +67,8 @@
               <div class="form-group">
               Nombre de personne
                 <label for=""></label>
-                <input type="text" class="form-control" name="personne" id="" aria-describedby="helpId" placeholder="">
-                <small id="helpId" class="form-text text-muted">Help text</small>
+                <input type="text" class="form-control" name="personne" id="" aria-describedby="helpId" placeholder="" value="<?=isset($reservat['nombre_personne']) ? $reservat['nombre_personne']:'';?>">
+                <small id="helpId" class="form-text text-muted"></small>
               </div>
 
             </div>
@@ -74,7 +77,7 @@
             <br>
               <select class="browser-default custom-select mb-4" name="nbr_chambre" id="select">
             
-                    <option value="" disabled="" selected=""></option>
+                    <option value="<?=isset($reservat['nombre_chambre']) ? $reservat['nombre_chambre']:'';?>" disabled="" selected=""><?=isset($reservat['nombre_chambre']) ? $reservat['nombre_chambre']:'';?></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -90,15 +93,23 @@
                 </select> </div>
         </div>
         <div class="row">
-          <div class="col-sm-6"> 
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="">Numero de chambre</label>
+              <input type="text"
+                class="form-control" name="chambre" id="" aria-describedby="helpId" placeholder="">
+              <small id="helpId" class="form-text text-muted"></small>
+            </div>
+             
 
           </div>
           <div class="col-sm-6"> 
             <div class="form-group">
                   <label for="">Etat_reservation</label>
                   <select class="form-control" name="etat" id="">
+                    <option value="<?=isset($reservat['etat_reservation']) ? $reservat['etat_reservation']:'';?>"><?=isset($reservat['etat_reservation']) ? $reservat['etat_reservation']:'';?></option>
                     <?php foreach ($reservation as $reservation):?>
-                    <option value="<?=$reservation['id_reservation'] ?>"><?=$reservation['etat_reservation'] ?></option>
+                    <option value="<?=$reservation['etat_reservation'] ?>"><?=$reservation['etat_reservation'] ?></option>
                     <?php endforeach ?>
                   </select>
             </div>
@@ -112,7 +123,7 @@
         <div class="row">
           <div class="col-sm-6 col-md-6 form-group">
             Date de debut
-            <input type="date" name="date" class="form-control" id="date" placeholder="Date">
+            <input type="date" name="date" class="form-control" id="date" placeholder="Date" value="<?=isset($reservat['date_debut_reservation']) ? $reservat['date_debut_reservation']:'';?>">
             </div>
             <div class="col-sm-6 col-md-6 form-group">
               Date de fin
@@ -155,10 +166,12 @@
         </div>
         <div class="row boutton1">
           <div class="col-md-6">
-          <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
+          <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
           </div>
           <div class="col-md-6">
-          <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="reservation">Je réserve</button>
+<!--           <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="reservation">Je réserve</button>
+ -->          <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="reservation">Enregistrer</button>
+
 <!--           <a href="<?=WEB_ROUTE.'?controlleurs=hotel&views=mesreservation'?>" class="btn btn-primary float-left mt-5 annuler1">Je réserve</a>
  -->
           </div>

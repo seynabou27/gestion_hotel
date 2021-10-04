@@ -22,6 +22,9 @@ require_once(ROUTE_DIR. 'models/role.models.php');
 
 require_once(ROUTE_DIR. 'models/reservation.models.php');
 
+require_once(ROUTE_DIR. 'models/gestionnaire.models.php');
+
+
 
 
 //require_once('inc/autoloadeur.php');

@@ -17,6 +17,22 @@
         
 
     }
+    function find_user_by_id($id_user){
+        $pdo = ouvrir_connexion_bd(); 
+        $sql = " SELECT * from user u where u.id_user= ?; ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array($id_user));
+        //$user = $sth->fetchAll();
+        $user = $sth->fetch(PDO::FETCH_ASSOC);
+        fermer_connexion_bd($pdo);
+        return $user; 
+          
+
+        
+        
+
+    }
+   
     
     function insert_user(array $user):int{
         $pdo = ouvrir_connexion_bd();

@@ -25,9 +25,11 @@ if (isset($_SESSION['arrayErreur'])){
         <br> <br>
         <h5 class="" style="text-align: center;"><b>Formulaire de reservation</b></h5>
         <br> 
-        <form method="POST" action="<?=WEB_ROUTE?>">
-          <input type="hidden" name="controlleurs" value="reservation">
-          <input type="hidden" name="action" value="page_reservation">
+      <form method="POST" action="<?=WEB_ROUTE?>">
+          <input type="hidden" name="controlleurs" value="reservation"/>
+          <input type="hidden" name="action" value="page_reservation"/>
+          <input type="hidden" name="id_reservation" value="<?=isset($reservat['id_reservation']) ? $reservat['id_reservation']:'';?>"/>
+
           <!---------------- DEBUT--------------------->
           <div class="card shadow mb-4 bg-white rounded">
     <!--Card-Body-->
@@ -44,8 +46,10 @@ if (isset($_SESSION['arrayErreur'])){
           </div>
           </div>
           <div class="col-sm-6 debut"> 
+          <?php foreach ($catego as $catego) : ?>
+
             <div>
-              <span class="badge"><h5><b><?= $categorie['nom_categorie']?></h5></b></span>
+              <span class="badge"><h5><b><?= $catego['nom_categorie']?></h5></b></span>
             </div> 
         
       
@@ -59,7 +63,8 @@ if (isset($_SESSION['arrayErreur'])){
               <li>2 Adultes</li>
               <li>32m2</li>
             </ul>
-          </div> 
+          </div>
+          <?php endforeach ?> 
           </div>
         </div> 
         <br> <br>
@@ -117,9 +122,7 @@ if (isset($_SESSION['arrayErreur'])){
             <div class="col-sm-6"> 
               <h6><b>Voulez vous une de nos prestation</b></h6> 
             </div>
-            <div class="col-sm-6"> 
-              <h6><b>Prix</b></h6> 
-            </div>
+            
           </div>
         
         <?php foreach ($prestation as $prestation) : ?>
@@ -130,7 +133,7 @@ if (isset($_SESSION['arrayErreur'])){
               <label class="form-check-label" for="ck1"><?=$prestation['designation_pres'] ?></label>
             </div>
             </div>
-            <div class="col-sm-4"> 
+            <div class="col-sm-4" style="margin-left:-20% "> 
               <ul>
                 <li><?=$prestation['prix_unit'] ?>f</li> 
               </ul>

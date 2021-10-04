@@ -6,15 +6,17 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             catalogue();
         }elseif($_GET['views']=='add.reservation'){
             reservation();
+            //require_once(ROUTE_DIR.'views/gestionnaire/add.reservation.html.php');
 
         }elseif($_GET['views']=='liste.chambre'){
             require_once(ROUTE_DIR.'views/gestionnaire/liste.chambre.html.php');
         }elseif($_GET['views']=='page_reservation'){
             show_prestation();
-            //find_detail_by_reser();
+            //detaille_categorie();
+
             if (est_gestionnaire()) {
                 show_prestation();
-
+                
                 //require_once(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 
             
@@ -27,15 +29,16 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }elseif($_GET['views']=='liste.reservation'){
             $id_user=$_SESSION['userConnect']['id_user'];
             lister_reservation_en_cours(); 
-            //traiter_reservation($id_reservation,$id_user,$etat_reservation);
-        /* }elseif($_GET['views']=='edit'){
-            $_SESSION['id_user'] =$_GET['id_user'];
-            $_SESSION['id_reservation'] =$_GET['id_reservation'];
-            $id = $_SESSION['id_user']['id_reservation'] ;
-            //$reservation =traiter_reservation($id_reservation,$id_user,$etat_reservation)($id);
-            //require_once(ROUTE_DIR. 'views/reservation/add.reservation.html.php');
-         */
+        }elseif($_GET['views']=='edit'){
 
+            $_SESSION['id_reservation'] =$_GET['id_reservation'];
+            $id=$_SESSION['id_reservation'];
+            $reservat=find_all_reservation_by_id($id);
+            /*  var_dump($reservat);
+            die('okkk'); */ 
+            $reservation=reservation();
+           
+            require_once(ROUTE_DIR.'views/gestionnaire/add.reservation.html.php');
         }elseif($_GET['views']=='catalogue_chambre'){
             categorie();
             //filtre_categorie();
@@ -66,11 +69,13 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
  
 				add_reservation($_POST);
 
-			
-			
+		} elseif ($_POST['action']== 'edit'){
+            /* var_dump($_POST);
+            die('okkk');  */ 
+            add_reservation($_POST);
+            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
 
-
-		 }
+    } 
          
 	}
 	
@@ -102,8 +107,15 @@ function add_reservation(array $post):void{
                 $personne,
                
              ];
-             update_reservation($id_reservation,$reservation);
-
+             
+                if (isset($post['id_reservation']) && $post['id_reservation'] != "") {
+                   if (est_gestionnaire()) {
+                    update_reservation($reservation);
+                    header("location:" .WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
+                }
+                }
+             
+             
 
             
             $id_reservation=insert_reservation_by_client($reservation);
@@ -116,6 +128,35 @@ function add_reservation(array $post):void{
        
             $_SESSION['arrayErreur']=$arrayErreur;
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=page_reservation');
+        }
+        
+    }
+    //cote gestionnaire
+    function add_reservation_by_gestionnaire(array $post):void{
+       /*  var_dump($post);
+        die('ohhh'); */
+         extract($post);
+        $date=date_format(date_create($date),'Y-m-d');
+        $date_fin=date_format(date_create($date_fin),'Y-m-d');
+        if (!empty($post['id_reservation'])) {
+            $reservation=[
+                $date,
+                0,
+               "en cour",
+               (int)$_SESSION['userConnect']['id_user'],
+               $date_fin,
+               date_format(date_create(),'Y-m-d'),
+               $nbre_chambre,
+                $personne,
+                $post['id_reservation']
+
+               
+             ];
+             update_reservation($id_reservation,$reservation);
+            
+            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=add.reservation');
+               exit();
+
         }
         
     }
@@ -198,9 +239,10 @@ function reservation($nbre=1){
     require_once(ROUTE_DIR.'views/gestionnaire/add.reservation.html.php');
 
 }
-function filtre_categorie (){
-    if (isset($_POST['action'])=='btn'){
-        $catego=find_filtrer_categorie();
+function filtre_etat(){
+    if($_POST['envoyer']){
+        $filtre= $_POST['filtre'];
+        find_reservation_by_filtre();
     }
    
 }
@@ -234,13 +276,12 @@ function liste_reservation(){
 function lister_reservation_en_cours(){
     $id_user=$_SESSION['userConnect']['id_user'];
     $count=count_all_reservation();
-    $par_page=NOMBRE_PAR_PAGE;
+    $par_page=NOMBRE_PAR_PAGE1;
     $currentPage=isset ($_GET['page'])?$_GET['page']: 1;
     $pages=ceil($count/$par_page);
     $premier=($currentPage * $par_page) - $par_page;
     $rows=find_all_reservation($premier); 
     $reservation=$rows["data"];
-  
     require_once(ROUTE_DIR.'views/gestionnaire/liste.reservation.html.php');
 }
 //traiter les reservations
@@ -277,17 +318,10 @@ function reserver_chambre_by_categorie(array $data):void{
 
 }
 function show_prestation($nbre=1){
+    $id_user=$_SESSION['userConnect']['id_user'];
 	$prestation=find_all_prestation();
-	$_SESSION['nbre']=$nbre;
 	require(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 }
-/* function find_detail_by_reser(){
-    $id=$_GET['id_categorie']; 
-    $categorie=find_categorie_by_id_by_reser($id);
-  
-	require(ROUTE_DIR.'views/reservation/page_reservation.html.php');
-
-} */
 
 
 

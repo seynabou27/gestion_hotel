@@ -16,8 +16,22 @@
       </header>
 
       <div class="container">
+      <!-- <div class="row" style="margin-left:28% ; margin-top:3%;">
+       <form method="POST" action="<?=WEB_ROUTE?>" class="form-inline">
+				  <div class="form-group">
+					  <label for=""></label>
+					  <input type="" name="filtre" id="" class="form-control" placeholder="Filtrer par etat" aria-describedby="helpId">
+					  <small id="helpId" class="text-muted"></small>
+				  </div>
+          <div>
+          <button type="button" name="envoyer" style="margin-left: 7%;" class="btn btn-outline-primary">Recherche</button>
+
+          </div>
+
+			  </form>
+		  </div> -->
         <br> 
-      <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&add.reservation&id_reservation&id_user='.$reservation['id_reservation'].' '.$reservation['id_user']?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
+      <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit='.$reservat['id_reservation'].' '.$reservation['id_user']?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
         <br> <br>
           <table class="table table-striped">
           <thead>
@@ -42,9 +56,9 @@
               <td><?=date_format(date_create($reservation['date_reservation']),'d-m-Y')?></td>
               <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
               <td><?=$reservation['etat_reservation']?></td>
-              <td><a name="" id="" class="btn btn-success" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=add.reservation&id_reservation&id_user='.$reservation['id_reservation'].' '.$reservation['id_user']?>" role="button">Modifier</a></td>
+              <td><a name="" id="" class="btn btn-success" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&id_reservation='.$reservation['id_reservation'] ?>" role="button">Modifier</a></td>
             </tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
 
           </tbody>
         </table>
@@ -63,7 +77,6 @@
     </ul>
 
     </nav>
-        
         
       </div>
       <footer class="footer">

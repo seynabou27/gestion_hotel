@@ -30,7 +30,7 @@
     //les categorie dans catalogue de chambre
     function find_all_categorie_by_catalogue():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from categorie c ; ";
+        $sql = "select * from categorie c";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $categorie = $sth->fetchAll();
@@ -127,6 +127,23 @@
         fermer_connexion_bd($pdo);
 
         return $chambre;
+
+    }
+    function find_catego_by_id($categorie):array{
+        $pdo = ouvrir_connexion_bd();
+        //Execution d'une requete non prepare avec un jocker qui est nommé
+        
+        //Execution d'une requete prepare avec un jocker qui est nommé
+        $sql = "select * from categorie c , chambre ch where
+        ch.id_categorie=c.id_categorie
+        and
+         c.id_categorie= ? ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute($categorie);
+        $categorie= $sth->fetch();
+        fermer_connexion_bd($pdo);
+
+        return $categorie;
 
     }
     function find_chambre_by_id(int $id_chambre):array{

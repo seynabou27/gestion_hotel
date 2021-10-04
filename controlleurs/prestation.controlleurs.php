@@ -18,7 +18,9 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             require_once(ROUTE_DIR.'views/security/inscription.html.php');
 
         }elseif($_GET['views']=='liste.reservation'){
+          
             lister_reservation_en_cours(); 
+    
         }elseif($_GET['views']=='liste.prestation'){
             liste_prestation(); 
 

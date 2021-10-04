@@ -19,6 +19,11 @@ if (isset ($_REQUEST['controlleurs'])){
      
          require_once (ROUTE_DIR.'controlleurs/reservation.controlleurs.php');
 
+    }elseif ($_REQUEST['controlleurs']=='gestionnaire'){
+     
+          require_once (ROUTE_DIR.'controlleurs/gestionnaire.controlleurs.php');
+
+
     }elseif ($_REQUEST['controlleurs']=='prestation'){
      
      require_once (ROUTE_DIR.'controlleurs/prestation.controlleurs.php');
