@@ -56,13 +56,9 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
     }
 } elseif($_SERVER['REQUEST_METHOD']=='POST'){
     if (isset($_POST['action'])) {
-		if ($_POST['action']=="page_reservation") {
-            /* if(isset($_POST['nbre'])){
-				show_prestation()($_POST['prestation']);
-			}else{ 
-              */  
+		if ($_POST['action']=="ajout.categorie") {
  
-				add_reservation($_POST);
+				add_categorie($_POST);
 
 		} elseif ($_POST['action']== 'edit'){
             /* var_dump($_POST);
@@ -108,37 +104,67 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
     }
 
     //inserer catégorie
+    //`code_categorie`, `description`, `tarif_unit`, `nom_categorie`
     function add_categorie(array $post):void{
         $arrayErreur=array();
          extract($post);
          valid_prix_categorie($prix,'prix', $arrayErreur);
         valid_code_categorie($code, 'code',$arrayErreur );
         valid_nom_categorie($nom, 'nom',$arrayErreur );
-        valid_nom_categorie($nom, 'nom',$arrayErreur );
+        //valid_descrip($description, 'texte',$arrayErreur );
         if (form_valid($arrayErreur)) {
-            $reservation=[
-                $date,
-                0,
-               "en cour",
-               (int)$_SESSION['userConnect']['id_user'],
-               $date_fin,
-               date_format(date_create(),'Y-m-d'),
-               $nbre_chambre,
-                $personne,
+            $categorie=[
+                $code,
+                $texte,
+                $prix,
+                $nom
                
              ];
             
             
-            $id_reservation=insert_reservation_by_client($reservation);
+            $id_categorie=insert_categorie($categorie);
 
             
-            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=mesreservation');
+            header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie');
                exit();
 
         }else{
        
             $_SESSION['arrayErreur']=$arrayErreur;
-            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=page_reservation');
+            header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.categorie');
+        }
+        
+    }
+
+     //inserer chambre
+    //`code_categorie`, `description`, `tarif_unit`, `nom_categorie`
+    function add_chambre(array $post):void{
+        $arrayErreur=array();
+         extract($post);
+         /* valid_prix_categorie($prix,'prix', $arrayErreur);
+        valid_code_categorie($code, 'code',$arrayErreur );
+        valid_nom_categorie($nom, 'nom',$arrayErreur ); */
+        //valid_descrip($description, 'texte',$arrayErreur );
+        if (form_valid($arrayErreur)) {
+            $categorie=[
+                $code,
+                $texte,
+                $prix,
+                $nom
+               
+             ];
+            
+            
+            $id_chambre=insert_chambre_by_gestionnaire($chambre);
+
+            
+            header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre');
+               exit();
+
+        }else{
+       
+            $_SESSION['arrayErreur']=$arrayErreur;
+            header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.chambre');
         }
         
     }

@@ -108,13 +108,13 @@ function valid_nom_categorie(string $valeur , string $key,array &$arrayErreur){
 
 }
 
-function valid_descrip(string $valeur , string $key,array &$arrayErreur){
+/* function valid_descrip(string $valeur , string $key,array &$arrayErreur){
     if (est_vide($valeur)) {
         $arrayErreur[$key]= 'le champs est obligatoire';
     }
 
 }
-
+ */
 //fin
 
 function validation_dat(string $valeur , string $key,array &$arrayErreur){
