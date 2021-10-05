@@ -107,6 +107,23 @@ function valid_nom_categorie(string $valeur , string $key,array &$arrayErreur){
     }
 
 }
+function valid_numero(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    
+    }elseif($valeur<=0){
+        $arrayErreur[$key]= 'Saisir un nombre positif';
+    } 
+
+}
+function valid_numero_chambre(string $valeur , string $key,array &$arrayErreur){
+    if (est_vide($valeur)) {
+        $arrayErreur[$key]= 'le champs est obligatoire';
+    }elseif($valeur<=0){
+        $arrayErreur[$key]= 'Saisir un nombre positif';
+    } 
+
+}
 
 /* function valid_descrip(string $valeur , string $key,array &$arrayErreur){
     if (est_vide($valeur)) {

@@ -18,8 +18,7 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             require_once(ROUTE_DIR.'views/gestionnaire/ajout_prestation.html.php');
 
         }elseif($_GET['views']=='ajout.chambre'){
-            require_once(ROUTE_DIR.'views/gestionnaire/ajout.chambre.html.php');
-
+            chambre_by_gestionnaire();
         }elseif($_GET['views']=='ajout.categorie'){
             require_once(ROUTE_DIR.'views/gestionnaire/ajout.categorie.html.php');
 
@@ -66,7 +65,10 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             add_reservation($_POST);
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
 
-    } 
+    } elseif($_POST['action']=="ajout.chambre"){
+
+        add_chambre($_POST);
+    }
          
 	}
 	
@@ -137,25 +139,24 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
     }
 
      //inserer chambre
-    //`code_categorie`, `description`, `tarif_unit`, `nom_categorie`
+    //`numero_chambre`, `telephone_chambre`,`etat_chambre`
     function add_chambre(array $post):void{
         $arrayErreur=array();
          extract($post);
-         /* valid_prix_categorie($prix,'prix', $arrayErreur);
-        valid_code_categorie($code, 'code',$arrayErreur );
-        valid_nom_categorie($nom, 'nom',$arrayErreur ); */
-        //valid_descrip($description, 'texte',$arrayErreur );
+         //valid_numero($chambre,'numero', $arrayErreur);
+        valid_numero_chambre($numero,'numero_chambre',$arrayErreur );
+        
         if (form_valid($arrayErreur)) {
-            $categorie=[
-                $code,
-                $texte,
-                $prix,
-                $nom
+            $chambre=[
+                $numero_chambre,
+                $numero,
+                $etat
                
              ];
             
-            
-            $id_chambre=insert_chambre_by_gestionnaire($chambre);
+             var_dump($id_chambre=insert_chambre_by_gestionnaire($chambre));
+             die('okkk');
+            //$id_chambre=insert_chambre_by_gestionnaire($chambre);
 
             
             header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre');
@@ -177,6 +178,12 @@ function categorie(){
 function categorie_by_gestionnaire(){
     $categorie=find_all_categorie_by_catalogue();
     require_once(ROUTE_DIR.'views/gestionnaire/liste.categorie.html.php');
+
+}
+function chambre_by_gestionnaire(){
+    $categorie=find_all_categorie_by_catalogue();
+    $chambre=find_all_chambre_by_gestionnaire();
+    require_once(ROUTE_DIR.'views/gestionnaire/ajout.chambre.html.php');
 
 }
 function reservation($nbre=1){

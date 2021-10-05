@@ -56,8 +56,8 @@ if (isset($_SESSION['arrayErreur'])){
                     <div class="form-group">
                       <label for="">Numéro chambre</label>
                       <input type="text"
-                        class="form-control" name="numero" id="" aria-describedby="helpId" placeholder="">
-                        <small class="form-text text-danger"><?php echo isset($arrayErreur['numero'])? $arrayErreur['numero']:'';?></small>
+                        class="form-control" name="numero_chambre" id="" aria-describedby="helpId" placeholder="">
+                        <small class="form-text text-danger"><?php echo isset($arrayErreur['numero_chambre'])? $arrayErreur['numero_chambre']:'';?></small>
                     </div>
                     
                 </div>
@@ -71,15 +71,18 @@ if (isset($_SESSION['arrayErreur'])){
         <div class="row">
           <div class="col-sm-6 col-md-6 form-group">
             Numéro
-            <input type="text" name="code" class="form-control" id="" placeholder="" value="<?=isset($reservat['date_debut_reservation']) ? $reservat['date_debut_reservation']:'';?>">
-            <small class="form-text text-danger"><?php echo isset($arrayErreur['code'])? $arrayErreur['code']:'';?></small>
+            <input type="text" name="numero" class="form-control" id="" placeholder="" value="">
+            <small class="form-text text-danger"><?php echo isset($arrayErreur['numero'])? $arrayErreur['numero']:'';?></small>
 
             </div>
             <div class="col-sm-6 col-md-6 form-group">
              <div class="form-group">
                <label for="">Etat</label>
                <select class="form-control" name="etat" id="">
-                 <option></option>
+               <?php foreach ($chambre as $chambre):?>
+                 <option><?=$chambre['etat_chambre'] ?></option>
+                 <?php endforeach ?>
+
                </select>
              </div>
             <small class="form-text text-danger"><?php echo isset($arrayErreur['etat'])? $arrayErreur['etat']:'';?></small>
