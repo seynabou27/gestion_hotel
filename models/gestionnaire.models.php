@@ -83,7 +83,18 @@
         fermer_connexion_bd($pdo);
         return $dernier_id ;
     }
-
+    function insert_pres(array $prestation):int{
+     
+        $pdo = ouvrir_connexion_bd();
+        $sql="INSERT INTO `prestation` (`designation_pres`, `prix_unit`, `code_pres`) 
+        VALUES (?, ?, ?);";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+      $sth->execute($prestation);
+      $dernier_id = $pdo->lastInsertId();
+      var_dump($dernier_id);
+      fermer_connexion_bd($pdo);
+      return $dernier_id ;
+      }  
 
 
 

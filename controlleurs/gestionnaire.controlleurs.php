@@ -65,7 +65,9 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             add_reservation($_POST);
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
 
-    } elseif($_POST['action']=="ajout.chambre"){
+    } elseif($_POST['action']== "ajout.chambre"){
+        /* var_dump($_POST);
+            die('okkk');  */ 
 
         add_chambre($_POST);
     }
@@ -148,15 +150,16 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         
         if (form_valid($arrayErreur)) {
             $chambre=[
-                $numero_chambre,
+               $numero_chambre,
                 $numero,
-                $etat
+                "disponible"
                
              ];
             
-             var_dump($id_chambre=insert_chambre_by_gestionnaire($chambre));
-             die('okkk');
-            //$id_chambre=insert_chambre_by_gestionnaire($chambre);
+             
+            $id_chambre=insert_chambre_by_gestionnaire($chambre);
+           /* var_dump($chambre);
+             die('okkk'); */
 
             
             header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre');

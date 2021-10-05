@@ -32,7 +32,7 @@ if (isset($_SESSION['arrayErreur'])){
         <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
               <input type="hidden" name="controlleurs" value="gestionnaire"/>
               <input type="hidden" name="action" value="ajout.chambre"/>
-              <input type="hidden" name="id_chambre" value="<?=isset($categorie['id_chambre']) ? $categorie['id_chambre']:'';?>">     
+              <input type="hidden" name="id_chambre" value="<?=isset($chambre['id_chambre']) ? $chambre['id_chambre']:'';?>">     
           <!---------------- DEBUT--------------------->
           <div class="card shadow mb-4 bg-white rounded">
         <!--Card-Body-->

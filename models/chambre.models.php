@@ -1,11 +1,13 @@
 <?php 
     
 //fonction select
-
+//SELECT * from chambre ch, categorie c  WHERE c.id_categorie=ch.id_categorie
+//select * from chambre ch ,categorie c ,user u
+//where ch.id_categorie=c.id_categorie and ch.id_user=u.id_user;
     function find_all_chambre():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "select * from chambre ch ,categorie c ,user u
-        where ch.id_categorie=c.id_categorie and ch.id_user=u.id_user;";
+        $sql = "SELECT * from chambre ch; 
+            ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $chambre = $sth->fetchAll();

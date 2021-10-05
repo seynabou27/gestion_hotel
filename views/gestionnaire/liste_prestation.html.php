@@ -12,12 +12,27 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
   </head>
   <body>
       <header>
         <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
 
       </header>
+
+      <div class=row>
+            <div class=col-sm-6>
+            <h4><b>Liste des prestations</b></h4>
+
+            </div>
+            <div class=col-sm-6>
+            <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout_prestation'?>" role="button"><i class="bi bi-plus"></i>Ajouter une prestation</a>
+
+            </div>
+            
+        </div>
+        <br> <br> <br>
 
      <div class="container      ">
      <table class="table table-striped">
@@ -46,7 +61,6 @@
           <td><a href="#"><?=$prestation['designation_pres']?></a></td> 
            <td><a href="#"><?=$prestation['code_pres'] ?></a></td>    
            <td><a href="#"><?=$prestation['prix_unit']?></a></td> 
-           <td><a href="#"><?=$prestation['prenom_user'].' '.$prestation['nom_user']?></a></td> 
                          
            
          </tr>
@@ -178,6 +192,19 @@
 
       </footer>
       <style>
+
+          .retour{
+            margin-left: -40%;
+            color:white;
+            background-color:#005CA5;
+            border-color:#005CA5;
+
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #005CA5;
+            border-color:#005CA5;
+        }
        .reseau {
         vertical-align: middle;
         border-style: none;

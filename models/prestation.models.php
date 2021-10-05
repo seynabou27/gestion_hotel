@@ -37,16 +37,5 @@ function find_all_prestation_by_client():array{
 
 
 
-function insert_pres(array $reservation):int{
-     
-  $pdo = ouvrir_connexion_bd();
-  $sql="INSERT INTO `reservation_prestation` (`id_reservation`, `id_pres`) 
-  VALUES (?, ?)";
-  $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-$sth->execute($reservation);
-$dernier_id = $pdo->lastInsertId();
-var_dump($dernier_id);
-fermer_connexion_bd($pdo);
-return $dernier_id ;
-}  
+
 ?>

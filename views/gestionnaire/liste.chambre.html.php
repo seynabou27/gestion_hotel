@@ -12,6 +12,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
   </head>
   <body>
       <header>
@@ -66,10 +68,15 @@
      <table class="table table-striped">
        <thead>
          <tr>
-           <th scope="col">Client</th>
            <th scope="col">numero_Chambre</th>
            <th scope="col">Categorie</th>
-           <th scope="col">prix_chambre</th>
+           <th scope="col">Numero téléphone</th>
+           <th scope="col">Etat</th>
+           <th scope="col">Action</th>
+           <th scope="col"></th>
+
+
+
 
 
            
@@ -86,10 +93,13 @@
          $chambre=find_all_chambre(); foreach ($chambre as $chambre):
          ?>
          <tr>
-           <td><a href="#"><?=$chambre['nom_user'].' '.$chambre['prenom_user']?></a></td> 
-           <td><a href="#"><?=$chambre['numero_chambre'] ?></a></td>
-           <td><a href="#"><?=$chambre['nom_categorie']?></a></td>     
-           <td><a href="#"><?=$chambre['tarif_unit']?></a></td> 
+           <td><?=$chambre['numero_chambre'] ?></td>
+           <td><?=$chambre['id_chambre']?></td>     
+           <td><?=$chambre['telephone_chambre']?></td> 
+           <td class=""><?=$chambre['etat_chambre']?></td>
+           <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-pencil-fill"></i></a></td> <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-trash"></i></a></td>
+
+
                          
            
          </tr>
