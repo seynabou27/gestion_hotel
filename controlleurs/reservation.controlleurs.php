@@ -48,8 +48,6 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             if (est_client()) {
                  liste_reservation($id_user=$_SESSION['userConnect']['id_user']);
 
-            }else {
-                catalogue();
             }
 
         }
@@ -61,27 +59,19 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
     }
 } elseif($_SERVER['REQUEST_METHOD']=='POST'){
     if (isset($_POST['action'])) {
-		if ($_POST['action']=="page_reservation") {
-            /* if(isset($_POST['nbre'])){
-				show_prestation()($_POST['prestation']);
-			}else{ 
-              */  
+		if ($_POST['action']=="page_reservation") {  
  
 				add_reservation($_POST);
 
-		} elseif ($_POST['action']== 'edit'){
-            /* var_dump($_POST);
-            die('okkk');  */ 
-            add_reservation($_POST);
+		} elseif ($_POST['action']== 'edit'){ 
+            add_reservation_by_gestionnaire($_POST);
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
 
     } 
          
 	}
 	
-	} /* elseif ($_POST['action']== 'liste.reservation'){
-        header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
-    } */
+	} 
 
 //ajout reservation
 //reservation` (`date_debut_reservation`, `montant_paye`,`etat_reservation`, `id_user`, `date_fin_reservation`, 
@@ -108,15 +98,6 @@ function add_reservation(array $post):void{
                
              ];
              
-                if (isset($post['id_reservation']) && $post['id_reservation'] != "") {
-                   if (est_gestionnaire()) {
-                    update_reservation($reservation);
-                    header("location:" .WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
-                }
-                }
-             
-             
-
             
             $id_reservation=insert_reservation_by_client($reservation);
 
@@ -124,6 +105,43 @@ function add_reservation(array $post):void{
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=mesreservation');
                exit();
 
+        }else{
+       
+            $_SESSION['arrayErreur']=$arrayErreur;
+            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=page_reservation');
+        }
+        
+    }
+    function add_reservation_by_gestionnaire(array $post):void{
+        $arrayErreur=array();
+         extract($post);
+        if (form_valid($arrayErreur)) {
+           
+                if (isset($post['id_reservation']) ) {
+                   if (est_gestionnaire()) {
+                        $reservation=[
+                            date_format(date_create($date),'Y-m-d'),
+                            $etat,
+                            $date_fin,
+                            date_format(date_create(),'Y-m-d'),
+                            $nbr_chambre,
+                            $personne,
+                            (int)$_POST['id_reservation']
+                        ];
+
+                        update_reservation($reservation);
+                        header("location:" .WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
+                        exit;
+                    }
+                }
+             
+             
+
+            
+
+            
+            
+ 
         }else{
        
             $_SESSION['arrayErreur']=$arrayErreur;
@@ -163,12 +181,12 @@ function liste_reservation(){
    
    
     $id_user=$_SESSION['userConnect']['id_user'];
-    $count=count_all_reservation_client($id_user,"en cour");
+    $count=count_all_reservation_client();
     $par_page=NOMBRE_PAR_PAGE2;
     $currentPage=isset ($_GET['page'])?$_GET['page']: 1;
     $pages=ceil($count/$par_page);
     $premier=($currentPage * $par_page) - $par_page;
-    $rows=find_all_reservation_client($id_user,"en cour",$premier); 
+    $rows=find_all_reservation_client($premier); 
     $reservat=$rows["data"];
   
    

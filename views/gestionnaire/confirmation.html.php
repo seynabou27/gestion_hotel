@@ -9,93 +9,25 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
   </head>
   <body>
       <header>
       <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
+      
       </header>
-      <div class="container-fluid">
-      <!-- <div class="row" style="margin-left:28% ; margin-top:3%;">
-       <form method="POST" action="<?=WEB_ROUTE?>" class="form-inline">
-				  <div class="form-group">
-					  <label for=""></label>
-					  <input type="" name="filtre" id="" class="form-control" placeholder="Filtrer par etat" aria-describedby="helpId">
-					  <small id="helpId" class="text-muted"></small>
-				  </div>
-          <div>
-          <button type="button" name="envoyer" style="margin-left: 7%;" class="btn btn-outline-primary">Recherche</button>
-
-          </div>
-
-			  </form>
-		  </div> -->
-        <br> 
-        <div class="row">
-          <div class="col-md-4">
-            <h4><b>Liste réservation</b></h4>            
-          </div>
-          <div class="col-md-4">
-            <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.reservation'?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
-
-          </div>
-        </div>
-        <br> <br>
-          <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Client</th>
-              <th scope="col">categorie</th>
-              <th scope="col">Nbr.chambre</th>
-              <th scope="col">Nbr.personne</th>
-              <th scope="col">Date reservation</th>
-              <th scope="col">Periode</th>
-              <th scope="col">Etat</th>
-              <th scope="col">Action</th>
-              <th scope="col"></th>
 
 
 
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($reservation as $reservation):?>
-            <tr>
-              <td><a href="#"><?=$reservation['nom_user'].' '.$reservation['prenom_user'].' '.$reservation['numero_telephone']?></a></td>  
-              <td><a href="#"><?=$reservation['nom_categorie']?></a></td>
-          
-              <td><a href="#"><?=$reservation['nombre_chambre']?></a></td>
-              <td><a href="#"><?=$reservation['nombre_personne']?></a></td>
+<div class="card text-left bg-primary">
+              <div class="card-body ">
+                <h4 class="card-title">Confirmer</h4>
+                <p class="card-text">Supression</p>
+              </div>
+              <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation'?>" class="btn btn-warning active" role="button">NON</a>
+              <a href="<?=WEB_ROUTE.'?controlleurs=reservation&views=confirme&id_reservation='.$reservation['id_reservation']?>" class="btn btn-danger active" role="button">OUI</a>
+            </div>
 
-              <td><?=date_format(date_create($reservation['date_reservation']),'d-m-Y')?></td>
-              <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
-              <td><?=$reservation['etat_reservation']?></td>
-              <td><a name="" id="" class="btn b" style="background-color: #005CA5; color:white;" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&id_reservation='.$reservation['id_reservation'] ?>" role="button">Gérer</a></td> <td><a name="" id="" class="btn" href="<?= WEB_ROUTE.'?controlleurs=gestionnaire&views=supprimer&id_reservation='.$reservation['id_reservation']?>" role="button"><i class="bi bi-trash"></i></a></td>
-
-            </tr>
-            <?php endforeach ?>
-
-          </tbody>
-        </table>
-        <nav>
-      <ul class="pagination">
-        <li class="page-item  <?= ($currentPage == 1) ? "disabled" : "" ?>">
-          <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation&page='. ($currentPage - 1) ?>" class="page-link"> «Précédente</a>
-        </li>
-        <?php for($i=1;$i<=$pages;$i++):?>
-        <li class="page-item"><a class="page-link" href="<?= WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation&page='.$i?>"><?=$i?></a></li>
-        <?php endfor ?>
-                 
-        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-          <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation&page='.($currentPage + 1) ?>" class="page-link">»Suivante</a>
-        </li>
-    </ul>
-
-    </nav>
-        
-      </div>
-      <footer class="footer">
+            <footer class="footer">
        <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
   <!-- Section: Social media -->
@@ -219,6 +151,9 @@
       </footer>
 
       <style>
+        .debut{
+          margin-top: 3%;
+        }
         .reseau {
         vertical-align: middle;
         border-style: none;
@@ -279,69 +214,27 @@
         background-color:white;
         border-color:#005CA5 ;
       }
+      .annuler1{
+        color:white;
+        background-color:#005CA5;
+        margin-right: 3%;
+        width: 60%;
+      }
+      .annuler{
+        color:#005CA5;
+        background-color:white;
+        border-color:#005CA5 ;
+        width: 60%;
+
+      }
+      
       .btn:hover {
       color: #fff;
       }
-      .gauche .btn:hover {
-        color: #005CA5;
-      }
-      .slide1{
-        height: 400px;
-      }
-      .partie2{
-        padding: 3%;
-      }
+      
       .boutton{
-        margin-right: -30%;
-      }
-      .partie3{
-        display: flex;
-        margin-top: -10%;
-      }
-      .card-deck{
-        margin-top: 9%;
-        margin: 12%;
-      }
-      .titre{
-        text-align: center;
-      }
-      .image{
-        display: contents;
-        text-align: center;
-      }
-      .titre1{
-        text-align: center;
-      } 
-      .etoile{
         margin-top: 5%;
-        margin-left: 6%;
       }
-      .p1{
-        margin-top: 4%;
-      }
-      .wifi{
-        margin-top: 5%;
-
-      }
-      .mobile{
-        margin-top: 2%;
-      }
-      .lit1{
-        
-        padding-top: 8%;
-      }
-      .lit2{
-        padding-top: 8%;
-      }
-     
-      .obt{
-        margin-top: -5%;
-        color: white;
-      }
-      .obt1{
-        color: white;
-      }
-
       </style>
 
       

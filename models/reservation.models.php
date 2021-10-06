@@ -62,7 +62,7 @@ function find_all_reservation_by_etat($id_user,$etat_reservation):array{
 }
 //les reservations du client
 
-function find_all_reservation_client($id_user,$etat_reservation, int $offset=0):array{
+function find_all_reservation_client($reservation, int $offset=0):array{
     
     $pdo = ouvrir_connexion_bd(); 
         $sql = "select * from reservation r ,user u , categorie c
@@ -72,7 +72,7 @@ function find_all_reservation_client($id_user,$etat_reservation, int $offset=0):
         r.id_user= ? and 
         r.etat_reservation like ? limit $offset,".NOMBRE_PAR_PAGE2;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_user,$etat_reservation));
+        $sth->execute(array($reservation));
       
         $reser = $sth->fetchAll(PDO::FETCH_ASSOC);
 
@@ -83,7 +83,7 @@ function find_all_reservation_client($id_user,$etat_reservation, int $offset=0):
         ];
         
 }
-function count_all_reservation_client($id_user,$etat_reservation):int{
+function count_all_reservation_client($reservation):int{
     
     $pdo = ouvrir_connexion_bd(); 
         $sql = "select * from reservation r ,user u , categorie c
@@ -91,9 +91,9 @@ function count_all_reservation_client($id_user,$etat_reservation):int{
         r.id_categorie=c.id_categorie and
         r.id_user = u.id_user and
         r.id_user= ? and 
-        r.etat_reservation like =? ;";
+        r.etat_reservation like ? ;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_user,$etat_reservation));
+        $sth->execute(array($reservation));
         fermer_connexion_bd($pdo);
         return $sth->rowCount();
 }
@@ -186,18 +186,18 @@ function insert_reservation_by_client(array $reservation):int{
     return $dernier_id ;
 }
 // traiter les reservations par etat
-function update_reservation($reservation):int{
+/* function update_reservation( array $reservation):int{
     
     $pdo = ouvrir_connexion_bd(); 
         $sql = "UPDATE reservation r   
-                    SET etat_reservation = ? 
+                    SET date_debut_reservation = ? ,etat_reservation = ? ,
+                        date_fin_reservation = ? ,date_validation = ? ,nombre_chambre = ? ,nombre_personne = ? 
                     WHERE r.id_reservation= ?; " ;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute($reservation);
-        $dernier_id = $pdo->lastInsertId();
         fermer_connexion_bd($pdo);
-        return $dernier_id ;
-    } 
+        return $sth -> rowCount();
+    } */
 function find_reservation():array{
     $pdo = ouvrir_connexion_bd(); 
         $sql = "select * from reservation r " ;

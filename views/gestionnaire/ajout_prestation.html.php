@@ -23,7 +23,7 @@ if (isset($_SESSION['arrayErreur'])){
       <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
       
       </header>
-      <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre'?>" role="button"><i class="bi bi-arrow-left"></i>Liste des prestations</a>
+      <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste_prestation'?>" role="button"><i class="bi bi-arrow-left"></i>Liste des prestations</a>
       <div class="container bg-light">
         <br> 
         <h5 class="" style="text-align: center;"><b>Ajouter une catégorie</b></h5>

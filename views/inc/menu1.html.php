@@ -8,9 +8,10 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <?php if (est_gestionnaire()) :?>
             <div class="navbar-nav ">
-            <!-- <li class="nav-item">
-              <a class="nav-item nav-link " href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>">Accueil <span class="sr-only">(current)</span></a>
-            </li> -->
+            <li class="nav-item connect">
+                <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=tableau_bord'?>">Tableau de bord</a><span class="sr-only">(current)</span></a>
+              </li>
+
             <li class="nav-item connect">
                 <a class="nav-link active" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.client'?>">Clients</a><span class="sr-only">(current)</span></a>
               </li>

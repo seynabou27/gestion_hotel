@@ -1,6 +1,4 @@
-<?php var_dump($reservat);
-die();
- ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +19,11 @@ die();
       <div class="container bg-light">
         <br> <br>
         <h5 class="" style="text-align: center;"><b>Formulaire de reservation</b></h5>
-        <br> 
+        <br>
+        
+        <?php  $reservat=find_all_reservation_by_id($_GET['id_reservation']); 
+               $chambre=find_chambre_by_categorie_and_etat($reservat['id_categorie']);
+                            //var_dump($reservat); die;?> 
         <form method="POST" action="<?=WEB_ROUTE?>">
           <input type="hidden" name="controlleurs" value="reservation">
           <input type="hidden" name="action" value="<?=isset($reservat['id_reservation']) ? 'edit':'add.reservation';?>"/>
@@ -127,7 +129,7 @@ die();
             </div>
             <div class="col-sm-6 col-md-6 form-group">
               Date de fin
-            <input type="date" name="date_fin" class="form-control" id="date" placeholder="Date">
+            <input type="date" name="date_fin" class="form-control" id="date" placeholder="Date" value="<?=isset($reservat['date_fin_reservation']) ? $reservat['date_fin_reservation']:'';?>">
             </div>
         </div>
         <!--Fourth Row-->

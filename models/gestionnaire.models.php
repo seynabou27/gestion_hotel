@@ -18,20 +18,7 @@
         fermer_connexion_bd($pdo);
         return $prestation;
     }
-    function find_chambre_disponible_by_gestionnaire():array{
-        $pdo = ouvrir_connexion_bd();
-        $sql = "select * from image i ,categorie c , chambre ch
-        where i.id_categorie=c.id_categorie and
-                ch.id_categorie=c.id_categorie and
-
-         ch.etat_chambre=?";
-        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array('disponible'));
-        $chambredispo = $sth->fetchAll();
-        fermer_connexion_bd($pdo);
-        return $chambredispo;
-
-    }
+   
     function find_reservation_by_gestionnaire():array{
         $pdo = ouvrir_connexion_bd(); 
             $sql = "select * from reservation r " ;
@@ -94,7 +81,77 @@
       var_dump($dernier_id);
       fermer_connexion_bd($pdo);
       return $dernier_id ;
-      }  
+      } 
+      function find_chambre_disponible_by_gestionnaire():array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from image i ,categorie c , chambre ch
+        where i.id_categorie=c.id_categorie and
+                ch.id_categorie=c.id_categorie and
+
+         ch.etat_chambre=?";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array('disponible'));
+        $chambredispo = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $chambredispo;
+
+    } 
+      function find_chambre_by_categorie_and_etat($id_categorie):array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "SELECT * FROM `chambre`  
+                    WHERE id_categorie=? 
+                    and etat_chambre=? ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array($id_categorie,'disponible'));
+        $chambredispo = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $chambredispo;
+    }
+    function update_etat_chambre_indisponible($id_chambre):array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "UPDATE `chambre` SET etat_chambre=? 
+                    WHERE id_chambre=? ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array('indisponible',$id_chambre));
+        $chambredispo = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $chambredispo;
+    }
+   /*  function find_chambre_disponible():array{
+        $pdo = ouvrir_connexion_bd();
+        $sql = "select * from image i ,categorie c , chambre ch
+        where i.id_categorie=c.id_categorie and
+                ch.id_categorie=c.id_categorie and
+
+         ch.etat_chambre=?";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array('disponible'));
+        $chambredispo = $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $chambredispo;
+
+    } */
+    function update_reservation(array $reservation):int{
+    
+        $pdo = ouvrir_connexion_bd(); 
+            $sql = "UPDATE reservation r   
+                        SET date_debut_reservation = ? ,etat_reservation = ? ,
+                            date_fin_reservation = ? ,date_validation = ? ,nombre_chambre = ? ,nombre_personne = ? 
+                        WHERE r.id_reservation= ?; " ;
+            $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute($reservation);
+            fermer_connexion_bd($pdo);
+            return $sth -> rowCount();
+    }
+    function delete_reservation(array $reservation):int{
+        $pdo = ouvrir_connexion_bd();
+        $sql ="DELETE FROM reservation r
+        WHERE r.id_reservation = ? ;";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute($reservation);
+        fermer_connexion_bd($pdo);
+        return $sth -> rowCount();
+    }
 
 
 

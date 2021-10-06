@@ -21,6 +21,10 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             chambre_by_gestionnaire();
         }elseif($_GET['views']=='ajout.categorie'){
             require_once(ROUTE_DIR.'views/gestionnaire/ajout.categorie.html.php');
+        }elseif($_GET['views']=='confirmation'){
+            require_once(ROUTE_DIR.'views/gestionnaire/confirmation.html.php');
+        }elseif($_GET['views']=='tableau_bord'){
+            require_once(ROUTE_DIR.'views/gestionnaire/tableau_bord.html.php');
 
         }elseif($_GET['views']=='liste.categorie'){
             categorie_by_gestionnaire();    
@@ -39,6 +43,21 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             $reservation=reservation();
            
             require_once(ROUTE_DIR.'views/gestionnaire/add.reservation.html.php');
+
+        }elseif($_GET['views'] == 'supprimer'){
+            $_SESSION['id_reservation'] =$_GET['id_reservation'];
+            $id=$_SESSION['id_reservation'];
+            $reservat=find_all_reservation_by_id($id);
+            require(ROUTE_DIR.'views/gestionnaire/confirmation.html.php');
+        }elseif($_GET['views'] == 'confirme'){
+            $_SESSION['id_reservation']=$_GET['id_reservation'];
+            $id = $_SESSION['id_reservation'];
+            $reservat=find_all_reservation_by_id($id);
+            $ok = delete_reservation($id);
+            header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation');
+            exit();
+
+        
         }elseif($_GET['views']=='catalogue_chambre'){
             categorie();
             //filtre_categorie();
@@ -78,9 +97,9 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 
 
     //cote gestionnaire
-    function add_reservation_by_gestionnaire(array $post):void{
+ /*    function add_reservation_by_gestionnaire(array $post):void{
        /*  var_dump($post);
-        die('ohhh'); */
+        die('ohhh');
          extract($post);
         $date=date_format(date_create($date),'Y-m-d');
         $date_fin=date_format(date_create($date_fin),'Y-m-d');
@@ -105,7 +124,7 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 
         }
         
-    }
+    } */
 
     //inserer catégorie
     //`code_categorie`, `description`, `tarif_unit`, `nom_categorie`
@@ -198,6 +217,14 @@ function reservation($nbre=1){
     require_once(ROUTE_DIR.'views/gestionnaire/add.reservation.html.php');
 
 }
+/* function confirmation(){
+    $supprimer=delete_reservation();
+    
+
+
+    require_once(ROUTE_DIR.'views/gestionnaire/liste.reservation.html.php');
+
+} */
 function filtre_etat(){
     if($_POST['envoyer']){
         $filtre= $_POST['filtre'];
