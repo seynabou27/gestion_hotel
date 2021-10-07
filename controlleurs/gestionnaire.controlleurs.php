@@ -24,7 +24,7 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }elseif($_GET['views']=='confirmation'){
             require_once(ROUTE_DIR.'views/gestionnaire/confirmation.html.php');
         }elseif($_GET['views']=='tableau_bord'){
-            require_once(ROUTE_DIR.'views/gestionnaire/tableau_bord.html.php');
+            total_hotel();
 
         }elseif($_GET['views']=='liste.categorie'){
             categorie_by_gestionnaire();    
@@ -258,6 +258,15 @@ function lister_reservation_en_cours(){
  function liste_client(){
      $clients=find_all_client();
     require_once(ROUTE_DIR.'views/gestionnaire/liste.client.html.php');
+
+
+ }
+ function total_hotel(){
+     $client=total_client();
+     $catego=total_categorie();
+     $chambre=total_chambre();
+     $reservation=total_reservation();
+     require_once(ROUTE_DIR.'views/gestionnaire/tableau_bord.html.php');
 
 
  }

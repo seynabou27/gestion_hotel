@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -62,10 +61,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3 class=chiffre>
-                                <b>34</b>
-
+                                <b><?=total_client()?></b>
                             </h3>
-                        </div>                                 <i class="fas fa-truck"></i>    
+                        </div>                                  
 
                         <div class="col-md-6">
                         <a href="#" class="btn btn-primary detail">Détail</a>
@@ -82,7 +80,7 @@
                     <div class="row">
                         <div class="col-md-6">
                         <h3 class=chiffre>
-                                <b>34</b>
+                                <b><?=total_reservation()?></b>
 
                             </h3>
                         </div>

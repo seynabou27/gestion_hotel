@@ -178,15 +178,15 @@ function filtre_etat(){
 }
 //liste reservation cote client
 function liste_reservation(){
-   
+   extract($date);
    
     $id_user=$_SESSION['userConnect']['id_user'];
-    $count=count_all_reservation_client();
+    $count=count_all_reservation_client($id_user,$reservation,$etat_reservation);
     $par_page=NOMBRE_PAR_PAGE2;
     $currentPage=isset ($_GET['page'])?$_GET['page']: 1;
     $pages=ceil($count/$par_page);
     $premier=($currentPage * $par_page) - $par_page;
-    $rows=find_all_reservation_client($premier); 
+    $rows=find_all_reservation_client($id_user,$reservation,$etat_reservation,$premier); 
     $reservat=$rows["data"];
   
    

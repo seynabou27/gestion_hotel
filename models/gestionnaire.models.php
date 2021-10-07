@@ -152,7 +152,47 @@
         fermer_connexion_bd($pdo);
         return $sth -> rowCount();
     }
+    function total_reservation():int{ 
 
+        $pdo = ouvrir_connexion_bd();
+        $sql = "SELECT COUNT(*) FROM reservation r";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $totalereser= $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $sth -> rowCount();
+    }
+    function total_client():int{ 
+
+        $pdo = ouvrir_connexion_bd();
+        $sql = "SELECT COUNT(*) FROM user u";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $totaleuser= $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $sth -> rowCount();
+    }
+    function total_categorie():int{ 
+
+        $pdo = ouvrir_connexion_bd();
+        $sql = "SELECT COUNT(*) FROM categorie c ";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $totalecatego= $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $sth -> rowCount();
+    }
+
+    function total_chambre():int{ 
+
+        $pdo = ouvrir_connexion_bd();
+        $sql = "SELECT COUNT(*) FROM chambre ch";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute();
+        $totaleuser= $sth->fetchAll();
+        fermer_connexion_bd($pdo);
+        return $sth -> rowCount();
+    }
 
 
 

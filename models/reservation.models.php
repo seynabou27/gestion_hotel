@@ -31,6 +31,7 @@ function count_all_reservation():int{
     fermer_connexion_bd($pdo);
     return $sth->rowCount();
 }
+
 function find_all_reservation_by_id($id_reservation):array{
     $pdo = ouvrir_connexion_bd(); 
         $sql = " SELECT * from reservation r where r.id_reservation= ?; ";
@@ -53,8 +54,7 @@ function find_all_reservation_by_etat($id_user,$etat_reservation):array{
         r.id_user= ? and 
         r.etat_reservation like ? " ;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($id_user,$etat_reservation));
-      
+        $sth->execute();
         $reser = $sth->fetchAll(PDO::FETCH_ASSOC);
 
         fermer_connexion_bd($pdo);
@@ -62,17 +62,16 @@ function find_all_reservation_by_etat($id_user,$etat_reservation):array{
 }
 //les reservations du client
 
-function find_all_reservation_client($reservation, int $offset=0):array{
+function find_all_reservation_client($id_user ,$reservation,$etat_reservation,int $offset=0):array{
     
     $pdo = ouvrir_connexion_bd(); 
         $sql = "select * from reservation r ,user u , categorie c
         where 
         r.id_categorie=c.id_categorie and
-        r.id_user = u.id_user and
-        r.id_user= ? and 
-        r.etat_reservation like ? limit $offset,".NOMBRE_PAR_PAGE2;
+        r.id_user = u.id_user 
+            limit $offset,".NOMBRE_PAR_PAGE2;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($reservation));
+        $sth->execute(array($id_user,$reservation,$etat_reservation));
       
         $reser = $sth->fetchAll(PDO::FETCH_ASSOC);
 
@@ -83,17 +82,17 @@ function find_all_reservation_client($reservation, int $offset=0):array{
         ];
         
 }
-function count_all_reservation_client($reservation):int{
+function count_all_reservation_client($id_user,$reservation,$etat_reservation):int{
     
     $pdo = ouvrir_connexion_bd(); 
+    extract($date);
         $sql = "select * from reservation r ,user u , categorie c
         where 
         r.id_categorie=c.id_categorie and
-        r.id_user = u.id_user and
-        r.id_user= ? and 
-        r.etat_reservation like ? ;";
+        r.id_user = u.id_user 
+       ;";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array($reservation));
+        $sth->execute(array ($id_user,$reservation,$etat_reservation));
         fermer_connexion_bd($pdo);
         return $sth->rowCount();
 }
