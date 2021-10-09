@@ -1,3 +1,4 @@
+<?php //var_dump($reservation); die('okk'); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,6 +10,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?=WEB_ROUTE.'css/tableau_bord.css'?>">
+
   </head>
   <body>
       <header>
@@ -60,9 +63,11 @@
                     <h6 class="card-title"><b>Nombre de clients</b></h6>
                     <div class="row">
                         <div class="col-md-6">
+                          <span>
                             <h3 class=chiffre>
-                                <b><?=total_client()?></b>
+                                <b><?=$client[0]["count(*)"]?></b>
                             </h3>
+                          </span>
                         </div>                                  
 
                         <div class="col-md-6">
@@ -80,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-6">
                         <h3 class=chiffre>
-                                <b><?=total_reservation()?></b>
+                                <b><?=$reservation[0]["count(*)"]?></b>
 
                             </h3>
                         </div>
@@ -140,196 +145,7 @@
    
 
 
-<style>
-    .progress{
-    width: 150px;
-    height: 150px;
-    line-height: 150px;
-    background: none;
-    margin: 0 auto;
-    box-shadow: none;
-    position: relative;
-}
-.progress:after{
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 12px solid #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.progress > span{
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-}
-.progress .progress-left{
-    left: 0;
-}
-.progress .progress-bar{
-    width: 100%;
-    height: 100%;
-    background: none;
-    border-width: 12px;
-    border-style: solid;
-    position: absolute;
-    top: 0;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #005CA5;
-    border-color: #005CA5;
-}
-.col-md-4{
-    border-radius: 7px;
-}
-.progress .progress-left .progress-bar{
-    left: 100%;
-    border-top-right-radius: 80px;
-    border-bottom-right-radius: 80px;
-    border-left: 0;
-    -webkit-transform-origin: center left;
-    transform-origin: center left;
-}
-.progress .progress-right{
-    right: 0;
-}
-.progress .progress-right .progress-bar{
-    left: -100%;
-    border-top-left-radius: 80px;
-    border-bottom-left-radius: 80px;
-    border-right: 0;
-    -webkit-transform-origin: center right;
-    transform-origin: center right;
-    animation: loading-1 1.8s linear forwards;
-}
-.progress .progress-value{
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    background: white;
-    font-size: 24px;
-    color: #fff;
-    line-height: 135px;
-    text-align: center;
-    position: absolute;
-    top: 5%;
-    left: 5%;
-}
-.detail{
-        color:#005CA5;
-        background-color:white;
-        border-color:#005CA5;
-        float: right;
-        margin-top: 32%;
 
-      }
-      .chiffre{
-        color:#005CA5;
-
-
-      }
-      .btn-secondary:hover {
-        color: #fff;
-        background-color:#005CA5;
-          border-color:#005CA5;
-      }
-.progress.blue .progress-bar{
-    border-color: #049dff;
-}
-.progress.blue .progress-left .progress-bar{
-    animation: loading-2 1.5s linear forwards 1.8s;
-}
-.progress.yellow .progress-bar{
-    border-color: #fdba04;
-}
-.progress.yellow .progress-left .progress-bar{
-    animation: loading-3 1s linear forwards 1.8s;
-}
-.progress.pink .progress-bar{
-    border-color: #ed687c;
-}
-.progress.pink .progress-left .progress-bar{
-    animation: loading-4 0.4s linear forwards 1.8s;
-}
-.progress.green .progress-bar{
-    border-color: #1abc9c;
-}
-.progress.green .progress-left .progress-bar{
-    animation: loading-5 1.2s linear forwards 1.8s;
-}
-@keyframes loading-1{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
-}
-@keyframes loading-2{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(144deg);
-        transform: rotate(144deg);
-    }
-}
-@keyframes loading-3{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-    }
-}
-@keyframes loading-4{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(36deg);
-        transform: rotate(36deg);
-    }
-}
-@keyframes loading-5{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(126deg);
-        transform: rotate(126deg);
-    }
-}
-@media only screen and (max-width: 990px){
-    .progress{ margin-bottom: 20px; }
-}
-
-    .jjj{
-        margin-top: 3%;
-    }
-
-    .text-white {
-    color: #000 !important;
-}
-    .card-body:hover{
-        background-color: #d2b100;
-        color: #000;
-        transition: all 0,5 s;
-    }
-</style>
     <!-----------------------------------fin---------------------------->
 
       
@@ -458,86 +274,7 @@
 
       </footer>
 
-      <style>
-        .slider{
-          margin-top: -26%;
-        }
-        .slider1{
-          margin-top: 2%;
-        }
-        .reseau {
-        vertical-align: middle;
-        border-style: none;
-        margin: 2%;
-        }
-        
-          body {
-          font-family:Circular_std_bold;
-          }
-          .navbar-toggler {
-            padding: .25rem .75rem;
-            font-size: 1.25rem;
-            line-height: 1;
-            border: 2px solid #005CA5;
-            border-radius: .25rem;
-            color: #005CA5;
-          }
-        .navbar-nav{
-          margin-left: 9%;
-        }
-        .navbar-nav .nav-link {
-          padding-right: 0.5rem;
-          padding-left: 2.5rem;
-        }
-        a {
-            color: #000;
-        }
-        .navbar-expand-lg .navbar-nav .nav-link {
-          padding-right: 2.5rem;
-          padding-left: 0.5rem;
-        }
-        a:hover{
-        color: #005CA5;
-        
-      }
-      .droite{
-        color:white;
-        background-color:#005CA5;
-         margin-right: 2%; 
-      }
-      button, input, optgroup, select, textarea {
-        margin: 6px;
-        margin-top: -4%;
-      }
-      /* .navbar-expand-lg .navbar-collapse {
-        display: flex !important;
-        flex-basis: auto;
-        margin-left: 7%;
-      } */
-      .gauche{
-        color:#005CA5;
-        background-color:white;
-        border-color:#005CA5 ;
-      }
-      .btn:hover {
-      color: #fff;
-      }
-      .gauche .btn:hover {
-        color: #005CA5;
-      }
-      .slide1{
-        height: 400px;
-      }
-      .partie2{
-       
-        margin-top: 2%;
-
-      }
-      .boutton{
-        margin-top: 5%;
-      }
-     
-      </style>
+      
 
       
 

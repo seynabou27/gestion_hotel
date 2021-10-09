@@ -14,9 +14,7 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         }elseif($_GET['views']=='liste.client'){
             liste_client();
 
-        }elseif($_GET['views']=='ajout_prestation'){
-            require_once(ROUTE_DIR.'views/gestionnaire/ajout_prestation.html.php');
-
+        
         }elseif($_GET['views']=='ajout.chambre'){
             chambre_by_gestionnaire();
         }elseif($_GET['views']=='ajout.categorie'){
@@ -96,35 +94,6 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 	} 
 
 
-    //cote gestionnaire
- /*    function add_reservation_by_gestionnaire(array $post):void{
-       /*  var_dump($post);
-        die('ohhh');
-         extract($post);
-        $date=date_format(date_create($date),'Y-m-d');
-        $date_fin=date_format(date_create($date_fin),'Y-m-d');
-        if (!empty($post['id_reservation'])) {
-            $reservation=[
-                $date,
-                0,
-               "en cour",
-               (int)$_SESSION['userConnect']['id_user'],
-               $date_fin,
-               date_format(date_create(),'Y-m-d'),
-               $nbre_chambre,
-                $personne,
-                $post['id_reservation']
-
-               
-             ];
-             update_reservation($id_reservation,$reservation);
-            
-            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=add.reservation');
-               exit();
-
-        }
-        
-    } */
 
     //inserer catégorie
     //`code_categorie`, `description`, `tarif_unit`, `nom_categorie`
@@ -262,10 +231,10 @@ function lister_reservation_en_cours(){
 
  }
  function total_hotel(){
-     $client=total_client();
-     $catego=total_categorie();
-     $chambre=total_chambre();
-     $reservation=total_reservation();
+     $client=count_client();
+     $catego=count_categorie();
+     $chambre=count_chambre();
+     $reservation=count_reservation();
      require_once(ROUTE_DIR.'views/gestionnaire/tableau_bord.html.php');
 
 

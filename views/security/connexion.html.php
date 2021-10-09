@@ -14,6 +14,8 @@ if (isset($_SESSION['arrayErreur'])){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?=WEB_ROUTE.'css/connexion.css'?>">
+
   </head>
   <body>
       
@@ -105,112 +107,7 @@ if (isset($_SESSION['arrayErreur'])){
 
 
 
-<style>
-  .alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    width: 60%;
-    margin-left: 22%;
-}
-  .partie1{
-    position: relative;
-  }
-  .connect a {
-  border-bottom: 5px solid #005CA5;
-  color:#b7bcc1!important;
-}
-  .img1{
-    margin-top: -3%;
-    width: 107%;
-    height: 600px;
-  }
-  .centered {
-    position: absolute;
-    top: 40%;
-    left: 40%;
-    transform: translate(-46%, -27%);
-  }
-  .texte{
-    color: white;
-    margin-left: 7%;
-  }
-  .texte1{
-    color: white;
-    margin-left:-4% ;
-    margin-top: 10%;
-    
-  }
-  .blanc{
-    margin-top: -27%;
-    margin-left: 5%;
-  }
-  
-  .border-bottom {
-    border-bottom: 2px solid #dee2e6 !important;
-    width: 97%;
-    margin-left: 3%;
-    margin-top: 6%;
-}
-.nav-link:hover {
-  border-bottom: 5px solid #005CA5;
-  color:#fff!important;
-}
-.nav-link:hover {
-    border-bottom: 5px solid #005CA5;
-    color: #005CA5 !important;
-}
-a {
-    color: #b7bcc1;
-    text-decoration: none;
-    background-color: transparent;
-}
-.form-group{
-  margin-left: 23%;
-}
-.bleu{
-  margin-top: 4%;
-  height: 7%;
-}
-.p-2 {
-    padding: -2.5rem !important;
-}
-.aventure{
-  margin-top: 6%;
- text-align: center;
-  color:#FBBC21 ;
 
-}
-.aventure1{
-  text-align: center;
-  
-}
-.identi{
-  color: #005CA5;
-  margin-left: 36%;
-
-}
-.compte{
-  margin-top: 3%;
-  display: flex;
-  margin-left: 30%;
- 
-}
-.inscris{
-  color: #bbb8b8;
-  margin-right: 2%;
-  
-
-}
-.identi1{
-  color: #005CA5;
-  
-
-}
-
-
-
-</style>
 
 
 

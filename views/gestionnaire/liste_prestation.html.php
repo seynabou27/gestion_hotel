@@ -20,14 +20,14 @@
         <?php require_once(ROUTE_DIR.'views/inc/menu1.html.php'); ?>
 
       </header>
-
+      <br> <br>
       <div class=row>
             <div class=col-sm-6>
-            <h4><b>Liste des prestations</b></h4>
+            <h4 style="margin-left:18%;"><b>Liste des prestations</b></h4>
 
             </div>
             <div class=col-sm-6>
-            <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout_prestation'?>" role="button"><i class="bi bi-plus"></i>Ajouter une prestation</a>
+            <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=ajout_prestation'?>" role="button"><i class="bi bi-plus"></i>Ajouter une prestation</a>
 
             </div>
             
@@ -41,10 +41,6 @@
            <th scope="col">Designation</th>
            <th scope="col">code_prestation</th>
            <th scope="col">prix_prestation</th>
-           <th scope="col">Client</th>
-
-
-           
 
          </tr>
        </thead>
@@ -194,7 +190,7 @@
       <style>
 
           .retour{
-            margin-left: -40%;
+            margin-left: -36%;
             color:white;
             background-color:#005CA5;
             border-color:#005CA5;

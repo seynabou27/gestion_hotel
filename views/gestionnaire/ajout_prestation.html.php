@@ -30,9 +30,9 @@ if (isset($_SESSION['arrayErreur'])){
         <br> 
 
         <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
-              <input type="hidden" name="controlleurs" value="gestionnaire"/>
+              <input type="hidden" name="controlleurs" value="prestation"/>
               <input type="hidden" name="action" value="ajout_prestation"/>
-              <input type="hidden" name="id_pres" value="<?=isset($prestation['id_pres']) ? $prestation['id_chambre']:'';?>">     
+              <input type="hidden" name="id_pres" value="<?=isset($prestation['id_pres']) ? $prestation['id_pres']:'';?>">     
           <!---------------- DEBUT--------------------->
           <div class="card shadow mb-4 bg-white rounded">
         <!--Card-Body-->

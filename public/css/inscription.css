@@ -1,0 +1,115 @@
+.partie1{
+    position: relative;
+  }
+  .connect a {
+  border-bottom: 5px solid #005CA5;
+  color:#b7bcc1!important;
+}
+  .img1{
+    margin-top: -3%;
+    width: 107%;
+    height: 600px;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-46%, -27%);
+  }
+  .texte{
+    color: white;
+    margin-left: 7%;
+  }
+  .texte1{
+    color: white;
+    margin-left:-4% ;
+    margin-top: 10%;
+    
+  }
+  .blanc{
+    margin-top: -27%;
+    margin-left: 5%;
+  }
+  
+  .border-bottom {
+    border-bottom: 2px solid #dee2e6 !important;
+    width: 97%;
+    margin-left: 3%;
+    margin-top: 6%;
+}
+.nav-link:hover {
+  border-bottom: 5px solid #005CA5;
+  color:#fff!important;
+}
+
+.nav-link:hover {
+    border-bottom: 5px solid #005CA5;
+    color: #005CA5 !important;
+}
+a {
+    color: #b7bcc1;
+    text-decoration: none;
+    background-color: transparent;
+}
+.form-group{
+  margin-left: 23%;
+}
+.bleu{
+  margin-top: 4%;
+  height: 7%;
+}
+.p-2 {
+    padding: -2.5rem !important;
+}
+.aventure{
+  margin-top: 2%;
+ text-align: center;
+  color:#FBBC21 ;
+
+}
+.aventure1{
+  text-align: center;
+  
+}
+.identi{
+  color: #005CA5;
+  margin-left: 36%;
+
+}
+.compte{
+  margin-top: 4%;
+  display: flex;
+  margin-left: 32%;
+ 
+}
+.inscris{
+  color: #bbb8b8;
+  margin-right: 2%;
+  
+
+}
+.identi1{
+  color: #005CA5;
+}
+.form-control {
+    display: block;
+    width: 88%;
+}
+.mx-sm-2 {
+    margin-right: 2.5rem !important;
+}
+.row1{
+    margin-left: 12%;
+}
+
+.file{
+    margin-left: 14%;
+}
+.row2{
+    margin-top: 1%;
+    margin-left: 57%;
+}
+ 
+
+

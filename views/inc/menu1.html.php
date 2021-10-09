@@ -44,8 +44,8 @@
                   Prestation
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste.prestation'?>">Liste_prestation</a>
-                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout_prestation'?>">Ajout_prestation</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste_prestation'?>">Liste_prestation</a>
+                  <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=ajout_prestation'?>">Ajout_prestation</a>
                 </div>
               </li>
 
@@ -58,11 +58,10 @@
           
           <div class="dropdown">
             <button class="btn boutton btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Gestionnaire
+            <b><?= $_SESSION['userConnect']['nom_user']?></b>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=deconnexion'?>">Se déconnecter</a>
-              <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=inscription'?>">Je m'inscris</a>
               <a class="dropdown-item" href="#">Paramettrer</a>
             </div>
           </div>

@@ -70,18 +70,7 @@
         fermer_connexion_bd($pdo);
         return $dernier_id ;
     }
-    function insert_pres(array $prestation):int{
-     
-        $pdo = ouvrir_connexion_bd();
-        $sql="INSERT INTO `prestation` (`designation_pres`, `prix_unit`, `code_pres`) 
-        VALUES (?, ?, ?);";
-        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-      $sth->execute($prestation);
-      $dernier_id = $pdo->lastInsertId();
-      var_dump($dernier_id);
-      fermer_connexion_bd($pdo);
-      return $dernier_id ;
-      } 
+   
       function find_chambre_disponible_by_gestionnaire():array{
         $pdo = ouvrir_connexion_bd();
         $sql = "select * from image i ,categorie c , chambre ch
@@ -152,27 +141,26 @@
         fermer_connexion_bd($pdo);
         return $sth -> rowCount();
     }
-    function total_reservation():int{ 
-
+    function count_reservation():array{ 
         $pdo = ouvrir_connexion_bd();
-        $sql = "SELECT COUNT(*) FROM reservation r";
+        $sql = "SELECT COUNT(*) FROM reservation r where id_reservation= ?";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute();
+        $sth->execute(array());
         $totalereser= $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $sth -> rowCount();
+        return $totalereser;
     }
-    function total_client():int{ 
+    function count_client():array{ 
 
         $pdo = ouvrir_connexion_bd();
         $sql = "SELECT COUNT(*) FROM user u";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute();
+        $sth->execute(array());
         $totaleuser= $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $sth -> rowCount();
+        return $totaleuser;
     }
-    function total_categorie():int{ 
+    function count_categorie():array{ 
 
         $pdo = ouvrir_connexion_bd();
         $sql = "SELECT COUNT(*) FROM categorie c ";
@@ -180,18 +168,18 @@
         $sth->execute();
         $totalecatego= $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $sth -> rowCount();
+        return $totalecatego;
     }
 
-    function total_chambre():int{ 
+    function count_chambre():array{ 
 
         $pdo = ouvrir_connexion_bd();
         $sql = "SELECT COUNT(*) FROM chambre ch";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
-        $totaleuser= $sth->fetchAll();
+        $totalechambre= $sth->fetchAll();
         fermer_connexion_bd($pdo);
-        return $sth -> rowCount();
+        return $totalechambre;
     }
 
 

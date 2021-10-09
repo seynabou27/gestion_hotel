@@ -10,6 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="<?=WEB_ROUTE.'css/catalogue_chambre.css'?>">
+
     <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/bootstrap-horizon/bootstrap-horizon.css"> -->
   </head>
@@ -20,100 +22,7 @@
       <!-- partie1 -->
       
         
-            <!-- Vertical navbar -->
-<!-- <div class="vertical-nav bg-white" id="sidebar">
-  
-  <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center"><img src="img/logo.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-      <div class="media-body">
-        <h4 class="m-0"></h4>
-        <p class="font-weight-light text-muted mb-0">Nos catégories de chambre</p>
-      </div>
-    </div>
-  </div>
-
-
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic bg-light">
-                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                <div class="col-md-3">
-        <div class="form-group">
-          <?php //foreach($catego as $catego) : ?>
-              <label for=""></label>
-              <select class="form-control" style="background-color:#eee;" name="categorie" id="">
-                <option>Filtre par catégorie</option>
-                <option>Suite royale</option>
-                <option>Suite simple</option>
-                <option>Chambre luxe</option>
-                <option>Chambre junior</option>
-                <option>Chambre twins</option>
-                <option>Chambre standard</option>
-                <option>Chambre province</option>
-                <option>Chalet complexe</option>
-                <option>Chalet simple</option>
-              </select>
-            </div>
-            <button type="submit" class="btn boutton w-75 p-2 bleu" name="btn" style="background-color: #005CA5; color:#fff;"><b>Recherche <i class="bi bi-search"></i></b></button>
-              <?php //endforeach ?>
             
-        </div>
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Suite royale
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Suite simple
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chambre de luxe
-            </a>
-    </li>
-  </ul>
-
-
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-<i class="bi bi-door-closed"></i>Chambre junior
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chmabre twins
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chambre standards
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chambre province
-            </a>
-    </li>
-
-  </ul>
-  <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chalet complet
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-      <i class="bi bi-door-closed"></i>Chalet complet
-            </a>
-    </li>
-</div>
-</div> -->
-<!-- End vertical navbar -->
           
         
         <div class="container">
@@ -153,72 +62,7 @@
         
 
       
-<style>
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
 
-.vertical-nav {
-    min-width: 23rem;
-    width: 17rem;
-    height: 179vh;
-    top: 114px;
-    left: 0;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s;
-    margin-top: 25%;
-}
-
-/* .page-content {
-  width: calc(100% - 17rem);
-  margin-left: 17rem;
-  transition: all 0.4s;
-} */
-
-/* for toggle behavior */
-
-#sidebar.active {
-  margin-left: -17rem;
-}
-
-/* #content.active {
-  width: 100%;
-  margin: 0;
-}
- */
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -17rem;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #content {
-    width: 100%;
-    margin: 0;
-  }
-  #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
-  }
-}
-
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSE
-* ==========================================
-*
-*/
-
-
-
-
-</style>
 
 
 

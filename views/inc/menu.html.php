@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-white bg-white">
           <a class="navbar-brand" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>"></a>
           <img src="img/logo.png" width="67" height="67" class="d-inline-block align-top" alt="">
@@ -71,9 +72,9 @@
               <?php endif ?>
         
           <?php if(est_client()): ?>
-            <div class="dropdown" style="margin-left: 20%;">
+            <div class="dropdown" style="margin-left: 18%;">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?=$_SESSION['userConnect']['Avatar'] ?>" class="profile-image rounded-circle"style="width:10%; height:auto; background-color: gray; "> Client<b class="caret"></b></a>
+              <img src="<?=$_SESSION['userConnect']['Avatar'] ?>" class="profile-image rounded-circle"style="width:10%; height:auto; background-color: gray; "><b> <?= $_SESSION['userConnect']['nom_user']?></b><b class="caret"></b></a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=security&views=deconnexion'?>">Se déconnecter</a>
                 <a class="dropdown-item" href="#">Paramettre</a>

@@ -21,8 +21,11 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
           
             lister_reservation_en_cours(); 
     
-        }elseif($_GET['views']=='liste.prestation'){
+        }elseif($_GET['views']=='liste_prestation'){
             liste_prestation(); 
+
+        }elseif($_GET['views']=='ajout_prestation'){
+            require_once(ROUTE_DIR.'views/gestionnaire/ajout_prestation.html.php');
 
         }elseif($_GET['views']=='catalogue_chambre'){
             categorie();
@@ -43,6 +46,48 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
         catalogue();
 
     }
+} elseif($_SERVER['REQUEST_METHOD']=='POST'){
+    if (isset($_POST['action'])) {
+		if ($_POST['action']=="ajout_prestation") {
+            
+ 
+				add_prestation($_POST);
+
+		} 
+    }
+}
+
+//`designation_pres`, `prix_unit`, `code_pres`
+function add_prestation(array $post):void{
+  
+
+     extract($post);
+     
+    if (form_valid($arrayErreur)) {
+        $prestation=[
+           $nom_pres,
+            $prix,
+            $code
+           
+         ];
+        
+         
+        $id_prestation=insert_pres($prestation);
+        var_dump($prestation);
+        die('okk');
+       
+
+        
+        header('location:'.WEB_ROUTE.'?controlleurs=prestation&views=liste_prestation');
+           exit();
+           
+
+    }else{
+   
+        $_SESSION['arrayErreur']=$arrayErreur;
+        header('location:'.WEB_ROUTE.'?controlleurs=prestation&views=ajout_prestation');
+    }
+    
 }
 
 

@@ -510,7 +510,7 @@
     margin-bottom: auto;
     border: solid 1px #dbdad7;
     width: 70%;
-    height: 937px;
+    height: 990px;
     padding-left: 34px !important;
     padding-bottom: 10px !important;
     padding-right: 34px !important;
