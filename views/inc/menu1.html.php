@@ -31,7 +31,6 @@
                   Chambre
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>">Catalogue_chambres</a><span class="sr-only">(current)</span></a>
                   <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre'?>">Liste_chambre</a>
                   <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>">Liste_categorie</a>
                   <a class="dropdown-item" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.chambre'?>">Ajout_chambre</a>

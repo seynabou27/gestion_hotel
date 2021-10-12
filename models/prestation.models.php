@@ -34,7 +34,7 @@ function find_all_prestation_by_client():array{
     fermer_connexion_bd($pdo);
     return $prestation;
 }
-function insert_pres(array $prestation):int{
+/* function insert_pres(array $prestation):int{
      
   $pdo = ouvrir_connexion_bd();
   $sql="INSERT INTO `prestation` (`designation_pres`, `prix_unit`, `code_pres`) 
@@ -44,7 +44,7 @@ $sth->execute($prestation);
 $dernier_id = $pdo->lastInsertId();
 fermer_connexion_bd($pdo);
 return $dernier_id ;
-} 
+}  */
 
 
 

@@ -26,7 +26,7 @@ if (isset($_SESSION['arrayErreur'])){
       <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre'?>" role="button"><i class="bi bi-arrow-left"></i>Liste chambre</a>
       <div class="container bg-light">
         <br> 
-        <h5 class="" style="text-align: center;"><b>Ajouter une catégorie</b></h5>
+        <h5 class="" style="text-align: center;"><b>Ajouter une chambre</b></h5>
         <br> 
 
         <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">

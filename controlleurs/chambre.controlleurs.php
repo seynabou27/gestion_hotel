@@ -129,7 +129,7 @@ function catalogue(){
     if (!isset($_GET['id_categorie']) || !is_numeric($_GET['id_categorie'])){
         catalogue();
         header('location:'.WEB_ROUTE);
-        exit();
+        exit(); 
     }  
     $id=$_GET['id_categorie']; 
     $categorie=find_categorie_by_id($id);
