@@ -48,15 +48,15 @@ if (isset($_SESSION['arrayErreur'])){
           </div>
           </div>
           <div class="col-sm-6 debut"> 
-          <?php foreach ($catego as $catego) : ?>
+          <?php //foreach ($categorie as $categorie) : ?>
 
             <div>
-              <span class="badge"><h5><b><?= $catego['nom_categorie']?></h5></b></span>
+              <span class="badge"><h5><b><?= $categorie['nom_categorie']?></h5></b></span>
             </div> 
         
       
           <div>
-            <span class=""style="color:#3CAB85;"><h5><b><?= $categorie['tarif_unit']?></h5></b></span>
+            <span class=""style="color:#3CAB85;"><h5><b><?= $categorie['tarif_unit']?> f </h5></b></span>
          
           </div>
           <div class="li">
@@ -66,7 +66,7 @@ if (isset($_SESSION['arrayErreur'])){
               <li>32m2</li>
             </ul>
           </div>
-          <?php endforeach ?> 
+          <?php //endforeach ?> 
           </div>
         </div> 
         <br> <br>
@@ -127,8 +127,9 @@ if (isset($_SESSION['arrayErreur'])){
             
           </div>
         
-        <?php foreach ($prestation as $prestation) : ?>
         <div class="row ">
+        <?php foreach ($prestation as $prestation) : ?>
+
             <div class="col-sm-6">  
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="<?=$prestation['id_pres']?>" name="prestation[]" id="ck1">
@@ -144,11 +145,23 @@ if (isset($_SESSION['arrayErreur'])){
               
 
             </div>
+            <?php endforeach ?>
+
+            
             
        
         <!--Fifth Row-->
         </div> 
-        <?php endforeach ?>
+
+        <div class=row>
+         
+        <div class=col-sm-6>
+              <h6><b>Totale de la réservation</b></h6>
+              <h5 style="color:#3CAB85;"><b><?= $categorie['tarif_unit']?> f  + <?=$prestation['prix_unit'] ?>f  =  </h5></b>
+              
+            </div>
+          
+        </div>
         </div>
         <div class="row boutton1">
           <div class="col-md-6">

@@ -1,3 +1,22 @@
+
+ <?php
+          $a=$categorie['tarif_unit'];
+          $b=$prestation['prix_unit'] ;
+
+        function calcul($a, $b){
+        $add = $a+$b;
+     
+        return array($add);
+      }
+     ?>
+
+
+
+
+
+
+
+
 <header class="bui-header bui-header--logo-large bui-u-hidden-print ">
 <nav class="bui-header__bar">
 <div class="bui-header__main">
@@ -10,6 +29,7 @@
 </span>
 </div>
 </div>
+
 <div class="bui-group bui-button-group bui-group--inline bui-group--align-end bui-group--vertical-align-middle">
 <div class="bui-group__item">
 <button class="bui-button bui-button--light bui-button--large" data-modal-size="960" data-modal-close-aria-label="Ferme la liste des devises" data-modal-aria-label="Sélectionnez votre devise" data-modal-arrow-navigation="true" data-bui-component="Modal.HeaderAsync,Tooltip" data-modal-header-async-type="currencyDesktop" data-tooltip-position="bottom" type="button" data-tooltip-text="Choisissez votre devise">

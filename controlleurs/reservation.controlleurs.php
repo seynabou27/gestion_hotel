@@ -101,6 +101,14 @@ function add_reservation(array $post):void{
             
             $id_reservation=insert_reservation_by_client($reservation);
 
+            foreach ($prestation as $value){
+                $insérer=[
+                    $id_reservation,
+                    $valeur
+                ] ;
+                insert_pres($insert);
+            }
+
             
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=mesreservation');
                exit();
@@ -128,7 +136,14 @@ function add_reservation(array $post):void{
                             $personne,
                             (int)$_POST['id_reservation']
                         ];
-
+                        foreach ($prestation as $value){
+                            $insérer=[
+                                $id_reservation,
+                                $valeur
+                            ] ;
+                            insert_pres($insert);
+                        }
+            
                         update_reservation($reservation);
                         header("location:" .WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
                         exit;
@@ -250,6 +265,8 @@ function reserver_chambre_by_categorie(array $data):void{
 function show_prestation($nbre=1){
     $id_user=$_SESSION['userConnect']['id_user'];
 	$prestation=find_all_prestation();
+    $id=$_GET['id_categorie']; 
+    $categorie=find_categorie_by_id($id);
 	require(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 }
 
