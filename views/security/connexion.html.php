@@ -66,10 +66,13 @@ if (isset($_SESSION['arrayErreur'])){
                   <p class="aventure"><b>C'est parti pour l'aventure!</b></p>
                   <p class="aventure1">Veuillez remplir les champs ci-dessous.</p>
                    
-                 </div> 
+                 </div>
+                 <?php if ( isset( $arrayErreur['erreurConnexion'])) : ?>
                   <div class="alert alert-danger" role="alert">
-                    <?= isset( $arrayErreur['erreurConnexion'])? $arrayErreur['erreurConnexion']:''?>
-                    </div>         
+                    <?=  $arrayErreur['erreurConnexion'] ?>
+                    </div> 
+                    <?php endif ?>
+                          
                 
                  
               <div class="form-group">

@@ -26,7 +26,7 @@ if (isset($_SESSION['arrayErreur'])){
       <a name="" id="" class="btn btn-primary retour" href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste_prestation'?>" role="button"><i class="bi bi-arrow-left"></i>Liste des prestations</a>
       <div class="container bg-light">
         <br> 
-        <h5 class="" style="text-align: center;"><b>Ajouter une catégorie</b></h5>
+        <h5 class="" style="text-align: center;"><b>Ajouter une prestation</b></h5>
         <br> 
 
         <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
@@ -70,7 +70,7 @@ if (isset($_SESSION['arrayErreur'])){
          
         <div class="row boutton1">
           <div class="col-md-6">
-          <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
+          <a href="<?=WEB_ROUTE.'?controlleurs=prestation&views=liste_prestation'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
           </div>
           <div class="col-md-6">
             <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="categorie">Je valide</button>

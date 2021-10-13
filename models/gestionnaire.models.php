@@ -143,27 +143,30 @@
     }
     function count_reservation():array{ 
         $pdo = ouvrir_connexion_bd();
-        $sql = "SELECT COUNT(*) FROM reservation r where id_reservation= ?";
+        $sql = "SELECT COUNT(id_reservation) as reservation FROM reservation r ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array());
         $totalereser= $sth->fetchAll();
         fermer_connexion_bd($pdo);
         return $totalereser;
     }
-    function count_client():array{ 
+    function count_client($nom_role):array{ 
 
         $pdo = ouvrir_connexion_bd();
-        $sql = "SELECT COUNT(*) FROM user u";
+        $sql = "SELECT COUNT(id_user) as user FROM user u , role r 
+        where 
+        r.nom_role like ?";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array());
+        $sth->execute(array($nom_role));
         $totaleuser= $sth->fetchAll();
         fermer_connexion_bd($pdo);
         return $totaleuser;
     }
+
     function count_categorie():array{ 
 
         $pdo = ouvrir_connexion_bd();
-        $sql = "SELECT COUNT(*) FROM categorie c ";
+        $sql = "SELECT COUNT(id_categorie) as categorie FROM categorie c ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $totalecatego= $sth->fetchAll();
@@ -174,7 +177,7 @@
     function count_chambre():array{ 
 
         $pdo = ouvrir_connexion_bd();
-        $sql = "SELECT COUNT(*) FROM chambre ch";
+        $sql = "SELECT COUNT(id_chambre) as chambre FROM chambre ch";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();
         $totalechambre= $sth->fetchAll();

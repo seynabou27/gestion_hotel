@@ -73,8 +73,8 @@ function add_prestation(array $post):void{
         
          
         $id_prestation=insert_pres($prestation);
-        var_dump($prestation);
-        die('okk');
+        /* var_dump($prestation);
+        die('okk'); */
        
 
         

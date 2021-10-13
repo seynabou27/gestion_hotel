@@ -65,7 +65,7 @@
                         <div class="col-md-6">
                           <span>
                             <h3 class=chiffre>
-                                <b><?=$client[0]["count(*)"]?></b>
+                                <b><?=$client[0]["user"]?></b>
                             </h3>
                           </span>
                         </div>                                  
@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-6">
                         <h3 class=chiffre>
-                                <b><?=$reservation[0]["count(*)"]?></b>
+                                <b><?=$reservation[0]["reservation"]?></b>
 
                             </h3>
                         </div>
@@ -104,7 +104,7 @@
                     <div class="row">
                         <div class="col-md-6">
                         <h3 class=chiffre>
-                                <b>34</b>
+                                <b><?=$catego[0]["categorie"]?></b>
 
                             </h3>
                         </div>
@@ -126,7 +126,7 @@
                     <div class="row ">
                         <div class="col-md-6 ">
                         <h3 class=chiffre>
-                                <b>34</b>
+                                <b><?=$chambre[0]["chambre"]?></b>
 
                             </h3>
                         </div>

@@ -35,13 +35,29 @@
 		  </div> -->
         <br> 
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 mt-2">
             <h4><b>Liste réservation</b></h4>            
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-2">
             <a name="" id="" class="btn btn-primary  boutton" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.reservation'?>" role="button"><i class="bi bi-plus"></i>Ajouter une réservation</a>
 
           </div>
+          <div class="col-md-4 form-inline mt-1">
+          <label class="mr-3">Etat </label>
+          <form method="post" action="<?=WEB_ROUTE?>">
+          <input type="hidden" name="controlleurs" value="reservation"/>
+          <input type="hidden" name="action" value="filtre.reservation"/>
+                <select class="form-control" name="etat" id="">
+                  <option>Archiver</option>
+                  <option>en cour</option>
+                  <option>Payer</option>
+                  <option>Annuler</option>
+                </select>
+                <button type="submit" class="btn b" style="background-color: #005CA5; color:white;" name="ok" style="background-color: #005CA5; color:#fff;"><b>ok</b></button>
+
+         </form>
+          </div>
+
         </div>
         <br> <br>
           <table class="table table-striped">
@@ -55,7 +71,6 @@
               <th scope="col">Periode</th>
               <th scope="col">Etat</th>
               <th scope="col">Action</th>
-              <th scope="col"></th>
 
 
 
@@ -73,7 +88,7 @@
               <td><?=date_format(date_create($reservation['date_reservation']),'d-m-Y')?></td>
               <td><?=$reservation['date_debut_reservation']?> / <?=$reservation['date_fin_reservation']?></td>
               <td><?=$reservation['etat_reservation']?></td>
-              <td><a name="" id="" class="btn b" style="background-color: #005CA5; color:white;" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&id_reservation='.$reservation['id_reservation'] ?>" role="button">Gérer</a></td> <td><a name="" id="" class="btn" href="<?= WEB_ROUTE.'?controlleurs=gestionnaire&views=supprimer&id_reservation='.$reservation['id_reservation']?>" role="button"><i class="bi bi-trash"></i></a></td>
+              <td><a name="" id="" class="btn b" style="background-color: #005CA5; color:white;" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=edit&id_reservation='.$reservation['id_reservation'] ?>" role="button">Gérer</a></td> 
 
             </tr>
             <?php endforeach ?>

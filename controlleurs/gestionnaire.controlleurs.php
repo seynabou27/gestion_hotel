@@ -231,7 +231,7 @@ function lister_reservation_en_cours(){
 
  }
  function total_hotel(){
-     $client=count_client();
+     $client=count_client('client');
      $catego=count_categorie();
      $chambre=count_chambre();
      $reservation=count_reservation();

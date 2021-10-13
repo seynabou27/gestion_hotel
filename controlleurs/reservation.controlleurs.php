@@ -60,14 +60,16 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
 } elseif($_SERVER['REQUEST_METHOD']=='POST'){
     if (isset($_POST['action'])) {
 		if ($_POST['action']=="page_reservation") {  
- 
-				add_reservation($_POST);
-
+        add_reservation($_POST);
 		} elseif ($_POST['action']== 'edit'){ 
             add_reservation_by_gestionnaire($_POST);
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
 
-    } 
+    }elseif ($_POST['action']== 'filtre.reservation'){ 
+        lister_reservation_en_cours($_POST) ;       
+        header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
+
+} 
          
 	}
 	
@@ -218,7 +220,10 @@ function liste_reservation(){
 } */
 
 //liste reservation cote gestionnaire
-function lister_reservation_en_cours(){
+function lister_reservation_en_cours( array $data=null){
+if(isset($_POST['ok'])){
+    $reservation = filter_all_reservation($_POST['etat']);
+}else{
     $id_user=$_SESSION['userConnect']['id_user'];
     $count=count_all_reservation();
     $par_page=NOMBRE_PAR_PAGE1;
@@ -227,6 +232,7 @@ function lister_reservation_en_cours(){
     $premier=($currentPage * $par_page) - $par_page;
     $rows=find_all_reservation($premier); 
     $reservation=$rows["data"];
+}
     require_once(ROUTE_DIR.'views/gestionnaire/liste.reservation.html.php');
 }
 //traiter les reservations

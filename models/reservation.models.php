@@ -19,6 +19,18 @@ function find_all_reservation(int $offset=0):array{
         "count" => $sth->rowCount()
     ];
 }
+function filter_all_reservation($etat):array{
+    $pdo=ouvrir_connexion_bd();
+    $sql="SELECT * from reservation r , categorie c, user u 
+    where r.id_categorie=c.id_categorie
+    and r.id_user=u.id_user 
+    and r.etat_reservation like ? " ;
+    $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+    $sth->execute([$etat]);
+    $reservation = $sth->fetchAll();
+    fermer_connexion_bd($pdo);
+    return $reservation ;
+}
 function count_all_reservation():int{
     $pdo=ouvrir_connexion_bd();
     $sql="select * from reservation r , categorie c, user u 
