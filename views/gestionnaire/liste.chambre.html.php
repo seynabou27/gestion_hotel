@@ -46,7 +46,6 @@
            <th scope="col">Numero téléphone</th>
            <th scope="col">Etat</th>
            <th scope="col">Action</th>
-           <th scope="col"></th>
 
 
 
@@ -70,7 +69,7 @@
            <td><?=$chambre['id_chambre']?></td>     
            <td><?=$chambre['telephone_chambre']?></td> 
            <td class=""><?=$chambre['etat_chambre']?></td>
-           <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-pencil-fill"></i></a></td> <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-trash"></i></a></td>
+           <td><a name="" id="" class="btn" href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=modif&id_chambre='.$chambre['id_chambre'] ?>" role="button"><i class="bi bi-pencil-fill"></i></a></td> 
 
 
                          

@@ -42,18 +42,14 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
            
             require_once(ROUTE_DIR.'views/gestionnaire/add.reservation.html.php');
 
-        }elseif($_GET['views'] == 'supprimer'){
-            $_SESSION['id_reservation'] =$_GET['id_reservation'];
-            $id=$_SESSION['id_reservation'];
-            $reservat=find_all_reservation_by_id($id);
-            require(ROUTE_DIR.'views/gestionnaire/confirmation.html.php');
-        }elseif($_GET['views'] == 'confirme'){
-            $_SESSION['id_reservation']=$_GET['id_reservation'];
-            $id = $_SESSION['id_reservation'];
-            $reservat=find_all_reservation_by_id($id);
-            $ok = delete_reservation($id);
-            header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation');
-            exit();
+        }elseif($_GET['views']=='modif'){
+
+            $_SESSION['id_chambre'] =$_GET['id_chambre'];
+            $id=$_SESSION['id_chambre'];
+            $chambre=find_all_chambre_by_id($id); 
+            //$chambres= chambre_by_gestionnaire(); 
+            require_once(ROUTE_DIR.'views/gestionnaire/ajout.chambre.html.php');
+
 
         
         }elseif($_GET['views']=='catalogue_chambre'){
@@ -81,15 +77,16 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
             die('okkk');  */ 
             add_reservation($_POST);
             header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=liste.reservation');
-
+        
     } elseif($_POST['action']== "ajout.chambre"){
-        /* var_dump($_POST);
-            die('okkk');  */ 
-
+       
         add_chambre($_POST);
-    }
+    }elseif ($_POST['action']== 'modif'){
+        add_chambre_by_gestionnaire($_POST);
+        header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre');
          
 	}
+    }
 	
 	} 
 
@@ -157,6 +154,41 @@ if(($_SERVER['REQUEST_METHOD']=='GET')){
        
             $_SESSION['arrayErreur']=$arrayErreur;
             header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=ajout.chambre');
+        }
+        
+    }
+    function add_chambre_by_gestionnaire(array $post):void{
+        $arrayErreur=array();
+         extract($post);
+        if (form_valid($arrayErreur)) {
+           
+                if (isset($post['id_chambre']) ) {
+                   if (est_gestionnaire()) {
+                    $chambre=[
+                        $numero_chambre,
+                         $numero,
+                         "disponible"
+                        
+                      ];
+                        
+            
+                        update_chambre($chambre);
+                        header("location:" .WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre');
+                        exit;
+                    }
+                }
+             
+             
+
+            
+
+            
+            
+ 
+        }else{
+       
+            $_SESSION['arrayErreur']=$arrayErreur;
+            header('location:'.WEB_ROUTE.'?controlleurs=reservation&views=page_reservation');
         }
         
     }

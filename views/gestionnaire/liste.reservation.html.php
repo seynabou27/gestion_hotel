@@ -52,6 +52,8 @@
                   <option>en cour</option>
                   <option>Payer</option>
                   <option>Annuler</option>
+                  <option>valider</option>
+
                 </select>
                 <button type="submit" class="btn b" style="background-color: #005CA5; color:white;" name="ok" style="background-color: #005CA5; color:#fff;"><b>ok</b></button>
 

@@ -70,6 +70,27 @@
         fermer_connexion_bd($pdo);
         return $dernier_id ;
     }
+    //modification cote gestionnaire
+    function find_all_chambre_by_id($id_chambre):array{
+        $pdo = ouvrir_connexion_bd(); 
+            $sql = " SELECT * from chambre ch where ch.id_chambre= ?; ";
+            $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array($id_chambre));
+            $chambre= $sth->fetch(PDO::FETCH_ASSOC);
+            fermer_connexion_bd($pdo);
+            return $chambre; 
+    }
+    function update_chambre(array $chambre):int{
+    
+        $pdo = ouvrir_connexion_bd(); 
+            $sql = "UPDATE `chambre ch` 
+            SET `id_chambre` = ?, `numero_chambre` = ?', `telephone_chambre` = ?, 
+            `etat_chambre` = ? WHERE ch.`id_chambre` = ?; " ;
+            $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute($chambre);
+            fermer_connexion_bd($pdo);
+            return $sth -> rowCount();
+    }
    
       function find_chambre_disponible_by_gestionnaire():array{
         $pdo = ouvrir_connexion_bd();
@@ -106,6 +127,7 @@
         fermer_connexion_bd($pdo);
         return $chambredispo;
     }
+    
    /*  function find_chambre_disponible():array{
         $pdo = ouvrir_connexion_bd();
         $sql = "select * from image i ,categorie c , chambre ch

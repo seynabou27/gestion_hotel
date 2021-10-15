@@ -6,7 +6,7 @@
 //where ch.id_categorie=c.id_categorie and ch.id_user=u.id_user;
     function find_all_chambre():array{
         $pdo = ouvrir_connexion_bd();
-        $sql = "SELECT * from chambre ch; 
+        $sql = "SELECT  distinct * from chambre ch; 
             ";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute();

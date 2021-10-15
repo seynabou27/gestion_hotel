@@ -3,6 +3,8 @@ if (isset($_SESSION['arrayErreur'])){
     $arrayErreur =$_SESSION['arrayErreur'];
     unset ($_SESSION['arrayErreur']);
 }
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,20 +33,22 @@ if (isset($_SESSION['arrayErreur'])){
 
         <form method="POST" enctype="multipart/form-data" action="<?=WEB_ROUTE?>">
               <input type="hidden" name="controlleurs" value="gestionnaire"/>
-              <input type="hidden" name="action" value="ajout.chambre"/>
-              <input type="hidden" name="id_chambre" value="<?=isset($chambre['id_chambre']) ? $chambre['id_chambre']:'';?>">     
+              <input type="hidden" name="action" value="ajout.chambre" value="<?=isset($chamb['id_chambre']) ? 'modif':'ajout.chambre';?>"/>
+              <input type="hidden" name="id_chambre" value="<?=isset($chamb['id_chambre']) ? $chamb['id_chambre']:'';?>">     
           <!---------------- DEBUT--------------------->
           <div class="card shadow mb-4 bg-white rounded">
         <!--Card-Body-->
         <div class="card-body">
         <br>
         <div class=row>
+        
+          
             <div class=col-sm-6>
             <div class="form-group">
                 <label for="">catégorie</label>
                 <select class="browser-default custom-select mb-4" name="categorie" id="select">
                     <?php foreach ($categorie as $categorie):?>
-                        <option value="" disabled="" selected=""></option>
+                        <option value="<?=isset($chamb['nom_categorie']) ? $chamb['nom_categorie']:'';?>" disabled="" selected=""><?=isset($chamb['nom_categorie']) ? $chamb['nom_categorie']:'';?></option>
                         <option value="1"><?=$categorie['nom_categorie'] ?></option>
                     <?php endforeach ?>
 
@@ -56,7 +60,7 @@ if (isset($_SESSION['arrayErreur'])){
                     <div class="form-group">
                       <label for="">Numéro chambre</label>
                       <input type="text"
-                        class="form-control" name="numero_chambre" id="" aria-describedby="helpId" placeholder="">
+                        class="form-control" name="numero_chambre" id="" aria-describedby="helpId" placeholder="" value="<?=isset($chambre['numero_chambre']) ? $chambre['numero_chambre']:'';?>">
                         <small class="form-text text-danger"><?php echo isset($arrayErreur['numero_chambre'])? $arrayErreur['numero_chambre']:'';?></small>
                     </div>
                     
@@ -71,7 +75,7 @@ if (isset($_SESSION['arrayErreur'])){
         <div class="row">
           <div class="col-sm-6 col-md-6 form-group">
             Numéro
-            <input type="text" name="numero" class="form-control" id="" placeholder="" value="">
+            <input type="text" name="numero" class="form-control" id="" placeholder="" value="<?=isset($chambre['telephone_chambre']) ? $chambre['telephone_chambre']:'';?>">
             <small class="form-text text-danger"><?php echo isset($arrayErreur['numero'])? $arrayErreur['numero']:'';?></small>
 
             </div>
@@ -80,6 +84,7 @@ if (isset($_SESSION['arrayErreur'])){
                <label for="">Etat</label>
                <select class="form-control" name="etat" id="">
                <?php foreach ($chambre as $chambre):?>
+                <option value="<?=isset($chamb['etat_chambre']) ? $chamb['etat_chambre']:'';?>" disabled="" selected=""><?=isset($chamb['etat_chambre']) ? $chamb['etat_chambre']:'';?></option>
                  <option><?=$chambre['etat_chambre'] ?></option>
                  <?php endforeach ?>
 
@@ -97,7 +102,7 @@ if (isset($_SESSION['arrayErreur'])){
          
         <div class="row boutton1">
           <div class="col-md-6">
-          <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.categorie'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
+          <a href="<?=WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.chambre'?>" class="btn btn-primary float-right mt-5 annuler ">J'annule</a>
           </div>
           <div class="col-md-6">
             <button type="submit" class="btn btn-primary float-left mt-5 annuler1" name="categorie">Je valide</button>

@@ -21,6 +21,8 @@
     define('NOMBRE_PAR_PAGE1', 5);
 
     define('NOMBRE_PAR_PAGE2', 10);
+
+    define('FILTER_VALIDATE_EMAIL', 274);
      
 
 

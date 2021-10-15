@@ -96,6 +96,9 @@ function inscription(array $data,array $file):void{
             $data['avatar']=$target_file;
         
             insert_user($data);
+            /* var_dump(insert_user($data));
+            die('okkk'); */
+            
             valide_image($_FILES, $arrayErreur, 'avatar', $target_file);
             //upload_image($_FILES, $target_file);
            

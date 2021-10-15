@@ -9,7 +9,7 @@ function find_all_reservation(int $offset=0):array{
     where
     r.id_categorie=c.id_categorie
     and
-    r.id_user=u.id_user  limit $offset,".NOMBRE_PAR_PAGE1 ;
+    r.id_user=u.id_user limit $offset,".NOMBRE_PAR_PAGE1 ;
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sth->execute();
     $reservation = $sth->fetchAll();

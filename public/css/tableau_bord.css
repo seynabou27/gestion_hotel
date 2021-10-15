@@ -181,11 +181,11 @@
     .text-white {
     color: #000 !important;
 }
-    .card-body:hover{
+    /* .card-body:hover{
         background-color: #d2b100;
         color: #000;
         transition: all 0,5 s;
-    }
+    } */
     .slider{
         margin-top: -26%;
       }
