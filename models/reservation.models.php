@@ -5,11 +5,9 @@
 
 function find_all_reservation(int $offset=0):array{
     $pdo=ouvrir_connexion_bd();
-    $sql="select * from reservation r , categorie c, user u 
-    where
-    r.id_categorie=c.id_categorie
-    and
-    r.id_user=u.id_user limit $offset,".NOMBRE_PAR_PAGE1 ;
+    $sql="select * from reservation r ,user u  where
+    r.id_user=u.id_user 
+     limit $offset,".NOMBRE_PAR_PAGE1 ;
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sth->execute();
     $reservation = $sth->fetchAll();
@@ -33,11 +31,10 @@ function filter_all_reservation($etat):array{
 }
 function count_all_reservation():int{
     $pdo=ouvrir_connexion_bd();
-    $sql="select * from reservation r , categorie c, user u 
+    $sql="select * from reservation r , user u   
     where
-    r.id_categorie=c.id_categorie
-    and
-    r.id_user=u.id_user";
+
+    r.id_user=u.id_user ";
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sth->execute();
     fermer_connexion_bd($pdo);
@@ -77,10 +74,11 @@ function find_all_reservation_by_etat($id_user,$etat_reservation):array{
 function find_all_reservation_client($id_user ,$reservation,$etat_reservation,int $offset=0):array{
     
     $pdo = ouvrir_connexion_bd(); 
-        $sql = "select * from reservation r ,user u , categorie c
+        $sql = "select distinct * from reservation r ,user u , categorie c
         where 
+        c.id_categorie=c.id_categorie and
         r.id_categorie=c.id_categorie and
-        r.id_user = u.id_user 
+        r.id_user = u.id_user and  r.id_reservation ORDER BY r.id_reservation  DESC 
             limit $offset,".NOMBRE_PAR_PAGE2;
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array($id_user,$reservation,$etat_reservation));
@@ -98,11 +96,11 @@ function count_all_reservation_client($id_user,$reservation,$etat_reservation):i
     
     $pdo = ouvrir_connexion_bd(); 
     extract($date);
-        $sql = "select * from reservation r ,user u , categorie c
+        $sql = "select  distinct* from reservation r ,user u , categorie c
         where 
+        c.id_categorie=c.id_categorie and
         r.id_categorie=c.id_categorie and
-        r.id_user = u.id_user 
-       ;";
+        r.id_user = u.id_user and  r.id_reservation  ORDER BY r.id_reservation  DESC";
         $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array ($id_user,$reservation,$etat_reservation));
         fermer_connexion_bd($pdo);
@@ -134,8 +132,8 @@ function find_all_reservation_by_date_or_etat($etat_reservation='en cour'):array
 function insert_reservation(int $id_categorie,int $id_client):int{
     extract($categorie);
     $pdo = ouvrir_connexion_bd();
-    $sql = "INSERT INTO `reservation` (`date_debut_reservation`, `montant_paye`, `etat_reservation`, `id_user`, `id_chambre`, `date_fin_reservation`, `date_validation`, `date_reservation`, `nombre_chambre`,`nombre_personne`) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $sql = "INSERT INTO `reservation` (`date_debut_reservation`, `montant_paye`, `etat_reservation`, `id_user`, `date_fin_reservation`, `date_reservation`, `nombre_chambre`, `nombre_personne`) 
+    VALUES (?, 0, ?, ?, ?, ?, ?, ?);";
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $now=date_create();
     $now = date_format($now, 'Y-m-d H:i:s');
@@ -187,9 +185,9 @@ function insert_reservation(int $id_categorie,int $id_client):int{
 function insert_reservation_by_client(array $reservation):int{
     $pdo = ouvrir_connexion_bd();
     $sql="INSERT INTO `reservation` (`date_debut_reservation`, `montant_paye`, 
-    `etat_reservation`, `id_user`, `date_fin_reservation`, 
+    `etat_reservation`, `id_user`,`id_categorie`, `date_fin_reservation`, 
     `date_reservation`, `nombre_chambre`, `nombre_personne`) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sth->execute($reservation);
     $dernier_id = $pdo->lastInsertId();

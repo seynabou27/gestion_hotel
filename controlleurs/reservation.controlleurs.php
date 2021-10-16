@@ -93,15 +93,18 @@ function add_reservation(array $post):void{
                 0,
                "en cour",
                (int)$_SESSION['userConnect']['id_user'],
+               3,
                $date_fin,
                date_format(date_create(),'Y-m-d'),
-               $nbre_chambre,
-                $personne,
+               2,
+                $personne
                
              ];
              
             
             $id_reservation=insert_reservation_by_client($reservation);
+           /*  var_dump($reservation);
+            die('okkk'); */
 
             /* foreach ($prestation as $value){
                 $insérer=[

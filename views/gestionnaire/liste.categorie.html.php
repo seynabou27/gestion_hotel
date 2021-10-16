@@ -40,7 +40,6 @@
               <th scope="col">Nom categorie</th>
               <th scope="col">Prix</th>
               <th scope="col">Action</th>
-              <th scope="col"></th>
 
 
             </tr>
@@ -51,7 +50,7 @@
               <td><?=$categorie['code_categorie']?></td>  
               <td><?=$categorie['nom_categorie']?></td>
               <td><?=$categorie['tarif_unit']?></td>
-              <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-pencil-fill"></i></a></td> <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-trash"></i></a></td>
+              <td><a name="" id="" class="btn" href="#" role="button"><i class="bi bi-pencil-fill"></i></a></td> 
 
 
 

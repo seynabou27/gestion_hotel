@@ -18,7 +18,7 @@
 
     define('NOMBRE_PAR_PAGE', 3);
 
-    define('NOMBRE_PAR_PAGE1', 5);
+    define('NOMBRE_PAR_PAGE1', 15);
 
     define('NOMBRE_PAR_PAGE2', 10);
 

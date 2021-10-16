@@ -206,6 +206,55 @@
         fermer_connexion_bd($pdo);
         return $totalechambre;
     }
+    //inserser reservation pour un client par le gestionnaire
+    function insert_reservation_by_gestionnaire(array $reservation):int{
+        $pdo = ouvrir_connexion_bd();
+        $sql="INSERT INTO `reservation` (`date_debut_reservation`, `montant_paye`, 
+        `etat_reservation`, `id_user`, `date_fin_reservation`, 
+        `date_reservation`, `nombre_chambre`, `nombre_personne`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute($reservation);
+        $dernier_id = $pdo->lastInsertId();
+        fermer_connexion_bd($pdo);
+        return $dernier_id ;
+    }
+    function insert_user_by_gestionnaire(array $user):int{
+        
+        $pdo = ouvrir_connexion_bd();
+        extract($user);
+        $sql = "INSERT INTO `user` (`nom_user`, `prenom_user`, `login`, `password`, `adresse_user`, `id_role`, `Avatar`, `telephone`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array($nom,$prenom,$login,$password,$adresse,$id_role,$avatar,$telephone));
+        $user = $sth->fetch(PDO::FETCH_ASSOC);
+        fermer_connexion_bd($pdo);
+        return $sth->rowCount();
+
+    }
+    function insert_pres_by_gestionnaire(array $prestation):int{
+     
+        $pdo = ouvrir_connexion_bd();
+        $sql="INSERT INTO `prestation` (`designation_pres`, `prix_unit`, `code_pres`) 
+        VALUES (?, ?, ?);";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+      $sth->execute($prestation);
+      $dernier_id = $pdo->lastInsertId();
+      fermer_connexion_bd($pdo);
+      return $dernier_id ;
+      }
+      function insert_reservation_gestionnaire(array $reservation):int{
+        $pdo = ouvrir_connexion_bd();
+        $sql="INSERT INTO `reservation` (`date_debut_reservation`, `montant_paye`, 
+        `etat_reservation`, `id_user`, `date_fin_reservation`, 
+        `date_reservation`, `nombre_chambre`, `nombre_personne`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute($reservation);
+        $dernier_id = $pdo->lastInsertId();
+        fermer_connexion_bd($pdo);
+        return $dernier_id ;
+    }
 
 
 

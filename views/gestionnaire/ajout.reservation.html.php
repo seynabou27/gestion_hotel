@@ -26,8 +26,8 @@
         <br> 
 
         <form method="POST" action="<?=WEB_ROUTE?>">
-          <input type="hidden" name="controlleurs" value="reservation">
-          <input type="hidden" name="action" value="<?=isset($reservat['id_reservation']) ? 'edit':'add.reservation';?>"/>
+          <input type="hidden" name="controlleurs" value="gestionnaire">
+          <input type="hidden" name="action" value="ajout.reservation"/>
           <input type="hidden" name="id_reservation" value="<?=isset($reservat['id_reservation']) ? $reservat['id_reservation']:'';?>">
                           
           <!---------------- DEBUT--------------------->
@@ -510,7 +510,7 @@
     margin-bottom: auto;
     border: solid 1px #dbdad7;
     width: 70%;
-    height: 990px;
+    height: 1050px;
     padding-left: 34px !important;
     padding-bottom: 10px !important;
     padding-right: 34px !important;

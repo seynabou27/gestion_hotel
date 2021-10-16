@@ -82,7 +82,7 @@
             <?php foreach ($reservation as $reservation):?>
             <tr>
               <td><a href="#"><?=$reservation['nom_user'].' '.$reservation['prenom_user'].' '.$reservation['numero_telephone']?></a></td>  
-              <td><a href="#"><?=$reservation['nom_categorie']?></a></td>
+              <td><a href="#"><?=$reservation['id_categorie']?></a></td>
           
               <td><a href="#"><?=$reservation['nombre_chambre']?></a></td>
               <td><a href="#"><?=$reservation['nombre_personne']?></a></td>
