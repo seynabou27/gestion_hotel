@@ -5,7 +5,7 @@
 * ==========================================
 *
 */
-
+body{width:100%;}
 .vertical-nav {
     min-width: 23rem;
     width: 17rem;

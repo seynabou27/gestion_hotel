@@ -21,7 +21,7 @@
 
 <!---------------------------EXAMPLE------------------>
 <div class="container-fluid">
-  <a class="lien" style="margin-top:6%; color:#eee;" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue_chambre'?>">Catalogue des chambres</a> - <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail'?>">Détail des chambres</a>
+  <a class="lien" style="margin-top:6%; color:#eee;" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=catalogue_chambre'?>">Catalogue des chambres</a> - <a href="<?=WEB_ROUTE.'?controlleurs=chambre&views=detail'?>">Détail des chambres</a>
   <br>
   <div class=row>
     <div class="col-md-6">

@@ -1,6 +1,6 @@
 <?php
 
-    //define('WEB_ROUTE','http://localhost:8001/');
+    //define('WEB_ROUTE','http://localhost:8000/');
 
     //define('HOST_BD','localhost');
 
@@ -9,17 +9,17 @@
     define('ROUTE_DIR',str_replace('public','',$_SERVER['DOCUMENT_ROOT']));
 
     //define('USRER_BD','root');
-    define('USRER_BD','seynabou');
+    define('USRER_BD','seynabou_heber');
 
 
     //define('PASSWORD_BD','Nabou');
 
-    define('PASSWORD_BD','Passer@123');
+    define('PASSWORD_BD','Nabouja22709');
 
 
     //define('CHAINE_DE_CONNEXION', 'mysql:dbname=gestion_hotel;host='.HOST_BD);
 
-    define('CHAINE_DE_CONNEXION', 'mysql:dbname=seynabou_heber;host=mysql-seynabou.alwaysdata.net');
+    define('CHAINE_DE_CONNEXION', 'mysql:dbname=seynabou_heber;host= mysql-seynabou.alwaysdata.net' );
 
     
     define( 'UPLOAD_DIR',WEB_ROUTE. 'lib/upload/');

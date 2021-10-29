@@ -249,8 +249,8 @@ function add_reservation_by_gestionnaire(array $post):void{
          
           
          $id_prestation=insert_pres_by_gestionnaire($prestation);        
-        header('location:'.WEB_ROUTE);
-           exit();
+         header('location:'.WEB_ROUTE.'?controlleurs=gestionnaire&views=liste.reservation');
+         exit();
 
     }else{
    

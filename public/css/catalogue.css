@@ -1,7 +1,14 @@
-.slider{
-  margin-top: -26%;
-}
+
+@media(max-width:767px){};
+@media(max-width:2000px){};
+
+/* .slider{
+  margin-top: 10%
+} */
 .slider1{
+  margin-top: 2%;
+}
+.slider2{
   margin-top: 2%;
 }
 .reseau {
@@ -9,6 +16,7 @@ vertical-align: middle;
 border-style: none;
 margin: 2%;
 }
+body{width:100%;}
 
   body {
   font-family:Circular_std_bold;
@@ -21,12 +29,12 @@ margin: 2%;
     border-radius: .25rem;
     color: #005CA5;
   }
-.navbar-nav{
-  margin-left: 9%;
-}
-.navbar-nav .nav-link {
-  padding-right: 0.5rem;
-  padding-left: 2.5rem;
+/* .navbar-nav{
+  margin-left: 5%;
+} */
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+    padding-left: 0.5rem;
 }
 a {
     color: #000;
@@ -44,6 +52,11 @@ color:white;
 background-color:#005CA5;
  margin-right: 2%; 
 }
+.droite1{
+  color:white;
+  background-color:#005CA5;
+   margin-right: 2%; 
+  }
 button, input, optgroup, select, textarea {
 margin: 6px;
 margin-top: -4%;
@@ -64,9 +77,9 @@ color: #fff;
 .gauche .btn:hover {
 color: #005CA5;
 }
-.slide1{
+/* .slide1{
 height: 400px;
-}
+} */
 .partie2{
 
 margin-top: 2%;

@@ -274,10 +274,25 @@ function reserver_chambre_by_categorie(array $data):void{
 function show_prestation($nbre=1){
     $id_user=$_SESSION['userConnect']['id_user'];
 	$prestation=find_all_prestation();
-    /* $id=$_GET['id_categorie']; 
-    $categorie=find_categorie_by_id($id); */
+    $id=$_GET['id_categorie']; 
+    $categorie=find_categorie_by_id($id); 
 	require(ROUTE_DIR.'views/reservation/page_reservation.html.php');
 }
+function detaille_categorie(){
+     
+    if (!isset($_GET['id_categorie']) || !is_numeric($_GET['id_categorie'])){
+        catalogue();
+        header('location:'.WEB_ROUTE);
+        exit(); 
+    }  
+    $id=$_GET['id_categorie']; 
+    $categorie=find_categorie_by_id($id);
+  
+    require_once(ROUTE_DIR.'views/hotel/detail.html.php');
+                   
+    
+
+} 
 
 
 

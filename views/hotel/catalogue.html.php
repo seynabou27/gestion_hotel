@@ -31,24 +31,24 @@
           <!-- Carrousel -->
           <div class="carousel-inner">
             <div class="carousel-item active slide1">
-              <img src="img/groupe.png" alt="Carrousel slide 1" class="d-block w-100">
+              <img src="img/groupe.png" style="height: 500px;" alt="Carrousel slide 1" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
-                <h4 class="slider">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
+                <h4 class="slider" style="margin-top: -39%;">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
                 <p>Un hotel 5 étoiles situé sur la petite cote sénégalaise<br>avec des services hauts de gamme.</p>
-                <button type="button" class="btn droite slider1">Je réserve maintenant</button>
+                <button type="button" class="btn droite1 slider2">Je réserve maintenant</button>
               </div>
             </div>
             <div class="carousel-item slide1">
               <img src="img/groupe1.png" alt="Carrousel slide 2" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block ">
-              <h4 class="slider">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
+              <h4 class="slider" style="margin-top: -39%;">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
                 <p>Un hotel 5 étoiles situé sur la petite cote sénégalaise<br>avec des services hauts de gamme.</p>
               </div>
             </div>
             <div class="carousel-item slide1">
-              <img src="img/pexel2.png" alt="Carrousel slide 3" class="d-block w-100">
+              <img src="img/pexel2.png" style="height: 500px;" alt="Carrousel slide 3" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
-              <h4 class="slider">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
+              <h4 class="slider" style="margin-top: -39%;">Voyager dans l'univers Tooki <br>avec calme et tranquillité</h4>
                 <p>Un hotel 5 étoiles situé sur la petite cote sénégalaise<br>avec des services hauts de gamme.</p>
               </div>
             </div>

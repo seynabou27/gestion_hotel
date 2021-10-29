@@ -11,10 +11,14 @@
               <a class="nav-item nav-link active" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=catalogue'?>">Accueil <span class="sr-only">(current)</span></a>
                 <?php endif ?>
                 <?php if (!est_client()&& !est_gestionnaire()) : ?>
-              <a class="nav-item nav-link propos" href="#">A propos</a>
-              <a class="nav-item nav-link" href="#">Communauté</a>
-              <a class="nav-item nav-link" href="#">Nos offres</a>
-              <a class="nav-item nav-link" href="#">Contact</a>
+              <a class="nav-item nav-link propos" style="padding-right: 1.5rem;
+    padding-left: 0.5rem;" href="#">A propos</a>
+              <a class="nav-item nav-link" style="padding-right: 1.5rem;
+    padding-left: 0.5rem;" href="#">Communauté</a>
+              <a class="nav-item nav-link" style="padding-right: 1.5rem;
+    padding-left: 0.5rem;" href="#">Nos offres</a>
+              <a class="nav-item nav-link" style="padding-right: 1.5rem;
+    padding-left: 0.5rem;" href="#">Contact</a>
               <?php endif ?> 
 
               <?php if (est_gestionnaire()) : ?>
@@ -65,7 +69,7 @@
 
               
             <?php if(!est_client() && !est_gestionnaire()): ?>
-              <div class="collapse navbar-collapse"style="margin-left: 14%;" id="navbarNavAltMarkup">
+              <div class="collapse navbar-collapse"style="margin-left: 7%;" id="navbarNavAltMarkup">
               <a class="btn btn droite" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=connexion'?>">Je me connecter</a>
               <a class="btn btn gauche" href="<?=WEB_ROUTE.'?controlleurs=chambre&views=inscription'?>" style="color: #005CA5">je crée une compte</a>
             </div>

@@ -82,6 +82,7 @@ a {
   margin-left: 36%;
 
 }
+body{width:100%;}
 .compte{
   margin-top: 3%;
   display: flex;

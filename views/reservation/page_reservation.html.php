@@ -157,8 +157,8 @@ if (isset($_SESSION['arrayErreur'])){
          
         <div class=col-sm-6>
               <h6><b>Totale de la réservation</b></h6>
-              <h5 style="color:#3CAB85;"><b><?= $categorie['tarif_unit']?> f  + <?=$prestation['prix_unit'] ?>f  =  </h5></b>
-              
+<!--               <h5 style="color:#3CAB85;"><b><?= $categorie['tarif_unit']?> f  + <?=$prestation['prix_unit'] ?>f  =  </h5></b>
+ -->              
             </div>
           
         </div>
